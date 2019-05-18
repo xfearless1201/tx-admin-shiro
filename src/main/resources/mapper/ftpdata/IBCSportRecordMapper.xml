@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.IBCSportRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.IBCSportRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="transId" property="transid" jdbcType="BIGINT" />
+    <result column="playerName" property="playername" jdbcType="VARCHAR" />
+    <result column="transactionTime" property="transactiontime" jdbcType="TIMESTAMP" />
+    <result column="matchId" property="matchid" jdbcType="BIGINT" />
+    <result column="leagueId" property="leagueid" jdbcType="INTEGER" />
+    <result column="leagueName" property="leaguename" jdbcType="VARCHAR" />
+    <result column="sportType" property="sporttype" jdbcType="VARCHAR" />
+    <result column="awayId" property="awayid" jdbcType="BIGINT" />
+    <result column="awayIDName" property="awayidname" jdbcType="VARCHAR" />
+    <result column="homeId" property="homeid" jdbcType="BIGINT" />
+    <result column="homeIDName" property="homeidname" jdbcType="VARCHAR" />
+    <result column="matchDateTime" property="matchdatetime" jdbcType="TIMESTAMP" />
+    <result column="betType" property="bettype" jdbcType="INTEGER" />
+    <result column="parlayRefNo" property="parlayrefno" jdbcType="VARCHAR" />
+    <result column="betTeam" property="betteam" jdbcType="VARCHAR" />
+    <result column="hdp" property="hdp" jdbcType="DECIMAL" />
+    <result column="awayHDP" property="awayhdp" jdbcType="DECIMAL" />
+    <result column="homeHDP" property="homehdp" jdbcType="DECIMAL" />
+    <result column="odds" property="odds" jdbcType="DECIMAL" />
+    <result column="awayScore" property="awayscore" jdbcType="DECIMAL" />
+    <result column="homeScore" property="homescore" jdbcType="DECIMAL" />
+    <result column="isLive" property="islive" jdbcType="VARCHAR" />
+    <result column="isLucky" property="islucky" jdbcType="VARCHAR" />
+    <result column="parlay_type" property="parlayType" jdbcType="VARCHAR" />
+    <result column="combo_type" property="comboType" jdbcType="VARCHAR" />
+    <result column="ticketStatus" property="ticketstatus" jdbcType="VARCHAR" />
+    <result column="stake" property="stake" jdbcType="INTEGER" />
+    <result column="winLoseAmount" property="winloseamount" jdbcType="DECIMAL" />
+    <result column="winLostDateTime" property="winlostdatetime" jdbcType="TIMESTAMP" />
+    <result column="lastBallNo" property="lastballno" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="versionKey" property="versionkey" jdbcType="BIGINT" />
+    <result column="bet_Tag" property="betTag" jdbcType="VARCHAR" />
+    <result column="afterAmount" property="afteramount" jdbcType="DECIMAL" />
+    <result column="oddsType" property="oddstype" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, transId, playerName, transactionTime, matchId, leagueId, leagueName, sportType, 
+    awayId, awayIDName, homeId, homeIDName, matchDateTime, betType, parlayRefNo, betTeam, 
+    hdp, awayHDP, homeHDP, odds, awayScore, homeScore, isLive, isLucky, parlay_type, 
+    combo_type, ticketStatus, stake, winLoseAmount, winLostDateTime, lastBallNo, cagent, 
+    currency, versionKey, bet_Tag, afterAmount, oddsType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ibc_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ibc_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.IBCSportRecord" >
+    insert into ibc_record (id, transId, playerName, 
+      transactionTime, matchId, leagueId, 
+      leagueName, sportType, awayId, 
+      awayIDName, homeId, homeIDName, 
+      matchDateTime, betType, parlayRefNo, 
+      betTeam, hdp, awayHDP, 
+      homeHDP, odds, awayScore, 
+      homeScore, isLive, isLucky, 
+      parlay_type, combo_type, ticketStatus, 
+      stake, winLoseAmount, winLostDateTime, 
+      lastBallNo, cagent, currency, 
+      versionKey, bet_Tag, afterAmount, 
+      oddsType)
+    values (#{id,jdbcType=BIGINT}, #{transid,jdbcType=BIGINT}, #{playername,jdbcType=VARCHAR}, 
+      #{transactiontime,jdbcType=TIMESTAMP}, #{matchid,jdbcType=BIGINT}, #{leagueid,jdbcType=INTEGER}, 
+      #{leaguename,jdbcType=VARCHAR}, #{sporttype,jdbcType=VARCHAR}, #{awayid,jdbcType=BIGINT}, 
+      #{awayidname,jdbcType=VARCHAR}, #{homeid,jdbcType=BIGINT}, #{homeidname,jdbcType=VARCHAR}, 
+      #{matchdatetime,jdbcType=TIMESTAMP}, #{bettype,jdbcType=INTEGER}, #{parlayrefno,jdbcType=VARCHAR}, 
+      #{betteam,jdbcType=VARCHAR}, #{hdp,jdbcType=DECIMAL}, #{awayhdp,jdbcType=DECIMAL}, 
+      #{homehdp,jdbcType=DECIMAL}, #{odds,jdbcType=DECIMAL}, #{awayscore,jdbcType=DECIMAL}, 
+      #{homescore,jdbcType=DECIMAL}, #{islive,jdbcType=VARCHAR}, #{islucky,jdbcType=VARCHAR}, 
+      #{parlayType,jdbcType=VARCHAR}, #{comboType,jdbcType=VARCHAR}, #{ticketstatus,jdbcType=VARCHAR}, 
+      #{stake,jdbcType=INTEGER}, #{winloseamount,jdbcType=DECIMAL}, #{winlostdatetime,jdbcType=TIMESTAMP}, 
+      #{lastballno,jdbcType=VARCHAR}, #{cagent,jdbcType=VARCHAR}, #{currency,jdbcType=VARCHAR}, 
+      #{versionkey,jdbcType=BIGINT}, #{betTag,jdbcType=VARCHAR}, #{afteramount,jdbcType=DECIMAL}, 
+      #{oddstype,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.IBCSportRecord" >
+    insert into ibc_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="transid != null" >
+        transId,
+      </if>
+      <if test="playername != null" >
+        playerName,
+      </if>
+      <if test="transactiontime != null" >
+        transactionTime,
+      </if>
+      <if test="matchid != null" >
+        matchId,
+      </if>
+      <if test="leagueid != null" >
+        leagueId,
+      </if>
+      <if test="leaguename != null" >
+        leagueName,
+      </if>
+      <if test="sporttype != null" >
+        sportType,
+      </if>
+      <if test="awayid != null" >
+        awayId,
+      </if>
+      <if test="awayidname != null" >
+        awayIDName,
+      </if>
+      <if test="homeid != null" >
+        homeId,
+      </if>
+      <if test="homeidname != null" >
+        homeIDName,
+      </if>
+      <if test="matchdatetime != null" >
+        matchDateTime,
+      </if>
+      <if test="bettype != null" >
+        betType,
+      </if>
+      <if test="parlayrefno != null" >
+        parlayRefNo,
+      </if>
+      <if test="betteam != null" >
+        betTeam,
+      </if>
+      <if test="hdp != null" >
+        hdp,
+      </if>
+      <if test="awayhdp != null" >
+        awayHDP,
+      </if>
+      <if test="homehdp != null" >
+        homeHDP,
+      </if>
+      <if test="odds != null" >
+        odds,
+      </if>
+      <if test="awayscore != null" >
+        awayScore,
+      </if>
+      <if test="homescore != null" >
+        homeScore,
+      </if>
+      <if test="islive != null" >
+        isLive,
+      </if>
+      <if test="islucky != null" >
+        isLucky,
+      </if>
+      <if test="parlayType != null" >
+        parlay_type,
+      </if>
+      <if test="comboType != null" >
+        combo_type,
+      </if>
+      <if test="ticketstatus != null" >
+        ticketStatus,
+      </if>
+      <if test="stake != null" >
+        stake,
+      </if>
+      <if test="winloseamount != null" >
+        winLoseAmount,
+      </if>
+      <if test="winlostdatetime != null" >
+        winLostDateTime,
+      </if>
+      <if test="lastballno != null" >
+        lastBallNo,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="versionkey != null" >
+        versionKey,
+      </if>
+      <if test="betTag != null" >
+        bet_Tag,
+      </if>
+      <if test="afteramount != null" >
+        afterAmount,
+      </if>
+      <if test="oddstype != null" >
+        oddsType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="transid != null" >
+        #{transid,jdbcType=BIGINT},
+      </if>
+      <if test="playername != null" >
+        #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="transactiontime != null" >
+        #{transactiontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="matchid != null" >
+        #{matchid,jdbcType=BIGINT},
+      </if>
+      <if test="leagueid != null" >
+        #{leagueid,jdbcType=INTEGER},
+      </if>
+      <if test="leaguename != null" >
+        #{leaguename,jdbcType=VARCHAR},
+      </if>
+      <if test="sporttype != null" >
+        #{sporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="awayid != null" >
+        #{awayid,jdbcType=BIGINT},
+      </if>
+      <if test="awayidname != null" >
+        #{awayidname,jdbcType=VARCHAR},
+      </if>
+      <if test="homeid != null" >
+        #{homeid,jdbcType=BIGINT},
+      </if>
+      <if test="homeidname != null" >
+        #{homeidname,jdbcType=VARCHAR},
+      </if>
+      <if test="matchdatetime != null" >
+        #{matchdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bettype != null" >
+        #{bettype,jdbcType=INTEGER},
+      </if>
+      <if test="parlayrefno != null" >
+        #{parlayrefno,jdbcType=VARCHAR},
+      </if>
+      <if test="betteam != null" >
+        #{betteam,jdbcType=VARCHAR},
+      </if>
+      <if test="hdp != null" >
+        #{hdp,jdbcType=DECIMAL},
+      </if>
+      <if test="awayhdp != null" >
+        #{awayhdp,jdbcType=DECIMAL},
+      </if>
+      <if test="homehdp != null" >
+        #{homehdp,jdbcType=DECIMAL},
+      </if>
+      <if test="odds != null" >
+        #{odds,jdbcType=DECIMAL},
+      </if>
+      <if test="awayscore != null" >
+        #{awayscore,jdbcType=DECIMAL},
+      </if>
+      <if test="homescore != null" >
+        #{homescore,jdbcType=DECIMAL},
+      </if>
+      <if test="islive != null" >
+        #{islive,jdbcType=VARCHAR},
+      </if>
+      <if test="islucky != null" >
+        #{islucky,jdbcType=VARCHAR},
+      </if>
+      <if test="parlayType != null" >
+        #{parlayType,jdbcType=VARCHAR},
+      </if>
+      <if test="comboType != null" >
+        #{comboType,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketstatus != null" >
+        #{ticketstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="stake != null" >
+        #{stake,jdbcType=INTEGER},
+      </if>
+      <if test="winloseamount != null" >
+        #{winloseamount,jdbcType=DECIMAL},
+      </if>
+      <if test="winlostdatetime != null" >
+        #{winlostdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastballno != null" >
+        #{lastballno,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="versionkey != null" >
+        #{versionkey,jdbcType=BIGINT},
+      </if>
+      <if test="betTag != null" >
+        #{betTag,jdbcType=VARCHAR},
+      </if>
+      <if test="afteramount != null" >
+        #{afteramount,jdbcType=DECIMAL},
+      </if>
+      <if test="oddstype != null" >
+        #{oddstype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.IBCSportRecord" >
+    update ibc_record
+    <set >
+      <if test="transid != null" >
+        transId = #{transid,jdbcType=BIGINT},
+      </if>
+      <if test="playername != null" >
+        playerName = #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="transactiontime != null" >
+        transactionTime = #{transactiontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="matchid != null" >
+        matchId = #{matchid,jdbcType=BIGINT},
+      </if>
+      <if test="leagueid != null" >
+        leagueId = #{leagueid,jdbcType=INTEGER},
+      </if>
+      <if test="leaguename != null" >
+        leagueName = #{leaguename,jdbcType=VARCHAR},
+      </if>
+      <if test="sporttype != null" >
+        sportType = #{sporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="awayid != null" >
+        awayId = #{awayid,jdbcType=BIGINT},
+      </if>
+      <if test="awayidname != null" >
+        awayIDName = #{awayidname,jdbcType=VARCHAR},
+      </if>
+      <if test="homeid != null" >
+        homeId = #{homeid,jdbcType=BIGINT},
+      </if>
+      <if test="homeidname != null" >
+        homeIDName = #{homeidname,jdbcType=VARCHAR},
+      </if>
+      <if test="matchdatetime != null" >
+        matchDateTime = #{matchdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bettype != null" >
+        betType = #{bettype,jdbcType=INTEGER},
+      </if>
+      <if test="parlayrefno != null" >
+        parlayRefNo = #{parlayrefno,jdbcType=VARCHAR},
+      </if>
+      <if test="betteam != null" >
+        betTeam = #{betteam,jdbcType=VARCHAR},
+      </if>
+      <if test="hdp != null" >
+        hdp = #{hdp,jdbcType=DECIMAL},
+      </if>
+      <if test="awayhdp != null" >
+        awayHDP = #{awayhdp,jdbcType=DECIMAL},
+      </if>
+      <if test="homehdp != null" >
+        homeHDP = #{homehdp,jdbcType=DECIMAL},
+      </if>
+      <if test="odds != null" >
+        odds = #{odds,jdbcType=DECIMAL},
+      </if>
+      <if test="awayscore != null" >
+        awayScore = #{awayscore,jdbcType=DECIMAL},
+      </if>
+      <if test="homescore != null" >
+        homeScore = #{homescore,jdbcType=DECIMAL},
+      </if>
+      <if test="islive != null" >
+        isLive = #{islive,jdbcType=VARCHAR},
+      </if>
+      <if test="islucky != null" >
+        isLucky = #{islucky,jdbcType=VARCHAR},
+      </if>
+      <if test="parlayType != null" >
+        parlay_type = #{parlayType,jdbcType=VARCHAR},
+      </if>
+      <if test="comboType != null" >
+        combo_type = #{comboType,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketstatus != null" >
+        ticketStatus = #{ticketstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="stake != null" >
+        stake = #{stake,jdbcType=INTEGER},
+      </if>
+      <if test="winloseamount != null" >
+        winLoseAmount = #{winloseamount,jdbcType=DECIMAL},
+      </if>
+      <if test="winlostdatetime != null" >
+        winLostDateTime = #{winlostdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastballno != null" >
+        lastBallNo = #{lastballno,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="versionkey != null" >
+        versionKey = #{versionkey,jdbcType=BIGINT},
+      </if>
+      <if test="betTag != null" >
+        bet_Tag = #{betTag,jdbcType=VARCHAR},
+      </if>
+      <if test="afteramount != null" >
+        afterAmount = #{afteramount,jdbcType=DECIMAL},
+      </if>
+      <if test="oddstype != null" >
+        oddsType = #{oddstype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.IBCSportRecord" >
+    update ibc_record
+    set transId = #{transid,jdbcType=BIGINT},
+      playerName = #{playername,jdbcType=VARCHAR},
+      transactionTime = #{transactiontime,jdbcType=TIMESTAMP},
+      matchId = #{matchid,jdbcType=BIGINT},
+      leagueId = #{leagueid,jdbcType=INTEGER},
+      leagueName = #{leaguename,jdbcType=VARCHAR},
+      sportType = #{sporttype,jdbcType=VARCHAR},
+      awayId = #{awayid,jdbcType=BIGINT},
+      awayIDName = #{awayidname,jdbcType=VARCHAR},
+      homeId = #{homeid,jdbcType=BIGINT},
+      homeIDName = #{homeidname,jdbcType=VARCHAR},
+      matchDateTime = #{matchdatetime,jdbcType=TIMESTAMP},
+      betType = #{bettype,jdbcType=INTEGER},
+      parlayRefNo = #{parlayrefno,jdbcType=VARCHAR},
+      betTeam = #{betteam,jdbcType=VARCHAR},
+      hdp = #{hdp,jdbcType=DECIMAL},
+      awayHDP = #{awayhdp,jdbcType=DECIMAL},
+      homeHDP = #{homehdp,jdbcType=DECIMAL},
+      odds = #{odds,jdbcType=DECIMAL},
+      awayScore = #{awayscore,jdbcType=DECIMAL},
+      homeScore = #{homescore,jdbcType=DECIMAL},
+      isLive = #{islive,jdbcType=VARCHAR},
+      isLucky = #{islucky,jdbcType=VARCHAR},
+      parlay_type = #{parlayType,jdbcType=VARCHAR},
+      combo_type = #{comboType,jdbcType=VARCHAR},
+      ticketStatus = #{ticketstatus,jdbcType=VARCHAR},
+      stake = #{stake,jdbcType=INTEGER},
+      winLoseAmount = #{winloseamount,jdbcType=DECIMAL},
+      winLostDateTime = #{winlostdatetime,jdbcType=TIMESTAMP},
+      lastBallNo = #{lastballno,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      versionKey = #{versionkey,jdbcType=BIGINT},
+      bet_Tag = #{betTag,jdbcType=VARCHAR},
+      afterAmount = #{afteramount,jdbcType=DECIMAL},
+      oddsType = #{oddstype,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+   <!-- add by gate -->
+  <select id="listGameRecord" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	<choose>
+  		<!-- 如果用户分组为0 则执行此sql -->
+  		<when test="params.userGrouping == 0">
+  			select 
+		  		<include refid="Base_Column_List" /> 
+		  	from ibc_record force index(${params.timeType})
+			where ${params.timeType} BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName}
+			</if>
+			<if test="params.flag != null and params.flag.length != 0">
+				<choose>
+					<!-- 已结算  -->
+					<when test="params.flag.equals('0')">
+						and ticketStatus not in ('Waiting','Running')
+					</when>
+					<!-- 未结算  -->
+					<otherwise>
+						and ticketStatus in ('Waiting','Running')
+					</otherwise>
+				</choose> 
+			</if>
+			<if test="params.gamePlatFormName != null and params.gamePlatFormName.length() != 0">
+				<choose>
+					<!-- 过关注单  -->
+					<when test="params.gamePlatFormName.equals('29')">
+						y.betType = #{params.gamePlatFormName,jdbcType=INTEGER}
+					</when>
+					<!-- 普通注单  -->
+					<otherwise>
+						y.betType != #{params.gamePlatFormName,jdbcType=INTEGER}
+					</otherwise>
+				</choose>
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and playerName in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			ORDER BY ${params.timeType} desc 
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</when>
+  		<otherwise>
+  			select playerName,
+	  			count(playerName) as id,
+	  			sum(abs(stake)) as stake,
+	  			sum(winLoseAmount) as winLoseAmount
+  			from ibc_record force index(${params.timeType})
+  			where ${params.timeType} BETWEEN #{params.startTime} and #{params.endTime}
+  			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<if test="params.flag != null and params.flag.length != 0">
+				<choose>
+					<!-- 已结算  -->
+					<when test="params.flag.equals('0')">
+						and ticketStatus not in ('Waiting','Running')
+					</when>
+					<!-- 未结算  -->
+					<otherwise>
+						and ticketStatus in ('Waiting','Running')
+					</otherwise>
+				</choose> 
+			</if>
+			<if test="params.gamePlatFormName != null and params.gamePlatFormName.length() != 0">
+				<choose>
+					<!-- 过关注单  -->
+					<when test="params.gamePlatFormName.equals('29')">
+						y.betType = #{params.gamePlatFormName,jdbcType=INTEGER}
+					</when>
+					<!-- 普通注单  -->
+					<otherwise>
+						y.betType != #{params.gamePlatFormName,jdbcType=INTEGER}
+					</otherwise>
+				</choose>
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and playerName in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			GROUP BY playerName
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</otherwise>
+  	</choose>
+  </select>
+  
+  <select id="countTotal" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	<choose>
+  		<!-- gamePlatFormName 不为空 需要走明细表 表示选择了游戏类型,勾选了实时分页也需要走明细-->
+  		<when test="(params.gamePlatFormName != null and params.gamePlatFormName.length() != 0)
+  						or (params.dateGrouping != 0)">
+  			select 'total' as userName,
+		  		count(id) as noteNum,
+	  			sum(abs(stake)) as betAmount,
+	  			sum(winLoseAmount) as netAmount,
+	  			sum(abs(stake)) as validBetAmount,
+	  			count(id) as validNoteNum
+		  	from ibc_record force index(${params.timeType})
+			where ${params.timeType} BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<if test="params.flag != null and params.flag.length != 0">
+				<choose>
+					<!-- 已结算  -->
+					<when test="params.flag.equals('0')">
+						and ticketStatus not in ('Waiting','Running')
+					</when>
+					<!-- 未结算  -->
+					<otherwise>
+						and ticketStatus in ('Waiting','Running')
+					</otherwise>
+				</choose> 
+			</if>
+			<if test="params.gamePlatFormName != null and params.gamePlatFormName.length() != 0">
+				<choose>
+					<!-- 过关注单  -->
+					<when test="params.gamePlatFormName.equals('29')">
+						y.betType = #{params.gamePlatFormName,jdbcType=INTEGER}
+					</when>
+					<!-- 普通注单  -->
+					<otherwise>
+						y.betType != #{params.gamePlatFormName,jdbcType=INTEGER}
+					</otherwise>
+				</choose>
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询 or 按会员分层查询查询-->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userNames != null and params.userNames.length() != 0">
+						and playerName in ${params.userNames}
+					</if>
+				</when>
+				<!-- 按会员账号查询 -->
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+  		</when>
+  		<otherwise>
+  			select user_name as userName,
+		  		sum(note_num) as noteNum,
+		  		sum(bet_amount) as betAmount,
+	  			sum(net_amount) as netAmount,
+	  			sum(bet_amount) as validBetAmount,
+	  			sum(note_num) as validNoteNum
+		  	from ibc_platform_report
+		  	where bet_time BETWEEN #{params.nextStartDay} and #{params.lastEndDay}
+		  		and type = 0
+				<if test="params.cagentName != null and params.cagentName.length() != 0">
+					and cagent = #{params.cagentName}
+				</if>
+				<choose>
+					<!-- 按真实姓名查询 or 按代理商查询  or 按会员分层查询查询-->
+					<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+						<if test="params.userNames != null and params.userNames.length() != 0">
+							and user_name in ${params.userNames}
+						</if>
+					</when>
+					<!-- 按会员账号查询 -->
+					<otherwise>
+						<!-- 如果有输入值 -->
+						<if test="params.name != null and params.name.length() != 0">
+					  		and user_name = #{params.name}
+						</if>
+					</otherwise>
+				</choose>
+				group by userName
+				<if test="params.startTime1 != null and params.startTime1.length() != 0">
+					union all
+					select playerName as userName,
+						count(id) as noteNum,
+				  		sum(abs(stake)) as betAmount,
+			  			sum(winLoseAmount) as netAmount,
+			  			sum(abs(stake)) as validBetAmount,
+			  			count(id) as validNoteNum
+					from ibc_record 
+					where ${params.timeType} BETWEEN #{params.startTime} and #{params.startTime1}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and playerName in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and playerName = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+				<if test="params.endTime1 != null and params.endTime1.length() != 0">
+					union all
+					select playerName as userName,
+						count(id) as noteNum,
+						sum(abs(stake)) as betAmount,
+			  			sum(winLoseAmount) as netAmount,
+			  			sum(abs(stake)) as validBetAmount,
+			  			count(id) as validNoteNum
+					from ibc_record 
+					where ${params.timeType} BETWEEN #{params.endTime1} and #{params.endTime}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and playerName in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and playerName = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+  		</otherwise>
+  	</choose>
+  </select>
+</mapper>

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.ProxySettlementMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.ProxySettlement" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="top_uid" property="topUid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="user_num" property="userNum" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="platform_id" property="platformId" jdbcType="INTEGER" />
+    <result column="platform_name" property="platformName" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="note_num" property="noteNum" jdbcType="INTEGER" />
+    <result column="bet_amount" property="betAmount" jdbcType="DOUBLE" />
+    <result column="valid_bet_amount" property="validBetAmount" jdbcType="DOUBLE" />
+    <result column="net_amount" property="netAmount" jdbcType="DOUBLE" />
+    <result column="months" property="months" jdbcType="INTEGER" />
+    <result column="manager_fee" property="managerFee" jdbcType="REAL" />
+    <result column="payment_fee" property="paymentFee" jdbcType="REAL" />
+    <result column="payment_limit" property="paymentLimit" jdbcType="REAL" />
+    <result column="withdraw_fee" property="withdrawFee" jdbcType="REAL" />
+    <result column="withdraw_limit" property="withdrawLimit" jdbcType="REAL" />
+    <result column="ts" property="ts" jdbcType="REAL" />
+    <result column="ty" property="ty" jdbcType="REAL" />
+    <result column="commission" property="commission" jdbcType="DOUBLE" />
+    <result column="deposit" property="deposit" jdbcType="DOUBLE" />
+    <result column="withdraw" property="withdraw" jdbcType="DOUBLE" />
+    <result column="day_is_settlement" property="dayIsSettlement" jdbcType="INTEGER" />
+    <result column="month_is_settlement" property="monthIsSettlement" jdbcType="INTEGER" />
+    <result column="giveAmount" property="giveamount" jdbcType="DOUBLE" />
+    <result column="tsAmount" property="tsamount" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, top_uid, uid, user_num, user_name, cagent, platform_id, platform_name, currency, 
+    note_num, bet_amount, valid_bet_amount, net_amount, months, manager_fee, payment_fee, 
+    payment_limit, withdraw_fee, withdraw_limit, ts, ty, commission, deposit, withdraw, 
+    day_is_settlement, month_is_settlement, giveAmount, tsAmount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_proxy_settlement
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_proxy_settlement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.ProxySettlement" >
+    insert into t_proxy_settlement (id, top_uid, uid, 
+      user_num, user_name, cagent, 
+      platform_id, platform_name, currency, 
+      note_num, bet_amount, valid_bet_amount, 
+      net_amount, months, manager_fee, 
+      payment_fee, payment_limit, withdraw_fee, 
+      withdraw_limit, ts, ty, commission, 
+      deposit, withdraw, day_is_settlement, 
+      month_is_settlement, giveAmount, tsAmount
+      )
+    values (#{id,jdbcType=INTEGER}, #{topUid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{userNum,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{cagent,jdbcType=VARCHAR}, 
+      #{platformId,jdbcType=INTEGER}, #{platformName,jdbcType=VARCHAR}, #{currency,jdbcType=VARCHAR}, 
+      #{noteNum,jdbcType=INTEGER}, #{betAmount,jdbcType=DOUBLE}, #{validBetAmount,jdbcType=DOUBLE}, 
+      #{netAmount,jdbcType=DOUBLE}, #{months,jdbcType=INTEGER}, #{managerFee,jdbcType=REAL}, 
+      #{paymentFee,jdbcType=REAL}, #{paymentLimit,jdbcType=REAL}, #{withdrawFee,jdbcType=REAL}, 
+      #{withdrawLimit,jdbcType=REAL}, #{ts,jdbcType=REAL}, #{ty,jdbcType=REAL}, #{commission,jdbcType=DOUBLE}, 
+      #{deposit,jdbcType=DOUBLE}, #{withdraw,jdbcType=DOUBLE}, #{dayIsSettlement,jdbcType=INTEGER}, 
+      #{monthIsSettlement,jdbcType=INTEGER}, #{giveamount,jdbcType=DOUBLE}, #{tsamount,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.ProxySettlement" >
+    insert into t_proxy_settlement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="topUid != null" >
+        top_uid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="userNum != null" >
+        user_num,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="platformId != null" >
+        platform_id,
+      </if>
+      <if test="platformName != null" >
+        platform_name,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="noteNum != null" >
+        note_num,
+      </if>
+      <if test="betAmount != null" >
+        bet_amount,
+      </if>
+      <if test="validBetAmount != null" >
+        valid_bet_amount,
+      </if>
+      <if test="netAmount != null" >
+        net_amount,
+      </if>
+      <if test="months != null" >
+        months,
+      </if>
+      <if test="managerFee != null" >
+        manager_fee,
+      </if>
+      <if test="paymentFee != null" >
+        payment_fee,
+      </if>
+      <if test="paymentLimit != null" >
+        payment_limit,
+      </if>
+      <if test="withdrawFee != null" >
+        withdraw_fee,
+      </if>
+      <if test="withdrawLimit != null" >
+        withdraw_limit,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="ty != null" >
+        ty,
+      </if>
+      <if test="commission != null" >
+        commission,
+      </if>
+      <if test="deposit != null" >
+        deposit,
+      </if>
+      <if test="withdraw != null" >
+        withdraw,
+      </if>
+      <if test="dayIsSettlement != null" >
+        day_is_settlement,
+      </if>
+      <if test="monthIsSettlement != null" >
+        month_is_settlement,
+      </if>
+      <if test="giveamount != null" >
+        giveAmount,
+      </if>
+      <if test="tsamount != null" >
+        tsAmount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="topUid != null" >
+        #{topUid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userNum != null" >
+        #{userNum,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null" >
+        #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="platformName != null" >
+        #{platformName,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="noteNum != null" >
+        #{noteNum,jdbcType=INTEGER},
+      </if>
+      <if test="betAmount != null" >
+        #{betAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="validBetAmount != null" >
+        #{validBetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="netAmount != null" >
+        #{netAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="months != null" >
+        #{months,jdbcType=INTEGER},
+      </if>
+      <if test="managerFee != null" >
+        #{managerFee,jdbcType=REAL},
+      </if>
+      <if test="paymentFee != null" >
+        #{paymentFee,jdbcType=REAL},
+      </if>
+      <if test="paymentLimit != null" >
+        #{paymentLimit,jdbcType=REAL},
+      </if>
+      <if test="withdrawFee != null" >
+        #{withdrawFee,jdbcType=REAL},
+      </if>
+      <if test="withdrawLimit != null" >
+        #{withdrawLimit,jdbcType=REAL},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=REAL},
+      </if>
+      <if test="ty != null" >
+        #{ty,jdbcType=REAL},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="deposit != null" >
+        #{deposit,jdbcType=DOUBLE},
+      </if>
+      <if test="withdraw != null" >
+        #{withdraw,jdbcType=DOUBLE},
+      </if>
+      <if test="dayIsSettlement != null" >
+        #{dayIsSettlement,jdbcType=INTEGER},
+      </if>
+      <if test="monthIsSettlement != null" >
+        #{monthIsSettlement,jdbcType=INTEGER},
+      </if>
+      <if test="giveamount != null" >
+        #{giveamount,jdbcType=DOUBLE},
+      </if>
+      <if test="tsamount != null" >
+        #{tsamount,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.ProxySettlement" >
+    update t_proxy_settlement
+    <set >
+      <if test="topUid != null" >
+        top_uid = #{topUid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userNum != null" >
+        user_num = #{userNum,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null" >
+        platform_id = #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="platformName != null" >
+        platform_name = #{platformName,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="noteNum != null" >
+        note_num = #{noteNum,jdbcType=INTEGER},
+      </if>
+      <if test="betAmount != null" >
+        bet_amount = #{betAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="validBetAmount != null" >
+        valid_bet_amount = #{validBetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="netAmount != null" >
+        net_amount = #{netAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="months != null" >
+        months = #{months,jdbcType=INTEGER},
+      </if>
+      <if test="managerFee != null" >
+        manager_fee = #{managerFee,jdbcType=REAL},
+      </if>
+      <if test="paymentFee != null" >
+        payment_fee = #{paymentFee,jdbcType=REAL},
+      </if>
+      <if test="paymentLimit != null" >
+        payment_limit = #{paymentLimit,jdbcType=REAL},
+      </if>
+      <if test="withdrawFee != null" >
+        withdraw_fee = #{withdrawFee,jdbcType=REAL},
+      </if>
+      <if test="withdrawLimit != null" >
+        withdraw_limit = #{withdrawLimit,jdbcType=REAL},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=REAL},
+      </if>
+      <if test="ty != null" >
+        ty = #{ty,jdbcType=REAL},
+      </if>
+      <if test="commission != null" >
+        commission = #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="deposit != null" >
+        deposit = #{deposit,jdbcType=DOUBLE},
+      </if>
+      <if test="withdraw != null" >
+        withdraw = #{withdraw,jdbcType=DOUBLE},
+      </if>
+      <if test="dayIsSettlement != null" >
+        day_is_settlement = #{dayIsSettlement,jdbcType=INTEGER},
+      </if>
+      <if test="monthIsSettlement != null" >
+        month_is_settlement = #{monthIsSettlement,jdbcType=INTEGER},
+      </if>
+      <if test="giveamount != null" >
+        giveAmount = #{giveamount,jdbcType=DOUBLE},
+      </if>
+      <if test="tsamount != null" >
+        tsAmount = #{tsamount,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.ProxySettlement" >
+    update t_proxy_settlement
+    set top_uid = #{topUid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      user_num = #{userNum,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR},
+      platform_id = #{platformId,jdbcType=INTEGER},
+      platform_name = #{platformName,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      note_num = #{noteNum,jdbcType=INTEGER},
+      bet_amount = #{betAmount,jdbcType=DOUBLE},
+      valid_bet_amount = #{validBetAmount,jdbcType=DOUBLE},
+      net_amount = #{netAmount,jdbcType=DOUBLE},
+      months = #{months,jdbcType=INTEGER},
+      manager_fee = #{managerFee,jdbcType=REAL},
+      payment_fee = #{paymentFee,jdbcType=REAL},
+      payment_limit = #{paymentLimit,jdbcType=REAL},
+      withdraw_fee = #{withdrawFee,jdbcType=REAL},
+      withdraw_limit = #{withdrawLimit,jdbcType=REAL},
+      ts = #{ts,jdbcType=REAL},
+      ty = #{ty,jdbcType=REAL},
+      commission = #{commission,jdbcType=DOUBLE},
+      deposit = #{deposit,jdbcType=DOUBLE},
+      withdraw = #{withdraw,jdbcType=DOUBLE},
+      day_is_settlement = #{dayIsSettlement,jdbcType=INTEGER},
+      month_is_settlement = #{monthIsSettlement,jdbcType=INTEGER},
+      giveAmount = #{giveamount,jdbcType=DOUBLE},
+      tsAmount = #{tsamount,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

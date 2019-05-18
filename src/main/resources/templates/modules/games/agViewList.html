@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AG视讯注单详情</title>
+<#include "/header.html">
+</head>
+<script type="text/javascript">
+function query(){
+	$.ajax({
+			url:"/game/list",
+			dataType:'json',
+			contentType: "application/json; charset=utf-8",
+			data:{
+				"data":{
+					"gameType":"AGIN",
+					"rows":25,
+					"page":1
+				}
+			},
+			success:function(result){
+        		$("#div1").html(result);
+    		}
+	});
+}
+</script>
+<body>
+<#if shiro.hasPermission("video:game:agin:list")>
+<input type="button" value="查询" onclick="query();"/>
+<#/if>
+</body>
+</html>

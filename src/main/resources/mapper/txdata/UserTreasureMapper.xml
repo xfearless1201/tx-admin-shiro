@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.UserTreasureMapper">
+	<resultMap id="BaseResultMap"
+		type="com.cn.tianxia.admin.project.txdata.UserTreasure">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<id column="operator_id" property="operatorId" jdbcType="INTEGER" />
+		<result column="uid" property="uid" jdbcType="INTEGER" />
+		<result column="amount" property="amount" jdbcType="DOUBLE" />
+		<result column="old_money" property="oldMoney" jdbcType="DOUBLE" />
+		<result column="new_money" property="newMoney" jdbcType="DOUBLE" />
+		<result column="number" property="number" jdbcType="VARCHAR" />
+		<result column="t_type" property="tType" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+		<result column="platform_type" property="platformType"
+			jdbcType="INTEGER" />
+		<result column="s_type" property="sType" jdbcType="CHAR" />
+		<result column="rmk" property="rmk" jdbcType="VARCHAR" />
+		<result column="cagent" property="cagent" jdbcType="VARCHAR" />
+		<result column="is_first" property="isFirst" jdbcType="INTEGER" />
+		<result column="ip" property="ip" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, operator_id, uid, amount, old_money, new_money, number, t_type, type,
+		addtime,
+		platform_type, s_type, rmk, cagent, is_first, ip
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_user_treasure
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.UserTreasure">
+		delete from t_user_treasure
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.UserTreasure">
+		insert into t_user_treasure (id, operator_id, uid,
+		amount, old_money, new_money,
+		number, t_type, type,
+		addtime, platform_type, s_type,
+		rmk, cagent, is_first,
+		ip)
+		values (#{id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER},
+		#{uid,jdbcType=INTEGER},
+		#{amount,jdbcType=DOUBLE}, #{oldMoney,jdbcType=DOUBLE}, #{newMoney,jdbcType=DOUBLE},
+		#{number,jdbcType=VARCHAR}, #{tType,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},
+		#{addtime,jdbcType=TIMESTAMP}, #{platformType,jdbcType=INTEGER}, #{sType,jdbcType=CHAR},
+		#{rmk,jdbcType=VARCHAR}, #{cagent,jdbcType=VARCHAR},
+		#{isFirst,jdbcType=INTEGER},
+		#{ip,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.UserTreasure">
+		insert into t_user_treasure
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="uid != null">
+				uid,
+			</if>
+			<if test="amount != null">
+				amount,
+			</if>
+			<if test="oldMoney != null">
+				old_money,
+			</if>
+			<if test="newMoney != null">
+				new_money,
+			</if>
+			<if test="number != null">
+				number,
+			</if>
+			<if test="tType != null">
+				t_type,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="addtime != null">
+				addtime,
+			</if>
+			<if test="platformType != null">
+				platform_type,
+			</if>
+			<if test="sType != null">
+				s_type,
+			</if>
+			<if test="rmk != null">
+				rmk,
+			</if>
+			<if test="cagent != null">
+				cagent,
+			</if>
+			<if test="isFirst != null">
+				is_first,
+			</if>
+			<if test="ip != null">
+				ip,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=INTEGER},
+			</if>
+			<if test="uid != null">
+				#{uid,jdbcType=INTEGER},
+			</if>
+			<if test="amount != null">
+				#{amount,jdbcType=DOUBLE},
+			</if>
+			<if test="oldMoney != null">
+				#{oldMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="newMoney != null">
+				#{newMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="number != null">
+				#{number,jdbcType=VARCHAR},
+			</if>
+			<if test="tType != null">
+				#{tType,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="addtime != null">
+				#{addtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="platformType != null">
+				#{platformType,jdbcType=INTEGER},
+			</if>
+			<if test="sType != null">
+				#{sType,jdbcType=CHAR},
+			</if>
+			<if test="rmk != null">
+				#{rmk,jdbcType=VARCHAR},
+			</if>
+			<if test="cagent != null">
+				#{cagent,jdbcType=VARCHAR},
+			</if>
+			<if test="isFirst != null">
+				#{isFirst,jdbcType=INTEGER},
+			</if>
+			<if test="ip != null">
+				#{ip,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.UserTreasure">
+		update t_user_treasure
+		<set>
+			<if test="uid != null">
+				uid = #{uid,jdbcType=INTEGER},
+			</if>
+			<if test="amount != null">
+				amount = #{amount,jdbcType=DOUBLE},
+			</if>
+			<if test="oldMoney != null">
+				old_money = #{oldMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="newMoney != null">
+				new_money = #{newMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="number != null">
+				number = #{number,jdbcType=VARCHAR},
+			</if>
+			<if test="tType != null">
+				t_type = #{tType,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="addtime != null">
+				addtime = #{addtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="platformType != null">
+				platform_type = #{platformType,jdbcType=INTEGER},
+			</if>
+			<if test="sType != null">
+				s_type = #{sType,jdbcType=CHAR},
+			</if>
+			<if test="rmk != null">
+				rmk = #{rmk,jdbcType=VARCHAR},
+			</if>
+			<if test="cagent != null">
+				cagent = #{cagent,jdbcType=VARCHAR},
+			</if>
+			<if test="isFirst != null">
+				is_first = #{isFirst,jdbcType=INTEGER},
+			</if>
+			<if test="ip != null">
+				ip = #{ip,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+		and operator_id = #{operatorId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.UserTreasure">
+		update t_user_treasure
+		set uid = #{uid,jdbcType=INTEGER},
+		amount = #{amount,jdbcType=DOUBLE},
+		old_money = #{oldMoney,jdbcType=DOUBLE},
+		new_money = #{newMoney,jdbcType=DOUBLE},
+		number = #{number,jdbcType=VARCHAR},
+		t_type = #{tType,jdbcType=VARCHAR},
+		type = #{type,jdbcType=VARCHAR},
+		addtime = #{addtime,jdbcType=TIMESTAMP},
+		platform_type = #{platformType,jdbcType=INTEGER},
+		s_type = #{sType,jdbcType=CHAR},
+		rmk = #{rmk,jdbcType=VARCHAR},
+		cagent = #{cagent,jdbcType=VARCHAR},
+		is_first = #{isFirst,jdbcType=INTEGER},
+		ip = #{ip,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+		and operator_id = #{operatorId,jdbcType=INTEGER}
+	</update>
+
+
+	<select id="userTreasureaddMoney" resultType="com.cn.tianxia.admin.project.txdata.WinDetails"
+		parameterType="com.cn.tianxia.admin.vo.ftpdata.WinDetailsVO">
+			SELECT
+				amount as addMoney,
+				addtime as betTime
+			FROM
+			t_user_treasure
+			WHERE
+			t_type = "加款"
+			<if test="uid !=null ">
+				AND uid = #{uid}
+			</if>
+			<if test="startTime != null and startTime!='' ">
+				and addtime &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime!='' ">
+				and addtime &lt;= #{endTime}
+			</if>
+			<if test="cagent !=null and cagnet !='' ">
+				and cagent = #{cagent}
+			</if>
+	</select>
+	
+	<select id="userTreasureDeposit" resultType="com.cn.tianxia.admin.project.txdata.WinDetails"
+		parameterType="com.cn.tianxia.admin.vo.ftpdata.WinDetailsVO">
+			SELECT
+				amount as deposit,
+				addtime as betTime
+			FROM
+			t_user_treasure
+			WHERE
+			t_type = "存款"
+			<if test="uid !=null ">
+				AND uid = #{uid}
+			</if>
+			<if test="startTime != null and startTime!='' ">
+				and addtime &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime!='' ">
+				and addtime &lt;= #{endTime}
+			</if>
+			<if test="cagent !=null and cagnet !='' ">
+				and cagent = #{cagent}
+			</if>
+	</select>
+	
+	<select id="userTreasureWithdRawal" resultType="com.cn.tianxia.admin.project.txdata.WinDetails"
+		parameterType="com.cn.tianxia.admin.vo.ftpdata.WinDetailsVO">
+			SELECT
+				amount as withdRawal,
+				addtime as betTime
+			FROM
+			t_user_treasure
+			WHERE
+			t_type = "提款"
+			<if test="uid !=null ">
+				AND uid = #{uid}
+			</if>
+			<if test="startTime != null and startTime!='' ">
+				and addtime &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime!='' ">
+				and addtime &lt;= #{endTime}
+			</if>
+			<if test="cagent !=null and cagnet !='' ">
+				and cagent = #{cagent}
+			</if>
+	</select>
+	<select id="userTreasureReturnWater" resultType="com.cn.tianxia.admin.project.txdata.WinDetails"
+		parameterType="com.cn.tianxia.admin.vo.ftpdata.WinDetailsVO">
+			SELECT
+				amount as returnWater,
+				addtime as betTime
+			FROM
+			t_user_treasure
+			WHERE
+			t_type = "返水"
+			<if test="uid !=null ">
+				AND uid = #{uid}
+			</if>
+			<if test="startTime != null and startTime!='' ">
+				and addtime &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime!='' ">
+				and addtime &lt;= #{endTime}
+			</if>
+			<if test="cagent !=null and cagnet !='' ">
+				and cagent = #{cagent}
+			</if>
+	</select>
+	<select id="userTreasureDeductMoney" resultType="com.cn.tianxia.admin.project.txdata.WinDetails"
+		parameterType="com.cn.tianxia.admin.vo.ftpdata.WinDetailsVO">
+			SELECT
+				amount as deductMoney,
+				addtime as betTime
+			FROM
+			t_user_treasure
+			WHERE
+			t_type = "扣款"
+			<if test="uid !=null ">
+				AND uid = #{uid}
+			</if>
+			<if test="startTime != null and startTime!='' ">
+				and addtime &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime!='' ">
+				and addtime &lt;= #{endTime}
+			</if>
+			<if test="cagent !=null and cagnet !='' ">
+				and cagent = #{cagent}
+			</if>
+	</select>
+
+	<insert id="cleanUserTsLog" parameterType="com.cn.tianxia.admin.vo.txdata.UserMemberTsVO">
+		INSERT INTO t_user_treasure (`uid`, `amount`, `old_money`, `new_money`, `number`, `t_type`, `type`, `addtime`, `rmk`,`cagent`)
+		SELECT uid,ts_amount,0,0,unix_timestamp(now()),'返水清零','OUT',now(),CONCAT('清零',#{gamaValue},'会员返水 打码量:',valid_bet_amount),#{cagent} FROM t_user_ts
+		WHERE ts_amount>0
+				AND uid=#{uid}
+			<if test="gametype != null and gametype != '' ">
+				AND gametype=#{gametype}
+			</if>
+	</insert>
+	
+
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.CagentWalletLogMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.CagentWalletLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="t_type" property="tType" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="old_money" property="oldMoney" jdbcType="DOUBLE" />
+    <result column="new_money" property="newMoney" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, amount, type, t_type, addtime, old_money, new_money
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_wallet_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cagent_wallet_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.CagentWalletLog" >
+    insert into t_cagent_wallet_log (id, cid, amount, 
+      type, t_type, addtime, 
+      old_money, new_money)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{amount,jdbcType=DOUBLE}, 
+      #{type,jdbcType=VARCHAR}, #{tType,jdbcType=VARCHAR}, #{addtime,jdbcType=TIMESTAMP}, 
+      #{oldMoney,jdbcType=DOUBLE}, #{newMoney,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentWalletLog" >
+    insert into t_cagent_wallet_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="tType != null" >
+        t_type,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="oldMoney != null" >
+        old_money,
+      </if>
+      <if test="newMoney != null" >
+        new_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="tType != null" >
+        #{tType,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oldMoney != null" >
+        #{oldMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="newMoney != null" >
+        #{newMoney,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentWalletLog" >
+    update t_cagent_wallet_log
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="tType != null" >
+        t_type = #{tType,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oldMoney != null" >
+        old_money = #{oldMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="newMoney != null" >
+        new_money = #{newMoney,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.CagentWalletLog" >
+    update t_cagent_wallet_log
+    set cid = #{cid,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DOUBLE},
+      type = #{type,jdbcType=VARCHAR},
+      t_type = #{tType,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      old_money = #{oldMoney,jdbcType=DOUBLE},
+      new_money = #{newMoney,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

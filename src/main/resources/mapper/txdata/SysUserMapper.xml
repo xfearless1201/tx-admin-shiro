@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.SysUser" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="age" property="age" jdbcType="TINYINT" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="organization_id" property="organizationId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="loginstatus" property="loginstatus" jdbcType="INTEGER" />
+    <result column="login_domain" property="loginDomain" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, login_name, name, password, salt, sex, age, phone, user_type, status, organization_id, 
+    create_time, cid, type, loginstatus, login_domain
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.SysUser" >
+    insert into user (id, login_name, name, 
+      password, salt, sex, 
+      age, phone, user_type, 
+      status, organization_id, create_time, 
+      cid, type, loginstatus, 
+      login_domain)
+    values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, 
+      #{age,jdbcType=TINYINT}, #{phone,jdbcType=VARCHAR}, #{userType,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{organizationId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{cid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{loginstatus,jdbcType=INTEGER}, 
+      #{loginDomain,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.SysUser" useGeneratedKeys="true" keyProperty="id">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="loginstatus != null" >
+        loginstatus,
+      </if>
+      <if test="loginDomain != null" >
+        login_domain,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="loginstatus != null" >
+        #{loginstatus,jdbcType=INTEGER},
+      </if>
+      <if test="loginDomain != null" >
+        #{loginDomain,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.SysUser" >
+    update user
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="loginstatus != null" >
+        loginstatus = #{loginstatus,jdbcType=INTEGER},
+      </if>
+      <if test="loginDomain != null" >
+        login_domain = #{loginDomain,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.SysUser" >
+    update user
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      age = #{age,jdbcType=TINYINT},
+      phone = #{phone,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      organization_id = #{organizationId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      cid = #{cid,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      loginstatus = #{loginstatus,jdbcType=INTEGER},
+      login_domain = #{loginDomain,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 通过用户账号查询用户信息 -->
+  <select id="selectByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where login_name = #{loginName}
+  </select>
+  
+  <!-- 通过手机号码查询用户信息 -->
+  <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where phone = #{phone}
+  </select>
+
+  <update id="updateWelletTransferOut">
+		UPDATE t_user SET wallet = wallet-#{money} WHERE uid=#{uid} and wallet>=#{money}
+	</update>
+
+  <update id="updateWelletTransferIn">
+		UPDATE t_user SET wallet = wallet+#{money} WHERE uid=#{uid}
+	</update>
+  
+  
+  <select id="findAllByPage" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+    select 
+    	id, login_name, name,sex, age, phone, user_type, status, organization_id,create_time, cid, type, loginstatus, login_domain
+    from user
+    <where>
+	    <if test="params.containsKey('name')">
+	    	login_name LIKE CONCAT(#{params.name},'%')
+	    </if>
+	    <if test="params.containsKey('sidx') and params.containsKey('order')">
+	    	 order by ${params.sidx} ${params.order}
+	    </if>
+    </where>
+    <if test="page != null and limit != null">
+	    LIMIT ${(page-1)*limit},#{limit}
+    </if>
+  </select>
+  
+  <select id="getRoleTotalCounts" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager">
+    select 
+    	count(1)
+    from user
+    <where>
+	    <if test="params.containsKey('name')">
+	    	login_name LIKE CONCAT(#{params.name},'%')
+	    </if>
+    </where>
+  </select>
+  
+   <select id="selectByTopUidName" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    	    select 
+		    <include refid="Base_Column_List" />
+		    from user
+		    where status = 0
+		    and type = 1
+		    <if test="id !=null">
+		    	and cid =#{id}
+		    </if> 
+    </select>
+  
+</mapper>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.PrizeDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.PrizeDetails" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="prize_level" property="prizeLevel" jdbcType="INTEGER" />
+    <result column="prize_name" property="prizeName" jdbcType="VARCHAR" />
+    <result column="prize_type" property="prizeType" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="surplus" property="surplus" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="putaway_time" property="putawayTime" jdbcType="TIMESTAMP" />
+    <result column="unshelve_time" property="unshelveTime" jdbcType="TIMESTAMP" />
+    <result column="src" property="src" jdbcType="VARCHAR" />
+    <result column="rmk" property="rmk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, activity_id, prize_level, prize_name, prize_type, amount, surplus, status, 
+    putaway_time, unshelve_time, src, rmk
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_prize_details
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_prize_details
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.PrizeDetails" >
+    insert into t_prize_details (id, cid, activity_id, 
+      prize_level, prize_name, prize_type, 
+      amount, surplus, status, 
+      putaway_time, unshelve_time, src, 
+      rmk)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, 
+      #{prizeLevel,jdbcType=INTEGER}, #{prizeName,jdbcType=VARCHAR}, #{prizeType,jdbcType=INTEGER}, 
+      #{amount,jdbcType=INTEGER}, #{surplus,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{putawayTime,jdbcType=TIMESTAMP}, #{unshelveTime,jdbcType=TIMESTAMP}, #{src,jdbcType=VARCHAR}, 
+      #{rmk,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.PrizeDetails" >
+    insert into t_prize_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="prizeLevel != null" >
+        prize_level,
+      </if>
+      <if test="prizeName != null" >
+        prize_name,
+      </if>
+      <if test="prizeType != null" >
+        prize_type,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="surplus != null" >
+        surplus,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="putawayTime != null" >
+        putaway_time,
+      </if>
+      <if test="unshelveTime != null" >
+        unshelve_time,
+      </if>
+      <if test="src != null" >
+        src,
+      </if>
+      <if test="rmk != null" >
+        rmk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="prizeLevel != null" >
+        #{prizeLevel,jdbcType=INTEGER},
+      </if>
+      <if test="prizeName != null" >
+        #{prizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeType != null" >
+        #{prizeType,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="surplus != null" >
+        #{surplus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="putawayTime != null" >
+        #{putawayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unshelveTime != null" >
+        #{unshelveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="src != null" >
+        #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.PrizeDetails" >
+    update t_prize_details
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="prizeLevel != null" >
+        prize_level = #{prizeLevel,jdbcType=INTEGER},
+      </if>
+      <if test="prizeName != null" >
+        prize_name = #{prizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeType != null" >
+        prize_type = #{prizeType,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="surplus != null" >
+        surplus = #{surplus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="putawayTime != null" >
+        putaway_time = #{putawayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unshelveTime != null" >
+        unshelve_time = #{unshelveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="src != null" >
+        src = #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="rmk != null" >
+        rmk = #{rmk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.PrizeDetails" >
+    update t_prize_details
+    set cid = #{cid,jdbcType=INTEGER},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      prize_level = #{prizeLevel,jdbcType=INTEGER},
+      prize_name = #{prizeName,jdbcType=VARCHAR},
+      prize_type = #{prizeType,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
+      surplus = #{surplus,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      putaway_time = #{putawayTime,jdbcType=TIMESTAMP},
+      unshelve_time = #{unshelveTime,jdbcType=TIMESTAMP},
+      src = #{src,jdbcType=VARCHAR},
+      rmk = #{rmk,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllByPage" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+    select
+    <include refid="Base_Column_List" />
+    from t_prize_details
+    where 1 = 1
+    <if test="params.containsKey('username')">
+      and uid = select uid from t_user where username = #{params.username}
+    </if>
+    <if test="params.containsKey('cagent')">
+      and cid = select id from t_cagent where cagent = #{params.cagent}
+    </if>
+    <if test="params.containsKey('startTime')">
+      and addtime > #{params.startTime}
+    </if>
+    <if test="params.containsKey('endTime')">
+      and addtime &lt; #{params.endTime}
+    </if>
+    order by addtime desc
+    limit ${(page-1)*limit},#{limit}
+  </select>
+  <select id="selectTotalCount" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager" >
+    select
+    count(1)
+    from t_prize_details
+    where 1=1
+    <if test="params.containsKey('username')">
+      and uid = select uid from t_user where username = #{params.username}
+    </if>
+    <if test="params.containsKey('cagent')">
+      and cid = select id from t_cagent where cagent = #{params.cagent}
+    </if>
+    <if test="params.containsKey('startTime')">
+      and addtime > #{params.startTime}
+    </if>
+    <if test="params.containsKey('endTime')">
+      and addtime &lt; #{params.endTime}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.FundmanageMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.Fundmanage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="yh_amount" property="yhAmount" jdbcType="REAL" />
+    <result column="cj_amount" property="cjAmount" jdbcType="REAL" />
+    <result column="dml_amount" property="dmlAmount" jdbcType="REAL" />
+    <result column="t_type" property="tType" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="order_statue" property="orderStatue" jdbcType="TINYINT" />
+    <result column="audit_id" property="auditId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="rmk" property="rmk" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="REAL" />
+    <result column="operator_id" property="operatorId" jdbcType="INTEGER" />
+    <result column="integral_amount" property="integralAmount" jdbcType="REAL" />
+    <result column="is_clear_dml" property="isClearDml" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, yh_amount, cj_amount, dml_amount, t_type, type, order_statue, audit_id, 
+    audit_time, rmk, add_time, number, amount, operator_id, integral_amount, is_clear_dml
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_fundmanage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_fundmanage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.Fundmanage" >
+    insert into t_fundmanage (id, uid, yh_amount, 
+      cj_amount, dml_amount, t_type, 
+      type, order_statue, audit_id, 
+      audit_time, rmk, add_time, 
+      number, amount, operator_id, 
+      integral_amount, is_clear_dml)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{yhAmount,jdbcType=REAL}, 
+      #{cjAmount,jdbcType=REAL}, #{dmlAmount,jdbcType=REAL}, #{tType,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{orderStatue,jdbcType=TINYINT}, #{auditId,jdbcType=INTEGER}, 
+      #{auditTime,jdbcType=TIMESTAMP}, #{rmk,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{number,jdbcType=VARCHAR}, #{amount,jdbcType=REAL}, #{operatorId,jdbcType=INTEGER}, 
+      #{integralAmount,jdbcType=REAL}, #{isClearDml,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.Fundmanage" >
+    insert into t_fundmanage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="yhAmount != null" >
+        yh_amount,
+      </if>
+      <if test="cjAmount != null" >
+        cj_amount,
+      </if>
+      <if test="dmlAmount != null" >
+        dml_amount,
+      </if>
+      <if test="tType != null" >
+        t_type,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="orderStatue != null" >
+        order_statue,
+      </if>
+      <if test="auditId != null" >
+        audit_id,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="rmk != null" >
+        rmk,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+      <if test="integralAmount != null" >
+        integral_amount,
+      </if>
+      <if test="isClearDml != null" >
+        is_clear_dml,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="yhAmount != null" >
+        #{yhAmount,jdbcType=REAL},
+      </if>
+      <if test="cjAmount != null" >
+        #{cjAmount,jdbcType=REAL},
+      </if>
+      <if test="dmlAmount != null" >
+        #{dmlAmount,jdbcType=REAL},
+      </if>
+      <if test="tType != null" >
+        #{tType,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatue != null" >
+        #{orderStatue,jdbcType=TINYINT},
+      </if>
+      <if test="auditId != null" >
+        #{auditId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=REAL},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="integralAmount != null" >
+        #{integralAmount,jdbcType=REAL},
+      </if>
+      <if test="isClearDml != null" >
+        #{isClearDml,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.Fundmanage" >
+    update t_fundmanage
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="yhAmount != null" >
+        yh_amount = #{yhAmount,jdbcType=REAL},
+      </if>
+      <if test="cjAmount != null" >
+        cj_amount = #{cjAmount,jdbcType=REAL},
+      </if>
+      <if test="dmlAmount != null" >
+        dml_amount = #{dmlAmount,jdbcType=REAL},
+      </if>
+      <if test="tType != null" >
+        t_type = #{tType,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatue != null" >
+        order_statue = #{orderStatue,jdbcType=TINYINT},
+      </if>
+      <if test="auditId != null" >
+        audit_id = #{auditId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rmk != null" >
+        rmk = #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=REAL},
+      </if>
+      <if test="operatorId != null" >
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="integralAmount != null" >
+        integral_amount = #{integralAmount,jdbcType=REAL},
+      </if>
+      <if test="isClearDml != null" >
+        is_clear_dml = #{isClearDml,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.Fundmanage" >
+    update t_fundmanage
+    set uid = #{uid,jdbcType=INTEGER},
+      yh_amount = #{yhAmount,jdbcType=REAL},
+      cj_amount = #{cjAmount,jdbcType=REAL},
+      dml_amount = #{dmlAmount,jdbcType=REAL},
+      t_type = #{tType,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      order_statue = #{orderStatue,jdbcType=TINYINT},
+      audit_id = #{auditId,jdbcType=INTEGER},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      rmk = #{rmk,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      number = #{number,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=REAL},
+      operator_id = #{operatorId,jdbcType=INTEGER},
+      integral_amount = #{integralAmount,jdbcType=REAL},
+      is_clear_dml = #{isClearDml,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.BgRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.BgRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sn" property="sn" jdbcType="VARCHAR" />
+    <result column="login_id" property="loginId" jdbcType="VARCHAR" />
+    <result column="valid_amount" property="validAmount" jdbcType="REAL" />
+    <result column="bet_amount" property="betAmount" jdbcType="REAL" />
+    <result column="amount" property="amount" jdbcType="REAL" />
+    <result column="payment" property="payment" jdbcType="REAL" />
+    <result column="module_id" property="moduleId" jdbcType="INTEGER" />
+    <result column="module_name" property="moduleName" jdbcType="VARCHAR" />
+    <result column="tran_id" property="tranId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="game_id" property="gameId" jdbcType="INTEGER" />
+    <result column="game_name" property="gameName" jdbcType="VARCHAR" />
+    <result column="order_from" property="orderFrom" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="game_result" property="gameResult" jdbcType="VARCHAR" />
+    <result column="from_ip" property="fromIp" jdbcType="VARCHAR" />
+    <result column="from_addr" property="fromAddr" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="VARCHAR" />
+    <result column="issue_id" property="issueId" jdbcType="VARCHAR" />
+    <result column="play_id" property="playId" jdbcType="VARCHAR" />
+    <result column="play_name" property="playName" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sn, login_id, valid_amount, bet_amount, amount, payment, module_id, module_name, 
+    tran_id, order_id, game_id, game_name, order_from, order_time, last_update_time, 
+    game_result, from_ip, from_addr, order_status, order_type, issue_id, play_id, play_name, 
+    cagent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bg_video_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bg_video_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.BgRecord" >
+    insert into bg_video_record (id, sn, login_id, 
+      valid_amount, bet_amount, amount, 
+      payment, module_id, module_name, 
+      tran_id, order_id, game_id, 
+      game_name, order_from, order_time, 
+      last_update_time, game_result, from_ip, 
+      from_addr, order_status, order_type, 
+      issue_id, play_id, play_name, 
+      cagent)
+    values (#{id,jdbcType=INTEGER}, #{sn,jdbcType=VARCHAR}, #{loginId,jdbcType=VARCHAR}, 
+      #{validAmount,jdbcType=REAL}, #{betAmount,jdbcType=REAL}, #{amount,jdbcType=REAL}, 
+      #{payment,jdbcType=REAL}, #{moduleId,jdbcType=INTEGER}, #{moduleName,jdbcType=VARCHAR}, 
+      #{tranId,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{gameId,jdbcType=INTEGER}, 
+      #{gameName,jdbcType=VARCHAR}, #{orderFrom,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{gameResult,jdbcType=VARCHAR}, #{fromIp,jdbcType=VARCHAR}, 
+      #{fromAddr,jdbcType=VARCHAR}, #{orderStatus,jdbcType=VARCHAR}, #{orderType,jdbcType=VARCHAR}, 
+      #{issueId,jdbcType=VARCHAR}, #{playId,jdbcType=VARCHAR}, #{playName,jdbcType=VARCHAR}, 
+      #{cagent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.BgRecord" >
+    insert into bg_video_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sn != null" >
+        sn,
+      </if>
+      <if test="loginId != null" >
+        login_id,
+      </if>
+      <if test="validAmount != null" >
+        valid_amount,
+      </if>
+      <if test="betAmount != null" >
+        bet_amount,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="payment != null" >
+        payment,
+      </if>
+      <if test="moduleId != null" >
+        module_id,
+      </if>
+      <if test="moduleName != null" >
+        module_name,
+      </if>
+      <if test="tranId != null" >
+        tran_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="gameId != null" >
+        game_id,
+      </if>
+      <if test="gameName != null" >
+        game_name,
+      </if>
+      <if test="orderFrom != null" >
+        order_from,
+      </if>
+      <if test="orderTime != null" >
+        order_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="gameResult != null" >
+        game_result,
+      </if>
+      <if test="fromIp != null" >
+        from_ip,
+      </if>
+      <if test="fromAddr != null" >
+        from_addr,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="issueId != null" >
+        issue_id,
+      </if>
+      <if test="playId != null" >
+        play_id,
+      </if>
+      <if test="playName != null" >
+        play_name,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null" >
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="validAmount != null" >
+        #{validAmount,jdbcType=REAL},
+      </if>
+      <if test="betAmount != null" >
+        #{betAmount,jdbcType=REAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=REAL},
+      </if>
+      <if test="payment != null" >
+        #{payment,jdbcType=REAL},
+      </if>
+      <if test="moduleId != null" >
+        #{moduleId,jdbcType=INTEGER},
+      </if>
+      <if test="moduleName != null" >
+        #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="tranId != null" >
+        #{tranId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="gameId != null" >
+        #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="gameName != null" >
+        #{gameName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFrom != null" >
+        #{orderFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameResult != null" >
+        #{gameResult,jdbcType=VARCHAR},
+      </if>
+      <if test="fromIp != null" >
+        #{fromIp,jdbcType=VARCHAR},
+      </if>
+      <if test="fromAddr != null" >
+        #{fromAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="issueId != null" >
+        #{issueId,jdbcType=VARCHAR},
+      </if>
+      <if test="playId != null" >
+        #{playId,jdbcType=VARCHAR},
+      </if>
+      <if test="playName != null" >
+        #{playName,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.BgRecord" >
+    update bg_video_record
+    <set >
+      <if test="sn != null" >
+        sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        login_id = #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="validAmount != null" >
+        valid_amount = #{validAmount,jdbcType=REAL},
+      </if>
+      <if test="betAmount != null" >
+        bet_amount = #{betAmount,jdbcType=REAL},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=REAL},
+      </if>
+      <if test="payment != null" >
+        payment = #{payment,jdbcType=REAL},
+      </if>
+      <if test="moduleId != null" >
+        module_id = #{moduleId,jdbcType=INTEGER},
+      </if>
+      <if test="moduleName != null" >
+        module_name = #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="tranId != null" >
+        tran_id = #{tranId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="gameId != null" >
+        game_id = #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="gameName != null" >
+        game_name = #{gameName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFrom != null" >
+        order_from = #{orderFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameResult != null" >
+        game_result = #{gameResult,jdbcType=VARCHAR},
+      </if>
+      <if test="fromIp != null" >
+        from_ip = #{fromIp,jdbcType=VARCHAR},
+      </if>
+      <if test="fromAddr != null" >
+        from_addr = #{fromAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="issueId != null" >
+        issue_id = #{issueId,jdbcType=VARCHAR},
+      </if>
+      <if test="playId != null" >
+        play_id = #{playId,jdbcType=VARCHAR},
+      </if>
+      <if test="playName != null" >
+        play_name = #{playName,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.BgRecord" >
+    update bg_video_record
+    set sn = #{sn,jdbcType=VARCHAR},
+      login_id = #{loginId,jdbcType=VARCHAR},
+      valid_amount = #{validAmount,jdbcType=REAL},
+      bet_amount = #{betAmount,jdbcType=REAL},
+      amount = #{amount,jdbcType=REAL},
+      payment = #{payment,jdbcType=REAL},
+      module_id = #{moduleId,jdbcType=INTEGER},
+      module_name = #{moduleName,jdbcType=VARCHAR},
+      tran_id = #{tranId,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      game_id = #{gameId,jdbcType=INTEGER},
+      game_name = #{gameName,jdbcType=VARCHAR},
+      order_from = #{orderFrom,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      game_result = #{gameResult,jdbcType=VARCHAR},
+      from_ip = #{fromIp,jdbcType=VARCHAR},
+      from_addr = #{fromAddr,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=VARCHAR},
+      issue_id = #{issueId,jdbcType=VARCHAR},
+      play_id = #{playId,jdbcType=VARCHAR},
+      play_name = #{playName,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- add by gate -->
+  <select id="listGameRecord" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	<choose>
+  		<!-- 如果用户分组为0 则执行此sql -->
+  		<when test="params.userGrouping == 0">
+  			select 
+		  		<include refid="Base_Column_List" /> 
+		  	from bg_video_record force index(last_update_time)
+			where last_update_time BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and login_id in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and login_id = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			ORDER BY last_update_time desc 
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</when>
+  		<otherwise>
+  			select login_id,
+	  			count(login_id) as id,
+	  			sum(abs(bet_Amount)) as bet_Amount,
+	  			sum(payment) as payment,
+	  			sum(valid_amount) as valid_amount,
+	  			sum(if(valid_amount > 0, 1 ,0)) as game_id
+  			from bg_video_record force index(last_update_time)
+  			where last_update_time BETWEEN #{params.startTime} and #{params.endTime}
+  			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and login_id in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and login_id = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			GROUP BY login_id
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</otherwise>
+  	</choose>
+  </select>
+  
+  <select id="countTotal" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	<choose>
+  		<!-- gamePlatFormName 不为空 需要走明细表 表示选择了ag国际或者ag视讯,勾选了实时分页也需要走明细-->
+  		<when test="(params.gamePlatFormName != null and params.gamePlatFormName.length() != 0)
+  						or (params.dateGrouping != 0)">
+  			select 'total' as userName,
+		  		count(id) as noteNum,
+				sum(abs(bet_Amount)) as betAmount,
+	  			sum(payment) as netAmount,
+	  			sum(valid_amount) as validBetAmount,
+	  			sum(if(valid_amount > 0, 1 ,0)) as validNoteNum
+		  	from bg_video_record force index(last_update_time)
+			where last_update_time BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询 or 按会员分层查询查询-->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userNames != null and params.userNames.length() != 0">
+						and login_id in ${params.userNames}
+					</if>
+				</when>
+				<!-- 按会员账号查询 -->
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and login_id = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+  		</when>
+  		<otherwise>
+  			select user_name as userName,
+		  		sum(note_num) as noteNum,
+		  		sum(bet_amount) as betAmount,
+		  		sum(net_amount) as netAmount,
+		  		sum(valid_bet_amount) as validBetAmount,
+		  		sum(valid_note_num) as validNoteNum
+		  	from bg_video_platform_report
+		  	where bet_time BETWEEN #{params.nextStartDay} and #{params.lastEndDay}
+		  		and type = 0
+				<if test="params.cagentName != null and params.cagentName.length() != 0">
+					and cagent = #{params.cagentName}
+				</if>
+				<choose>
+					<!-- 按真实姓名查询 or 按代理商查询  or 按会员分层查询查询-->
+					<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+						<if test="params.userNames != null and params.userNames.length() != 0">
+							and user_name in ${params.userNames}
+						</if>
+					</when>
+					<!-- 按会员账号查询 -->
+					<otherwise>
+						<!-- 如果有输入值 -->
+						<if test="params.name != null and params.name.length() != 0">
+					  		and user_name = #{params.name}
+						</if>
+					</otherwise>
+				</choose>
+				group by userName
+				<if test="params.startTime1 != null and params.startTime1.length() != 0">
+					union all
+					select login_id as userName,
+						count(id) as noteNum,
+						sum(abs(bet_Amount)) as betAmount,
+			  			sum(payment) as netAmount,
+			  			sum(valid_amount) as validBetAmount,
+			  			sum(if(valid_amount > 0, 1 ,0)) as validNoteNum
+					from bg_video_record 
+					where last_update_time BETWEEN #{params.startTime} and #{params.startTime1}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and login_id in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and login_id = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+				<if test="params.endTime1 != null and params.endTime1.length() != 0">
+					union all
+					select login_id as userName,
+						count(id) as noteNum,
+						sum(abs(bet_Amount)) as betAmount,
+			  			sum(payment) as netAmount,
+			  			sum(valid_amount) as validBetAmount,
+			  			sum(if(valid_amount > 0, 1 ,0)) as validNoteNum
+					from bg_video_record 
+					where last_update_time BETWEEN #{params.endTime1} and #{params.endTime}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and login_id in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and login_id = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+  		</otherwise>
+  	</choose>
+  </select>
+</mapper>

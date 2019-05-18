@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.PlatformLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.PlatformLogin" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="p_login_name" property="pLoginName" jdbcType="VARCHAR" />
+    <result column="p_password" property="pPassword" jdbcType="VARCHAR" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_role" property="pRole" jdbcType="INTEGER" />
+    <result column="p_status" property="pStatus" jdbcType="INTEGER" />
+    <result column="p_pid" property="pPid" jdbcType="INTEGER" />
+    <result column="p_ip" property="pIp" jdbcType="VARCHAR" />
+    <result column="p_url" property="pUrl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="INTEGER" />
+    <result column="p_rmk" property="pRmk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, p_login_name, p_password, p_name, p_role, p_status, p_pid, p_ip, p_url, create_time, 
+    create_user, update_time, update_user,p_rmk
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_platform_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_platform_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.PlatformLogin" >
+    insert into t_platform_login (id, p_login_name, p_password, 
+      p_name, p_role, p_status, 
+      p_pid, p_ip, p_url, create_time, 
+      create_user, update_time, update_user, 
+      p_rmk)
+    values (#{id,jdbcType=INTEGER}, #{pLoginName,jdbcType=VARCHAR}, #{pPassword,jdbcType=VARCHAR}, 
+      #{pName,jdbcType=VARCHAR}, #{pRole,jdbcType=INTEGER}, #{pStatus,jdbcType=INTEGER}, 
+      #{pPid,jdbcType=INTEGER}, #{pIp,jdbcType=VARCHAR}, #{pUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=INTEGER}, 
+      #{pRmk,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.PlatformLogin" >
+    insert into t_platform_login
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pLoginName != null" >
+        p_login_name,
+      </if>
+      <if test="pPassword != null" >
+        p_password,
+      </if>
+      <if test="pName != null" >
+        p_name,
+      </if>
+      <if test="pRole != null" >
+        p_role,
+      </if>
+      <if test="pStatus != null" >
+        p_status,
+      </if>
+      <if test="pPid != null" >
+        p_pid,
+      </if>
+      <if test="pIp != null" >
+        p_ip,
+      </if>
+      <if test="pUrl != null" >
+        p_url,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="pRmk != null" >
+        p_rmk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pLoginName != null" >
+        #{pLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="pPassword != null" >
+        #{pPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pRole != null" >
+        #{pRole,jdbcType=INTEGER},
+      </if>
+      <if test="pStatus != null" >
+        #{pStatus,jdbcType=INTEGER},
+      </if>
+      <if test="pPid != null" >
+        #{pPid,jdbcType=INTEGER},
+      </if>
+      <if test="pIp != null" >
+        #{pIp,jdbcType=VARCHAR},
+      </if>
+      <if test="pUrl != null" >
+        #{pUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="pRmk != null" >
+        #{pRmk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.PlatformLogin" >
+    update t_platform_login
+    <set >
+      <if test="pLoginName != null" >
+        p_login_name = #{pLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="pPassword != null" >
+        p_password = #{pPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="pName != null" >
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pRole != null" >
+        p_role = #{pRole,jdbcType=INTEGER},
+      </if>
+      <if test="pStatus != null" >
+        p_status = #{pStatus,jdbcType=INTEGER},
+      </if>
+      <if test="pPid != null" >
+        p_pid = #{pPid,jdbcType=INTEGER},
+      </if>
+      <if test="pIp != null" >
+        p_ip = #{pIp,jdbcType=VARCHAR},
+      </if>
+      <if test="pUrl != null" >
+        p_url = #{pUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="pRmk != null" >
+        p_rmk = #{pRmk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.PlatformLogin" >
+    update t_platform_login
+    set p_login_name = #{pLoginName,jdbcType=VARCHAR},
+      p_password = #{pPassword,jdbcType=VARCHAR},
+      p_name = #{pName,jdbcType=VARCHAR},
+      p_role = #{pRole,jdbcType=INTEGER},
+      p_status = #{pStatus,jdbcType=INTEGER},
+      p_pid = #{pPid,jdbcType=INTEGER},
+      p_ip = #{pIp,jdbcType=VARCHAR},
+      p_url = #{pUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      p_rmk = #{pRmk,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

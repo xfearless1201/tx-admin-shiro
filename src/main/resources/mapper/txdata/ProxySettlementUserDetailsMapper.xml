@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.ProxySettlementUserDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.ProxySettlementUserDetails" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="top_uid" property="topUid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="platform_id" property="platformId" jdbcType="INTEGER" />
+    <result column="platform_name" property="platformName" jdbcType="VARCHAR" />
+    <result column="note_num" property="noteNum" jdbcType="INTEGER" />
+    <result column="bet_amount" property="betAmount" jdbcType="DOUBLE" />
+    <result column="valid_bet_amount" property="validBetAmount" jdbcType="DOUBLE" />
+    <result column="net_amount" property="netAmount" jdbcType="DOUBLE" />
+    <result column="months" property="months" jdbcType="INTEGER" />
+    <result column="ts" property="ts" jdbcType="REAL" />
+    <result column="ty" property="ty" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, top_uid, uid, user_name, cagent, platform_id, platform_name, note_num, bet_amount, 
+    valid_bet_amount, net_amount, months, ts, ty
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_proxy_settlement_user_details
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_proxy_settlement_user_details
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.ProxySettlementUserDetails" >
+    insert into t_proxy_settlement_user_details (id, top_uid, uid, 
+      user_name, cagent, platform_id, 
+      platform_name, note_num, bet_amount, 
+      valid_bet_amount, net_amount, months, 
+      ts, ty)
+    values (#{id,jdbcType=INTEGER}, #{topUid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{userName,jdbcType=VARCHAR}, #{cagent,jdbcType=VARCHAR}, #{platformId,jdbcType=INTEGER}, 
+      #{platformName,jdbcType=VARCHAR}, #{noteNum,jdbcType=INTEGER}, #{betAmount,jdbcType=DOUBLE}, 
+      #{validBetAmount,jdbcType=DOUBLE}, #{netAmount,jdbcType=DOUBLE}, #{months,jdbcType=INTEGER}, 
+      #{ts,jdbcType=REAL}, #{ty,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.ProxySettlementUserDetails" >
+    insert into t_proxy_settlement_user_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="topUid != null" >
+        top_uid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="platformId != null" >
+        platform_id,
+      </if>
+      <if test="platformName != null" >
+        platform_name,
+      </if>
+      <if test="noteNum != null" >
+        note_num,
+      </if>
+      <if test="betAmount != null" >
+        bet_amount,
+      </if>
+      <if test="validBetAmount != null" >
+        valid_bet_amount,
+      </if>
+      <if test="netAmount != null" >
+        net_amount,
+      </if>
+      <if test="months != null" >
+        months,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="ty != null" >
+        ty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="topUid != null" >
+        #{topUid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null" >
+        #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="platformName != null" >
+        #{platformName,jdbcType=VARCHAR},
+      </if>
+      <if test="noteNum != null" >
+        #{noteNum,jdbcType=INTEGER},
+      </if>
+      <if test="betAmount != null" >
+        #{betAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="validBetAmount != null" >
+        #{validBetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="netAmount != null" >
+        #{netAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="months != null" >
+        #{months,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=REAL},
+      </if>
+      <if test="ty != null" >
+        #{ty,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.ProxySettlementUserDetails" >
+    update t_proxy_settlement_user_details
+    <set >
+      <if test="topUid != null" >
+        top_uid = #{topUid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null" >
+        platform_id = #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="platformName != null" >
+        platform_name = #{platformName,jdbcType=VARCHAR},
+      </if>
+      <if test="noteNum != null" >
+        note_num = #{noteNum,jdbcType=INTEGER},
+      </if>
+      <if test="betAmount != null" >
+        bet_amount = #{betAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="validBetAmount != null" >
+        valid_bet_amount = #{validBetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="netAmount != null" >
+        net_amount = #{netAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="months != null" >
+        months = #{months,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=REAL},
+      </if>
+      <if test="ty != null" >
+        ty = #{ty,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.ProxySettlementUserDetails" >
+    update t_proxy_settlement_user_details
+    set top_uid = #{topUid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR},
+      platform_id = #{platformId,jdbcType=INTEGER},
+      platform_name = #{platformName,jdbcType=VARCHAR},
+      note_num = #{noteNum,jdbcType=INTEGER},
+      bet_amount = #{betAmount,jdbcType=DOUBLE},
+      valid_bet_amount = #{validBetAmount,jdbcType=DOUBLE},
+      net_amount = #{netAmount,jdbcType=DOUBLE},
+      months = #{months,jdbcType=INTEGER},
+      ts = #{ts,jdbcType=REAL},
+      ty = #{ty,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

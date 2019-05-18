@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.IntegralMallMapper.GoodsManagementMapper">
+
+    <!--<resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.IntegralMall">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="cid" property="cid" jdbcType="INTEGER"/>
+    </resultMap>-->
+
+    <sql id="Base_Column_List">
+        id, cid, pid, catename, path, uptime, upuid, rmk
+    </sql>
+
+    <select id="catePidPath" resultType="com.cn.tianxia.admin.project.txdata.IntegralMall.GoodsManagement"
+            parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from t_plu_cate
+        where id = #{pid}
+    </select>
+
+    <select id="catePidList" resultType="com.cn.tianxia.admin.project.txdata.IntegralMall.GoodsManagement"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        <include refid="Base_Column_List"/>
+        from t_plu_cate
+    </select>
+
+    <select id="selectGoodsManaByPage" resultType="com.cn.tianxia.admin.project.txdata.IntegralMall.GoodsManagement"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        SELECT
+        t.id as id,
+        (select catename from t_plu_cate where t.cateid = id) as cateid,
+        (select name from t_cagent where t.cid = id) as cid,
+        t.pluname as pluname,
+        t.icon as icon,
+        t.cprice as cprice,
+        t.oprice as oprice,
+        t.price as price,
+        t.STATUS as `status`,
+        t.`DESCRIBE` as `describe`,
+        t.uptime as uptime,
+        t.rmk as rmk,
+        t.type as type,
+        t.sketch as sketch,
+        t.seq as seq
+        FROM
+        t_plu_info t
+        where 1=1
+        <if test="params != null ">
+            and pluname = #{params.pluname}
+        </if>
+        <if test="params != null ">
+            and cid = #{params.cagentId}
+        </if>
+        <if test="goodsManagement != null and goodsManagement.size() > 0">
+            and cateid in
+            <foreach item="item" index="index" collection="goodsManagement" open="(" separator=","
+                     close=")">
+                #{item.id}
+            </foreach>
+        </if>
+        ORDER BY t.uptime desc
+        limit ${(page-1)*limit},#{limit}
+    </select>
+
+    <select id="selectGoodsManaTotalCount" resultType="java.lang.Integer"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        count(1)
+        FROM
+        t_plu_info t
+        where 1=1
+        <if test="params != null ">
+            and pluname = #{params.pluname}
+        </if>
+        <if test="params != null ">
+            and cid = #{params.cagentId}
+        </if>
+        <if test="goodsManagement != null and goodsManagement.size() > 0">
+            and cateid in
+            <foreach item="item" index="index" collection="goodsManagement" open="(" separator=","
+                     close=")">
+                #{item.id}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="decriptCont" resultType="java.lang.Integer" parameterType="java.util.Map">
+    	select count(*) from t_plu_info where pluname=#{pluname} and cid = #{decagentId}
+    </select>
+
+    <insert id="DescriptAdd" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.Map">
+     insert into t_plu_info (cateid, cid,
+      pluname, icon, cprice,
+      oprice, price, `status`,`describe`,
+      rmk, uptime, upuid,`type`,sketch,seq
+      )
+    values (#{pid}, #{decagentId},
+      #{pluname}, #{icon}, #{cprice},
+      #{oprice}, #{price}, 0,#{describe},
+      #{rmk}, now(), #{upuid},#{type},#{sketch},#{seq}
+      );
+  </insert>
+
+    <insert id="descriptName" parameterType="java.util.Map">
+    INSERT into t_plu_inventory (pluid,cid,`num`,`freeze_num`,
+      uptime)
+    values (#{id},#{decagentId},0,0,now());
+  </insert>
+
+    <select id="getpidName" resultType="java.util.Map" parameterType="java.util.Map">
+	 select id as pid from t_plu_cate where cid=#{decagentId} and catename=#{pid}
+   </select>
+
+    <update id="DescriptUpdate" parameterType="java.util.Map">
+	    update t_plu_info
+	    set cateid = #{pid},
+	      cid = #{decagentId},
+	      pluname = #{pluname},
+	      icon = #{icon},
+	      cprice = #{cprice},
+	      oprice = #{oprice},
+	      price = #{price},
+	      `describe` = #{describe},
+	      rmk = #{rmk},
+	      uptime = now(),
+	      upuid = #{upuid},
+	      `type`=#{type},
+	      sketch=#{sketch},
+	      seq=#{seq}
+	    where id = #{id}
+  </update>
+
+    <select id="selectPluInventory" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from t_plu_order  where plu_id = #{id};
+   </select>
+
+    <delete id="DescriptDelete" parameterType="java.util.Map">
+    delete from t_plu_info
+    where id = #{id}
+  </delete>
+
+    <update id="closeProxy" parameterType="java.util.Map">
+    update t_plu_info
+   	   set status = 1
+    where id = #{id}
+  </update>
+
+    <update id="openProxy" parameterType="java.util.Map">
+    update t_plu_info
+   	   set status = 0
+    where id = #{id}
+  </update>
+</mapper>

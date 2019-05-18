@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.AccountDaySumMapper">
+    <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.AccountDaySum">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="cagent" property="cagent" jdbcType="VARCHAR"/>
+        <result column="onlin_payment" property="onlinPayment" jdbcType="DOUBLE"/>
+        <result column="return_water" property="returnWater" jdbcType="DOUBLE"/>
+        <result column="admin_fee" property="adminFee" jdbcType="DOUBLE"/>
+        <result column="poundage" property="poundage" jdbcType="DOUBLE"/>
+        <result column="color_gold" property="colorGold" jdbcType="DOUBLE"/>
+        <result column="discount" property="discount" jdbcType="DOUBLE"/>
+        <result column="manual_addition" property="manualAddition" jdbcType="DOUBLE"/>
+        <result column="manual_deductions" property="manualDeductions" jdbcType="DOUBLE"/>
+        <result column="return_water_to_zero" property="returnWaterToZero" jdbcType="DOUBLE"/>
+        <result column="deposit_num" property="depositNum" jdbcType="BIGINT"/>
+        <result column="deposit_sum" property="depositSum" jdbcType="DOUBLE"/>
+        <result column="first_deposit" property="firstDeposit" jdbcType="BIGINT"/>
+        <result column="first_sum" property="firstSum" jdbcType="DOUBLE"/>
+        <result column="withdraw_num" property="withdrawNum" jdbcType="BIGINT"/>
+        <result column="withdraw_sum" property="withdrawSum" jdbcType="DOUBLE"/>
+        <result column="usedvaue" property="usedvaue" jdbcType="DOUBLE"/>
+        <result column="remain_amount" property="remainAmount" jdbcType="DOUBLE"/>
+        <result column="profit" property="profit" jdbcType="DOUBLE"/>
+        <result column="registration" property="registration" jdbcType="BIGINT"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, cagent, onlin_payment, return_water, admin_fee, poundage, color_gold, discount, 
+    manual_addition, manual_deductions, return_water_to_zero, deposit_num, deposit_sum, 
+    first_deposit, first_sum, withdraw_num, withdraw_sum, usedvaue, remain_amount, profit, 
+    registration, create_date, update_date
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from t_account_day_sum
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_account_day_sum
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.AccountDaySum">
+    insert into t_account_day_sum (id, cagent, onlin_payment, 
+      return_water, admin_fee, poundage, 
+      color_gold, discount, manual_addition, 
+      manual_deductions, return_water_to_zero, deposit_num, 
+      deposit_sum, first_deposit, first_sum, 
+      withdraw_num, withdraw_sum, usedvaue, 
+      remain_amount, profit, registration, 
+      create_date, update_date)
+    values (#{id,jdbcType=BIGINT}, #{cagent,jdbcType=VARCHAR}, #{onlinPayment,jdbcType=DOUBLE}, 
+      #{returnWater,jdbcType=DOUBLE}, #{adminFee,jdbcType=DOUBLE}, #{poundage,jdbcType=DOUBLE}, 
+      #{colorGold,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, #{manualAddition,jdbcType=DOUBLE}, 
+      #{manualDeductions,jdbcType=DOUBLE}, #{returnWaterToZero,jdbcType=DOUBLE}, #{depositNum,jdbcType=BIGINT}, 
+      #{depositSum,jdbcType=DOUBLE}, #{firstDeposit,jdbcType=BIGINT}, #{firstSum,jdbcType=DOUBLE}, 
+      #{withdrawNum,jdbcType=BIGINT}, #{withdrawSum,jdbcType=DOUBLE}, #{usedvaue,jdbcType=DOUBLE}, 
+      #{remainAmount,jdbcType=DOUBLE}, #{profit,jdbcType=DOUBLE}, #{registration,jdbcType=BIGINT}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.AccountDaySum">
+        insert into t_account_day_sum
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cagent != null">
+                cagent,
+            </if>
+            <if test="onlinPayment != null">
+                onlin_payment,
+            </if>
+            <if test="returnWater != null">
+                return_water,
+            </if>
+            <if test="adminFee != null">
+                admin_fee,
+            </if>
+            <if test="poundage != null">
+                poundage,
+            </if>
+            <if test="colorGold != null">
+                color_gold,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="manualAddition != null">
+                manual_addition,
+            </if>
+            <if test="manualDeductions != null">
+                manual_deductions,
+            </if>
+            <if test="returnWaterToZero != null">
+                return_water_to_zero,
+            </if>
+            <if test="depositNum != null">
+                deposit_num,
+            </if>
+            <if test="depositSum != null">
+                deposit_sum,
+            </if>
+            <if test="firstDeposit != null">
+                first_deposit,
+            </if>
+            <if test="firstSum != null">
+                first_sum,
+            </if>
+            <if test="withdrawNum != null">
+                withdraw_num,
+            </if>
+            <if test="withdrawSum != null">
+                withdraw_sum,
+            </if>
+            <if test="usedvaue != null">
+                usedvaue,
+            </if>
+            <if test="remainAmount != null">
+                remain_amount,
+            </if>
+            <if test="profit != null">
+                profit,
+            </if>
+            <if test="registration != null">
+                registration,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="cagent != null">
+                #{cagent,jdbcType=VARCHAR},
+            </if>
+            <if test="onlinPayment != null">
+                #{onlinPayment,jdbcType=DOUBLE},
+            </if>
+            <if test="returnWater != null">
+                #{returnWater,jdbcType=DOUBLE},
+            </if>
+            <if test="adminFee != null">
+                #{adminFee,jdbcType=DOUBLE},
+            </if>
+            <if test="poundage != null">
+                #{poundage,jdbcType=DOUBLE},
+            </if>
+            <if test="colorGold != null">
+                #{colorGold,jdbcType=DOUBLE},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=DOUBLE},
+            </if>
+            <if test="manualAddition != null">
+                #{manualAddition,jdbcType=DOUBLE},
+            </if>
+            <if test="manualDeductions != null">
+                #{manualDeductions,jdbcType=DOUBLE},
+            </if>
+            <if test="returnWaterToZero != null">
+                #{returnWaterToZero,jdbcType=DOUBLE},
+            </if>
+            <if test="depositNum != null">
+                #{depositNum,jdbcType=BIGINT},
+            </if>
+            <if test="depositSum != null">
+                #{depositSum,jdbcType=DOUBLE},
+            </if>
+            <if test="firstDeposit != null">
+                #{firstDeposit,jdbcType=BIGINT},
+            </if>
+            <if test="firstSum != null">
+                #{firstSum,jdbcType=DOUBLE},
+            </if>
+            <if test="withdrawNum != null">
+                #{withdrawNum,jdbcType=BIGINT},
+            </if>
+            <if test="withdrawSum != null">
+                #{withdrawSum,jdbcType=DOUBLE},
+            </if>
+            <if test="usedvaue != null">
+                #{usedvaue,jdbcType=DOUBLE},
+            </if>
+            <if test="remainAmount != null">
+                #{remainAmount,jdbcType=DOUBLE},
+            </if>
+            <if test="profit != null">
+                #{profit,jdbcType=DOUBLE},
+            </if>
+            <if test="registration != null">
+                #{registration,jdbcType=BIGINT},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.AccountDaySum">
+        update t_account_day_sum
+        <set>
+            <if test="cagent != null">
+                cagent = #{cagent,jdbcType=VARCHAR},
+            </if>
+            <if test="onlinPayment != null">
+                onlin_payment = #{onlinPayment,jdbcType=DOUBLE},
+            </if>
+            <if test="returnWater != null">
+                return_water = #{returnWater,jdbcType=DOUBLE},
+            </if>
+            <if test="adminFee != null">
+                admin_fee = #{adminFee,jdbcType=DOUBLE},
+            </if>
+            <if test="poundage != null">
+                poundage = #{poundage,jdbcType=DOUBLE},
+            </if>
+            <if test="colorGold != null">
+                color_gold = #{colorGold,jdbcType=DOUBLE},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=DOUBLE},
+            </if>
+            <if test="manualAddition != null">
+                manual_addition = #{manualAddition,jdbcType=DOUBLE},
+            </if>
+            <if test="manualDeductions != null">
+                manual_deductions = #{manualDeductions,jdbcType=DOUBLE},
+            </if>
+            <if test="returnWaterToZero != null">
+                return_water_to_zero = #{returnWaterToZero,jdbcType=DOUBLE},
+            </if>
+            <if test="depositNum != null">
+                deposit_num = #{depositNum,jdbcType=BIGINT},
+            </if>
+            <if test="depositSum != null">
+                deposit_sum = #{depositSum,jdbcType=DOUBLE},
+            </if>
+            <if test="firstDeposit != null">
+                first_deposit = #{firstDeposit,jdbcType=BIGINT},
+            </if>
+            <if test="firstSum != null">
+                first_sum = #{firstSum,jdbcType=DOUBLE},
+            </if>
+            <if test="withdrawNum != null">
+                withdraw_num = #{withdrawNum,jdbcType=BIGINT},
+            </if>
+            <if test="withdrawSum != null">
+                withdraw_sum = #{withdrawSum,jdbcType=DOUBLE},
+            </if>
+            <if test="usedvaue != null">
+                usedvaue = #{usedvaue,jdbcType=DOUBLE},
+            </if>
+            <if test="remainAmount != null">
+                remain_amount = #{remainAmount,jdbcType=DOUBLE},
+            </if>
+            <if test="profit != null">
+                profit = #{profit,jdbcType=DOUBLE},
+            </if>
+            <if test="registration != null">
+                registration = #{registration,jdbcType=BIGINT},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.AccountDaySum">
+    update t_account_day_sum
+    set cagent = #{cagent,jdbcType=VARCHAR},
+      onlin_payment = #{onlinPayment,jdbcType=DOUBLE},
+      return_water = #{returnWater,jdbcType=DOUBLE},
+      admin_fee = #{adminFee,jdbcType=DOUBLE},
+      poundage = #{poundage,jdbcType=DOUBLE},
+      color_gold = #{colorGold,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=DOUBLE},
+      manual_addition = #{manualAddition,jdbcType=DOUBLE},
+      manual_deductions = #{manualDeductions,jdbcType=DOUBLE},
+      return_water_to_zero = #{returnWaterToZero,jdbcType=DOUBLE},
+      deposit_num = #{depositNum,jdbcType=BIGINT},
+      deposit_sum = #{depositSum,jdbcType=DOUBLE},
+      first_deposit = #{firstDeposit,jdbcType=BIGINT},
+      first_sum = #{firstSum,jdbcType=DOUBLE},
+      withdraw_num = #{withdrawNum,jdbcType=BIGINT},
+      withdraw_sum = #{withdrawSum,jdbcType=DOUBLE},
+      usedvaue = #{usedvaue,jdbcType=DOUBLE},
+      remain_amount = #{remainAmount,jdbcType=DOUBLE},
+      profit = #{profit,jdbcType=DOUBLE},
+      registration = #{registration,jdbcType=BIGINT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

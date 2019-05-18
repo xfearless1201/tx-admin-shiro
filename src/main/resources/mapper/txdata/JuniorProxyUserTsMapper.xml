@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.JuniorProxyUserTsMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.JuniorProxyUserTs" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="proxy_user_id" property="proxyUserId" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="REAL" />
+    <result column="p_cg" property="pCg" jdbcType="REAL" />
+    <result column="p_ag" property="pAg" jdbcType="REAL" />
+    <result column="p_shenbo" property="pShenbo" jdbcType="REAL" />
+    <result column="p_ob" property="pOb" jdbcType="REAL" />
+    <result column="p_ds" property="pDs" jdbcType="REAL" />
+    <result column="p_og" property="pOg" jdbcType="REAL" />
+    <result column="p_bbin" property="pBbin" jdbcType="REAL" />
+    <result column="p_mg" property="pMg" jdbcType="REAL" />
+    <result column="p_pt" property="pPt" jdbcType="REAL" />
+    <result column="p_haba" property="pHaba" jdbcType="REAL" />
+    <result column="p_ig" property="pIg" jdbcType="REAL" />
+    <result column="p_hg" property="pHg" jdbcType="REAL" />
+    <result column="p_ggby" property="pGgby" jdbcType="REAL" />
+    <result column="p_bgvideo" property="pBgvideo" jdbcType="REAL" />
+    <result column="p_bglottery" property="pBglottery" jdbcType="REAL" />
+    <result column="p_ighk" property="pIghk" jdbcType="REAL" />
+    <result column="p_vr" property="pVr" jdbcType="REAL" />
+    <result column="p_jf" property="pJf" jdbcType="REAL" />
+    <result column="p_jfcp" property="pJfcp" jdbcType="REAL" />
+    <result column="p_yorplay" property="pYorplay" jdbcType="REAL" />
+    <result column="p_kyqp" property="pKyqp" jdbcType="REAL" />
+    <result column="p_spta" property="pSpta" jdbcType="REAL" />
+    <result column="p_gycp" property="pGycp" jdbcType="REAL" />
+    <result column="p_vgqp" property="pVgqp" jdbcType="REAL" />
+    <result column="p_ps" property="pPs" jdbcType="REAL" />
+    <result column="p_nb" property="pNb" jdbcType="REAL" />
+    <result column="p_lyqp" property="pLyqp" jdbcType="REAL" />
+    <result column="p_jdb" property="pJdb" jdbcType="REAL" />
+    <result column="p_sw" property="pSw" jdbcType="REAL" />
+    <result column="p_ibc" property="pIbc" jdbcType="REAL" />
+    <result column="p_esw" property="pEsw" jdbcType="REAL" />
+    <result column="p_cqj" property="pCqj" jdbcType="REAL" />
+    <result column="p_imty" property="pImty" jdbcType="REAL" />
+    <result column="p_imgame" property="pImgame" jdbcType="REAL" />
+    <result column="p_nw" property="pNw" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, proxy_user_id, amount, p_cg, p_ag, p_shenbo, p_ob, p_ds, p_og, p_bbin, p_mg, 
+    p_pt, p_haba, p_ig, p_hg, p_ggby, p_bgvideo, p_bglottery, p_ighk, p_vr, p_jf, p_jfcp, 
+    p_yorplay, p_kyqp, p_spta, p_gycp, p_vgqp, p_ps, p_nb, p_lyqp, p_jdb, p_sw, p_ibc, 
+    p_esw, p_cqj, p_imty, p_imgame, p_nw
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_junior_proxy_user_ts
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_junior_proxy_user_ts
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.JuniorProxyUserTs" >
+    insert into t_junior_proxy_user_ts (id, proxy_user_id, amount, 
+      p_cg, p_ag, p_shenbo, p_ob, 
+      p_ds, p_og, p_bbin, p_mg, 
+      p_pt, p_haba, p_ig, p_hg, 
+      p_ggby, p_bgvideo, p_bglottery, 
+      p_ighk, p_vr, p_jf, p_jfcp, 
+      p_yorplay, p_kyqp, p_spta, p_gycp, 
+      p_vgqp, p_ps, p_nb, p_lyqp, 
+      p_jdb, p_sw, p_ibc, p_esw, 
+      p_cqj, p_imty, p_imgame, p_nw
+      )
+    values (#{id,jdbcType=INTEGER}, #{proxyUserId,jdbcType=INTEGER}, #{amount,jdbcType=REAL}, 
+      #{pCg,jdbcType=REAL}, #{pAg,jdbcType=REAL}, #{pShenbo,jdbcType=REAL}, #{pOb,jdbcType=REAL}, 
+      #{pDs,jdbcType=REAL}, #{pOg,jdbcType=REAL}, #{pBbin,jdbcType=REAL}, #{pMg,jdbcType=REAL}, 
+      #{pPt,jdbcType=REAL}, #{pHaba,jdbcType=REAL}, #{pIg,jdbcType=REAL}, #{pHg,jdbcType=REAL}, 
+      #{pGgby,jdbcType=REAL}, #{pBgvideo,jdbcType=REAL}, #{pBglottery,jdbcType=REAL}, 
+      #{pIghk,jdbcType=REAL}, #{pVr,jdbcType=REAL}, #{pJf,jdbcType=REAL}, #{pJfcp,jdbcType=REAL}, 
+      #{pYorplay,jdbcType=REAL}, #{pKyqp,jdbcType=REAL}, #{pSpta,jdbcType=REAL}, #{pGycp,jdbcType=REAL}, 
+      #{pVgqp,jdbcType=REAL}, #{pPs,jdbcType=REAL}, #{pNb,jdbcType=REAL}, #{pLyqp,jdbcType=REAL}, 
+      #{pJdb,jdbcType=REAL}, #{pSw,jdbcType=REAL}, #{pIbc,jdbcType=REAL}, #{pEsw,jdbcType=REAL}, 
+      #{pCqj,jdbcType=REAL}, #{pImty,jdbcType=REAL}, #{pImgame,jdbcType=REAL}, #{pNw,jdbcType=REAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.JuniorProxyUserTs" >
+    insert into t_junior_proxy_user_ts
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="proxyUserId != null" >
+        proxy_user_id,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="pCg != null" >
+        p_cg,
+      </if>
+      <if test="pAg != null" >
+        p_ag,
+      </if>
+      <if test="pShenbo != null" >
+        p_shenbo,
+      </if>
+      <if test="pOb != null" >
+        p_ob,
+      </if>
+      <if test="pDs != null" >
+        p_ds,
+      </if>
+      <if test="pOg != null" >
+        p_og,
+      </if>
+      <if test="pBbin != null" >
+        p_bbin,
+      </if>
+      <if test="pMg != null" >
+        p_mg,
+      </if>
+      <if test="pPt != null" >
+        p_pt,
+      </if>
+      <if test="pHaba != null" >
+        p_haba,
+      </if>
+      <if test="pIg != null" >
+        p_ig,
+      </if>
+      <if test="pHg != null" >
+        p_hg,
+      </if>
+      <if test="pGgby != null" >
+        p_ggby,
+      </if>
+      <if test="pBgvideo != null" >
+        p_bgvideo,
+      </if>
+      <if test="pBglottery != null" >
+        p_bglottery,
+      </if>
+      <if test="pIghk != null" >
+        p_ighk,
+      </if>
+      <if test="pVr != null" >
+        p_vr,
+      </if>
+      <if test="pJf != null" >
+        p_jf,
+      </if>
+      <if test="pJfcp != null" >
+        p_jfcp,
+      </if>
+      <if test="pYorplay != null" >
+        p_yorplay,
+      </if>
+      <if test="pKyqp != null" >
+        p_kyqp,
+      </if>
+      <if test="pSpta != null" >
+        p_spta,
+      </if>
+      <if test="pGycp != null" >
+        p_gycp,
+      </if>
+      <if test="pVgqp != null" >
+        p_vgqp,
+      </if>
+      <if test="pPs != null" >
+        p_ps,
+      </if>
+      <if test="pNb != null" >
+        p_nb,
+      </if>
+      <if test="pLyqp != null" >
+        p_lyqp,
+      </if>
+      <if test="pJdb != null" >
+        p_jdb,
+      </if>
+      <if test="pSw != null" >
+        p_sw,
+      </if>
+      <if test="pIbc != null" >
+        p_ibc,
+      </if>
+      <if test="pEsw != null" >
+        p_esw,
+      </if>
+      <if test="pCqj != null" >
+        p_cqj,
+      </if>
+      <if test="pImty != null" >
+        p_imty,
+      </if>
+      <if test="pImgame != null" >
+        p_imgame,
+      </if>
+      <if test="pNw != null" >
+        p_nw,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proxyUserId != null" >
+        #{proxyUserId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=REAL},
+      </if>
+      <if test="pCg != null" >
+        #{pCg,jdbcType=REAL},
+      </if>
+      <if test="pAg != null" >
+        #{pAg,jdbcType=REAL},
+      </if>
+      <if test="pShenbo != null" >
+        #{pShenbo,jdbcType=REAL},
+      </if>
+      <if test="pOb != null" >
+        #{pOb,jdbcType=REAL},
+      </if>
+      <if test="pDs != null" >
+        #{pDs,jdbcType=REAL},
+      </if>
+      <if test="pOg != null" >
+        #{pOg,jdbcType=REAL},
+      </if>
+      <if test="pBbin != null" >
+        #{pBbin,jdbcType=REAL},
+      </if>
+      <if test="pMg != null" >
+        #{pMg,jdbcType=REAL},
+      </if>
+      <if test="pPt != null" >
+        #{pPt,jdbcType=REAL},
+      </if>
+      <if test="pHaba != null" >
+        #{pHaba,jdbcType=REAL},
+      </if>
+      <if test="pIg != null" >
+        #{pIg,jdbcType=REAL},
+      </if>
+      <if test="pHg != null" >
+        #{pHg,jdbcType=REAL},
+      </if>
+      <if test="pGgby != null" >
+        #{pGgby,jdbcType=REAL},
+      </if>
+      <if test="pBgvideo != null" >
+        #{pBgvideo,jdbcType=REAL},
+      </if>
+      <if test="pBglottery != null" >
+        #{pBglottery,jdbcType=REAL},
+      </if>
+      <if test="pIghk != null" >
+        #{pIghk,jdbcType=REAL},
+      </if>
+      <if test="pVr != null" >
+        #{pVr,jdbcType=REAL},
+      </if>
+      <if test="pJf != null" >
+        #{pJf,jdbcType=REAL},
+      </if>
+      <if test="pJfcp != null" >
+        #{pJfcp,jdbcType=REAL},
+      </if>
+      <if test="pYorplay != null" >
+        #{pYorplay,jdbcType=REAL},
+      </if>
+      <if test="pKyqp != null" >
+        #{pKyqp,jdbcType=REAL},
+      </if>
+      <if test="pSpta != null" >
+        #{pSpta,jdbcType=REAL},
+      </if>
+      <if test="pGycp != null" >
+        #{pGycp,jdbcType=REAL},
+      </if>
+      <if test="pVgqp != null" >
+        #{pVgqp,jdbcType=REAL},
+      </if>
+      <if test="pPs != null" >
+        #{pPs,jdbcType=REAL},
+      </if>
+      <if test="pNb != null" >
+        #{pNb,jdbcType=REAL},
+      </if>
+      <if test="pLyqp != null" >
+        #{pLyqp,jdbcType=REAL},
+      </if>
+      <if test="pJdb != null" >
+        #{pJdb,jdbcType=REAL},
+      </if>
+      <if test="pSw != null" >
+        #{pSw,jdbcType=REAL},
+      </if>
+      <if test="pIbc != null" >
+        #{pIbc,jdbcType=REAL},
+      </if>
+      <if test="pEsw != null" >
+        #{pEsw,jdbcType=REAL},
+      </if>
+      <if test="pCqj != null" >
+        #{pCqj,jdbcType=REAL},
+      </if>
+      <if test="pImty != null" >
+        #{pImty,jdbcType=REAL},
+      </if>
+      <if test="pImgame != null" >
+        #{pImgame,jdbcType=REAL},
+      </if>
+      <if test="pNw != null" >
+        #{pNw,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.JuniorProxyUserTs" >
+    update t_junior_proxy_user_ts
+    <set >
+      <if test="proxyUserId != null" >
+        proxy_user_id = #{proxyUserId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=REAL},
+      </if>
+      <if test="pCg != null" >
+        p_cg = #{pCg,jdbcType=REAL},
+      </if>
+      <if test="pAg != null" >
+        p_ag = #{pAg,jdbcType=REAL},
+      </if>
+      <if test="pShenbo != null" >
+        p_shenbo = #{pShenbo,jdbcType=REAL},
+      </if>
+      <if test="pOb != null" >
+        p_ob = #{pOb,jdbcType=REAL},
+      </if>
+      <if test="pDs != null" >
+        p_ds = #{pDs,jdbcType=REAL},
+      </if>
+      <if test="pOg != null" >
+        p_og = #{pOg,jdbcType=REAL},
+      </if>
+      <if test="pBbin != null" >
+        p_bbin = #{pBbin,jdbcType=REAL},
+      </if>
+      <if test="pMg != null" >
+        p_mg = #{pMg,jdbcType=REAL},
+      </if>
+      <if test="pPt != null" >
+        p_pt = #{pPt,jdbcType=REAL},
+      </if>
+      <if test="pHaba != null" >
+        p_haba = #{pHaba,jdbcType=REAL},
+      </if>
+      <if test="pIg != null" >
+        p_ig = #{pIg,jdbcType=REAL},
+      </if>
+      <if test="pHg != null" >
+        p_hg = #{pHg,jdbcType=REAL},
+      </if>
+      <if test="pGgby != null" >
+        p_ggby = #{pGgby,jdbcType=REAL},
+      </if>
+      <if test="pBgvideo != null" >
+        p_bgvideo = #{pBgvideo,jdbcType=REAL},
+      </if>
+      <if test="pBglottery != null" >
+        p_bglottery = #{pBglottery,jdbcType=REAL},
+      </if>
+      <if test="pIghk != null" >
+        p_ighk = #{pIghk,jdbcType=REAL},
+      </if>
+      <if test="pVr != null" >
+        p_vr = #{pVr,jdbcType=REAL},
+      </if>
+      <if test="pJf != null" >
+        p_jf = #{pJf,jdbcType=REAL},
+      </if>
+      <if test="pJfcp != null" >
+        p_jfcp = #{pJfcp,jdbcType=REAL},
+      </if>
+      <if test="pYorplay != null" >
+        p_yorplay = #{pYorplay,jdbcType=REAL},
+      </if>
+      <if test="pKyqp != null" >
+        p_kyqp = #{pKyqp,jdbcType=REAL},
+      </if>
+      <if test="pSpta != null" >
+        p_spta = #{pSpta,jdbcType=REAL},
+      </if>
+      <if test="pGycp != null" >
+        p_gycp = #{pGycp,jdbcType=REAL},
+      </if>
+      <if test="pVgqp != null" >
+        p_vgqp = #{pVgqp,jdbcType=REAL},
+      </if>
+      <if test="pPs != null" >
+        p_ps = #{pPs,jdbcType=REAL},
+      </if>
+      <if test="pNb != null" >
+        p_nb = #{pNb,jdbcType=REAL},
+      </if>
+      <if test="pLyqp != null" >
+        p_lyqp = #{pLyqp,jdbcType=REAL},
+      </if>
+      <if test="pJdb != null" >
+        p_jdb = #{pJdb,jdbcType=REAL},
+      </if>
+      <if test="pSw != null" >
+        p_sw = #{pSw,jdbcType=REAL},
+      </if>
+      <if test="pIbc != null" >
+        p_ibc = #{pIbc,jdbcType=REAL},
+      </if>
+      <if test="pEsw != null" >
+        p_esw = #{pEsw,jdbcType=REAL},
+      </if>
+      <if test="pCqj != null" >
+        p_cqj = #{pCqj,jdbcType=REAL},
+      </if>
+      <if test="pImty != null" >
+        p_imty = #{pImty,jdbcType=REAL},
+      </if>
+      <if test="pImgame != null" >
+        p_imgame = #{pImgame,jdbcType=REAL},
+      </if>
+      <if test="pNw != null" >
+        p_nw = #{pNw,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.JuniorProxyUserTs" >
+    update t_junior_proxy_user_ts
+    set proxy_user_id = #{proxyUserId,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=REAL},
+      p_cg = #{pCg,jdbcType=REAL},
+      p_ag = #{pAg,jdbcType=REAL},
+      p_shenbo = #{pShenbo,jdbcType=REAL},
+      p_ob = #{pOb,jdbcType=REAL},
+      p_ds = #{pDs,jdbcType=REAL},
+      p_og = #{pOg,jdbcType=REAL},
+      p_bbin = #{pBbin,jdbcType=REAL},
+      p_mg = #{pMg,jdbcType=REAL},
+      p_pt = #{pPt,jdbcType=REAL},
+      p_haba = #{pHaba,jdbcType=REAL},
+      p_ig = #{pIg,jdbcType=REAL},
+      p_hg = #{pHg,jdbcType=REAL},
+      p_ggby = #{pGgby,jdbcType=REAL},
+      p_bgvideo = #{pBgvideo,jdbcType=REAL},
+      p_bglottery = #{pBglottery,jdbcType=REAL},
+      p_ighk = #{pIghk,jdbcType=REAL},
+      p_vr = #{pVr,jdbcType=REAL},
+      p_jf = #{pJf,jdbcType=REAL},
+      p_jfcp = #{pJfcp,jdbcType=REAL},
+      p_yorplay = #{pYorplay,jdbcType=REAL},
+      p_kyqp = #{pKyqp,jdbcType=REAL},
+      p_spta = #{pSpta,jdbcType=REAL},
+      p_gycp = #{pGycp,jdbcType=REAL},
+      p_vgqp = #{pVgqp,jdbcType=REAL},
+      p_ps = #{pPs,jdbcType=REAL},
+      p_nb = #{pNb,jdbcType=REAL},
+      p_lyqp = #{pLyqp,jdbcType=REAL},
+      p_jdb = #{pJdb,jdbcType=REAL},
+      p_sw = #{pSw,jdbcType=REAL},
+      p_ibc = #{pIbc,jdbcType=REAL},
+      p_esw = #{pEsw,jdbcType=REAL},
+      p_cqj = #{pCqj,jdbcType=REAL},
+      p_imty = #{pImty,jdbcType=REAL},
+      p_imgame = #{pImgame,jdbcType=REAL},
+      p_nw = #{pNw,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

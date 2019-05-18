@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.CagentVoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.CagentVoice" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="pay_vid" property="payVid" jdbcType="INTEGER" />
+    <result column="rechange_vid" property="rechangeVid" jdbcType="INTEGER" />
+    <result column="withdraw_vid" property="withdrawVid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, pay_vid, rechange_vid, withdraw_vid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_voice
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cagent_voice
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.CagentVoice" >
+    insert into t_cagent_voice (id, cid, pay_vid, 
+      rechange_vid, withdraw_vid)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{payVid,jdbcType=INTEGER}, 
+      #{rechangeVid,jdbcType=INTEGER}, #{withdrawVid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentVoice" >
+    insert into t_cagent_voice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="payVid != null" >
+        pay_vid,
+      </if>
+      <if test="rechangeVid != null" >
+        rechange_vid,
+      </if>
+      <if test="withdrawVid != null" >
+        withdraw_vid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="payVid != null" >
+        #{payVid,jdbcType=INTEGER},
+      </if>
+      <if test="rechangeVid != null" >
+        #{rechangeVid,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawVid != null" >
+        #{withdrawVid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentVoice" >
+    update t_cagent_voice
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="payVid != null" >
+        pay_vid = #{payVid,jdbcType=INTEGER},
+      </if>
+      <if test="rechangeVid != null" >
+        rechange_vid = #{rechangeVid,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawVid != null" >
+        withdraw_vid = #{withdrawVid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.CagentVoice" >
+    update t_cagent_voice
+    set cid = #{cid,jdbcType=INTEGER},
+      pay_vid = #{payVid,jdbcType=INTEGER},
+      rechange_vid = #{rechangeVid,jdbcType=INTEGER},
+      withdraw_vid = #{withdrawVid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findAllByPage" resultMap="BaseResultMap"  parameterType="com.cn.tianxia.admin.common.Pager" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_voice
+    <where>
+	    <if test="params.containsKey('cid')">
+	    	 cid = #{params.cid}
+	    </if>
+    </where>
+    ORDER BY id DESC
+    <if test="page != null and limit != null">
+	    LIMIT ${(page-1)*limit},#{limit}
+    </if>
+  </select>
+  <select id="getCagentVoiceTotalCounts" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager" >
+    select 
+    	count(1)
+    from t_cagent_voice
+    <where>
+	    <if test="params.containsKey('cid')">
+	    	 cid = #{params.cid}
+	    </if>
+    </where>
+  </select>
+</mapper>

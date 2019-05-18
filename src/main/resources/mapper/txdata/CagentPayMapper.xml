@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.CagentPayMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.CagentPay" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="bankname" property="bankname" jdbcType="VARCHAR" />
+    <result column="cardnum" property="cardnum" jdbcType="VARCHAR" />
+    <result column="paynum" property="paynum" jdbcType="VARCHAR" />
+    <result column="paytype" property="paytype" jdbcType="CHAR" />
+    <result column="amount" property="amount" jdbcType="REAL" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="validuid" property="validuid" jdbcType="INTEGER" />
+    <result column="validtime" property="validtime" jdbcType="TIMESTAMP" />
+    <result column="rmk" property="rmk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, bankname, cardnum, paynum, paytype, amount, status, addtime, validuid, validtime, 
+    rmk
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_pay
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cagent_pay
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.CagentPay" >
+    insert into t_cagent_pay (id, cid, bankname, 
+      cardnum, paynum, paytype, 
+      amount, status, addtime, 
+      validuid, validtime, rmk
+      )
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{bankname,jdbcType=VARCHAR}, 
+      #{cardnum,jdbcType=VARCHAR}, #{paynum,jdbcType=VARCHAR}, #{paytype,jdbcType=CHAR}, 
+      #{amount,jdbcType=REAL}, #{status,jdbcType=CHAR}, #{addtime,jdbcType=TIMESTAMP}, 
+      #{validuid,jdbcType=INTEGER}, #{validtime,jdbcType=TIMESTAMP}, #{rmk,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentPay" >
+    insert into t_cagent_pay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="bankname != null" >
+        bankname,
+      </if>
+      <if test="cardnum != null" >
+        cardnum,
+      </if>
+      <if test="paynum != null" >
+        paynum,
+      </if>
+      <if test="paytype != null" >
+        paytype,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="validuid != null" >
+        validuid,
+      </if>
+      <if test="validtime != null" >
+        validtime,
+      </if>
+      <if test="rmk != null" >
+        rmk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="cardnum != null" >
+        #{cardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="paynum != null" >
+        #{paynum,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=CHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=REAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validuid != null" >
+        #{validuid,jdbcType=INTEGER},
+      </if>
+      <if test="validtime != null" >
+        #{validtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentPay" >
+    update t_cagent_pay
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="bankname != null" >
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="cardnum != null" >
+        cardnum = #{cardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="paynum != null" >
+        paynum = #{paynum,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        paytype = #{paytype,jdbcType=CHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=REAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validuid != null" >
+        validuid = #{validuid,jdbcType=INTEGER},
+      </if>
+      <if test="validtime != null" >
+        validtime = #{validtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rmk != null" >
+        rmk = #{rmk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.CagentPay" >
+    update t_cagent_pay
+    set cid = #{cid,jdbcType=INTEGER},
+      bankname = #{bankname,jdbcType=VARCHAR},
+      cardnum = #{cardnum,jdbcType=VARCHAR},
+      paynum = #{paynum,jdbcType=VARCHAR},
+      paytype = #{paytype,jdbcType=CHAR},
+      amount = #{amount,jdbcType=REAL},
+      status = #{status,jdbcType=CHAR},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      validuid = #{validuid,jdbcType=INTEGER},
+      validtime = #{validtime,jdbcType=TIMESTAMP},
+      rmk = #{rmk,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

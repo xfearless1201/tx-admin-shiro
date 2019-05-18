@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.CagentSettlementMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.CagentSettlement" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="settlement_fee" property="settlementFee" jdbcType="DOUBLE" />
+    <result column="line_fee" property="lineFee" jdbcType="REAL" />
+    <result column="other_fee" property="otherFee" jdbcType="DOUBLE" />
+    <result column="total_fee" property="totalFee" jdbcType="DOUBLE" />
+    <result column="valid_fee" property="validFee" jdbcType="DOUBLE" />
+    <result column="arrears_fee" property="arrearsFee" jdbcType="REAL" />
+    <result column="settlement_prepaid" property="settlementPrepaid" jdbcType="DOUBLE" />
+    <result column="line_prepaid" property="linePrepaid" jdbcType="REAL" />
+    <result column="prepaid_money" property="prepaidMoney" jdbcType="DOUBLE" />
+    <result column="payable_cost" property="payableCost" jdbcType="DOUBLE" />
+    <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, addtime, settlement_fee, line_fee, other_fee, total_fee, valid_fee, arrears_fee, 
+    settlement_prepaid, line_prepaid, prepaid_money, payable_cost, starttime, endtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_settlement
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cagent_settlement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.CagentSettlement" >
+    insert into t_cagent_settlement (id, cid, addtime, 
+      settlement_fee, line_fee, other_fee, 
+      total_fee, valid_fee, arrears_fee, 
+      settlement_prepaid, line_prepaid, prepaid_money, 
+      payable_cost, starttime, endtime
+      )
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}, 
+      #{settlementFee,jdbcType=DOUBLE}, #{lineFee,jdbcType=REAL}, #{otherFee,jdbcType=DOUBLE}, 
+      #{totalFee,jdbcType=DOUBLE}, #{validFee,jdbcType=DOUBLE}, #{arrearsFee,jdbcType=REAL}, 
+      #{settlementPrepaid,jdbcType=DOUBLE}, #{linePrepaid,jdbcType=REAL}, #{prepaidMoney,jdbcType=DOUBLE}, 
+      #{payableCost,jdbcType=DOUBLE}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentSettlement" >
+    insert into t_cagent_settlement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="settlementFee != null" >
+        settlement_fee,
+      </if>
+      <if test="lineFee != null" >
+        line_fee,
+      </if>
+      <if test="otherFee != null" >
+        other_fee,
+      </if>
+      <if test="totalFee != null" >
+        total_fee,
+      </if>
+      <if test="validFee != null" >
+        valid_fee,
+      </if>
+      <if test="arrearsFee != null" >
+        arrears_fee,
+      </if>
+      <if test="settlementPrepaid != null" >
+        settlement_prepaid,
+      </if>
+      <if test="linePrepaid != null" >
+        line_prepaid,
+      </if>
+      <if test="prepaidMoney != null" >
+        prepaid_money,
+      </if>
+      <if test="payableCost != null" >
+        payable_cost,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settlementFee != null" >
+        #{settlementFee,jdbcType=DOUBLE},
+      </if>
+      <if test="lineFee != null" >
+        #{lineFee,jdbcType=REAL},
+      </if>
+      <if test="otherFee != null" >
+        #{otherFee,jdbcType=DOUBLE},
+      </if>
+      <if test="totalFee != null" >
+        #{totalFee,jdbcType=DOUBLE},
+      </if>
+      <if test="validFee != null" >
+        #{validFee,jdbcType=DOUBLE},
+      </if>
+      <if test="arrearsFee != null" >
+        #{arrearsFee,jdbcType=REAL},
+      </if>
+      <if test="settlementPrepaid != null" >
+        #{settlementPrepaid,jdbcType=DOUBLE},
+      </if>
+      <if test="linePrepaid != null" >
+        #{linePrepaid,jdbcType=REAL},
+      </if>
+      <if test="prepaidMoney != null" >
+        #{prepaidMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payableCost != null" >
+        #{payableCost,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentSettlement" >
+    update t_cagent_settlement
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settlementFee != null" >
+        settlement_fee = #{settlementFee,jdbcType=DOUBLE},
+      </if>
+      <if test="lineFee != null" >
+        line_fee = #{lineFee,jdbcType=REAL},
+      </if>
+      <if test="otherFee != null" >
+        other_fee = #{otherFee,jdbcType=DOUBLE},
+      </if>
+      <if test="totalFee != null" >
+        total_fee = #{totalFee,jdbcType=DOUBLE},
+      </if>
+      <if test="validFee != null" >
+        valid_fee = #{validFee,jdbcType=DOUBLE},
+      </if>
+      <if test="arrearsFee != null" >
+        arrears_fee = #{arrearsFee,jdbcType=REAL},
+      </if>
+      <if test="settlementPrepaid != null" >
+        settlement_prepaid = #{settlementPrepaid,jdbcType=DOUBLE},
+      </if>
+      <if test="linePrepaid != null" >
+        line_prepaid = #{linePrepaid,jdbcType=REAL},
+      </if>
+      <if test="prepaidMoney != null" >
+        prepaid_money = #{prepaidMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payableCost != null" >
+        payable_cost = #{payableCost,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.CagentSettlement" >
+    update t_cagent_settlement
+    set cid = #{cid,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      settlement_fee = #{settlementFee,jdbcType=DOUBLE},
+      line_fee = #{lineFee,jdbcType=REAL},
+      other_fee = #{otherFee,jdbcType=DOUBLE},
+      total_fee = #{totalFee,jdbcType=DOUBLE},
+      valid_fee = #{validFee,jdbcType=DOUBLE},
+      arrears_fee = #{arrearsFee,jdbcType=REAL},
+      settlement_prepaid = #{settlementPrepaid,jdbcType=DOUBLE},
+      line_prepaid = #{linePrepaid,jdbcType=REAL},
+      prepaid_money = #{prepaidMoney,jdbcType=DOUBLE},
+      payable_cost = #{payableCost,jdbcType=DOUBLE},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

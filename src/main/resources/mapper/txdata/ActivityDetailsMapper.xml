@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.ActivityDetailsMapper">
+    <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.ActivityDetails">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="cid" property="cid" jdbcType="INTEGER"/>
+        <result column="activity_name" property="activityName" jdbcType="VARCHAR"/>
+        <result column="activity_types" property="activityTypes" jdbcType="INTEGER"/>
+        <result column="activity_status" property="activityStatus" jdbcType="INTEGER"/>
+        <result column="user_type" property="userType" jdbcType="INTEGER"/>
+        <result column="required_integral" property="requiredIntegral" jdbcType="INTEGER"/>
+        <result column="participate_theway" property="participateTheway" jdbcType="INTEGER"/>
+        <result column="participate_frequency" property="participateFrequency" jdbcType="INTEGER"/>
+        <result column="frequency_max" property="frequencyMax" jdbcType="INTEGER"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="rmk" property="rmk" jdbcType="VARCHAR"/>
+        <result column="add_time" property="addTime" jdbcType="TIMESTAMP"/>
+        <result column="participate_cycle" property="participateCycle" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, cid, activity_name, activity_types, activity_status, user_type, required_integral, 
+    participate_theway, participate_frequency, frequency_max, start_time, end_time, rmk, 
+    add_time, participate_cycle
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_activity_details
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_activity_details
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.ActivityDetails">
+    insert into t_activity_details (id, cid, activity_name, 
+      activity_types, activity_status, user_type, 
+      required_integral, participate_theway, participate_frequency, 
+      frequency_max, start_time, end_time, 
+      rmk, add_time, participate_cycle
+      )
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{activityName,jdbcType=VARCHAR}, 
+      #{activityTypes,jdbcType=INTEGER}, #{activityStatus,jdbcType=INTEGER}, #{userType,jdbcType=INTEGER}, 
+      #{requiredIntegral,jdbcType=INTEGER}, #{participateTheway,jdbcType=INTEGER}, #{participateFrequency,jdbcType=INTEGER}, 
+      #{frequencyMax,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{rmk,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{participateCycle,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.ActivityDetails">
+        insert into t_activity_details
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cid != null">
+                cid,
+            </if>
+            <if test="activityName != null">
+                activity_name,
+            </if>
+            <if test="activityTypes != null">
+                activity_types,
+            </if>
+            <if test="activityStatus != null">
+                activity_status,
+            </if>
+            <if test="userType != null">
+                user_type,
+            </if>
+            <if test="requiredIntegral != null">
+                required_integral,
+            </if>
+            <if test="participateTheway != null">
+                participate_theway,
+            </if>
+            <if test="participateFrequency != null">
+                participate_frequency,
+            </if>
+            <if test="frequencyMax != null">
+                frequency_max,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="rmk != null">
+                rmk,
+            </if>
+            <if test="addTime != null">
+                add_time,
+            </if>
+            <if test="participateCycle != null">
+                participate_cycle,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="cid != null">
+                #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="activityName != null">
+                #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="activityTypes != null">
+                #{activityTypes,jdbcType=INTEGER},
+            </if>
+            <if test="activityStatus != null">
+                #{activityStatus,jdbcType=INTEGER},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="requiredIntegral != null">
+                #{requiredIntegral,jdbcType=INTEGER},
+            </if>
+            <if test="participateTheway != null">
+                #{participateTheway,jdbcType=INTEGER},
+            </if>
+            <if test="participateFrequency != null">
+                #{participateFrequency,jdbcType=INTEGER},
+            </if>
+            <if test="frequencyMax != null">
+                #{frequencyMax,jdbcType=INTEGER},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rmk != null">
+                #{rmk,jdbcType=VARCHAR},
+            </if>
+            <if test="addTime != null">
+                #{addTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="participateCycle != null">
+                #{participateCycle,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.ActivityDetails">
+        update t_activity_details
+        <set>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="activityName != null">
+                activity_name = #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="activityTypes != null">
+                activity_types = #{activityTypes,jdbcType=INTEGER},
+            </if>
+            <if test="activityStatus != null">
+                activity_status = #{activityStatus,jdbcType=INTEGER},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="requiredIntegral != null">
+                required_integral = #{requiredIntegral,jdbcType=INTEGER},
+            </if>
+            <if test="participateTheway != null">
+                participate_theway = #{participateTheway,jdbcType=INTEGER},
+            </if>
+            <if test="participateFrequency != null">
+                participate_frequency = #{participateFrequency,jdbcType=INTEGER},
+            </if>
+            <if test="frequencyMax != null">
+                frequency_max = #{frequencyMax,jdbcType=INTEGER},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rmk != null">
+                rmk = #{rmk,jdbcType=VARCHAR},
+            </if>
+            <if test="addTime != null">
+                add_time = #{addTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="participateCycle != null">
+                participate_cycle = #{participateCycle,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.ActivityDetails">
+    update t_activity_details
+    set cid = #{cid,jdbcType=INTEGER},
+      activity_name = #{activityName,jdbcType=VARCHAR},
+      activity_types = #{activityTypes,jdbcType=INTEGER},
+      activity_status = #{activityStatus,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=INTEGER},
+      required_integral = #{requiredIntegral,jdbcType=INTEGER},
+      participate_theway = #{participateTheway,jdbcType=INTEGER},
+      participate_frequency = #{participateFrequency,jdbcType=INTEGER},
+      frequency_max = #{frequencyMax,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      rmk = #{rmk,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      participate_cycle = #{participateCycle,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <!--<select id="selectAllByPage" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+      select
+      <include refid="Base_Column_List" />
+      from t_activity_details
+      where 1 = 1
+      <if test="params.containsKey('username')">
+        and uid = select uid from t_user where username = #{params.username}
+      </if>
+      <if test="params.containsKey('cagent')">
+        and cid = select id from t_cagent where cagent = #{params.cagent}
+      </if>
+      <if test="params.containsKey('startTime')">
+        and addtime > #{params.startTime}
+      </if>
+      <if test="params.containsKey('endTime')">
+        and addtime &lt; #{params.endTime}
+      </if>
+      order by addtime desc
+      limit ${(page-1)*limit},#{limit}
+    </select>-->
+
+    <select id="selectAllByPage" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        t.id,
+        t.cid,
+        c.`name`,
+        t.activity_name as activityName,
+        t.activity_types as activityTypes,
+        t.activity_status as activityStatus,
+        t.user_type as userType,
+        t.participate_theway as participateTheway,
+        t.required_integral as requiredIntegral,
+        t.participate_frequency as participateFrequency,
+        t.frequency_max as frequencyMax,
+        t.start_time as startTime,
+        t.end_time as endTime,
+        t.rmk
+        FROM t_activity_details t LEFT JOIN t_cagent c ON t.cid = c.id
+        <where>
+            <if test="params.containsKey('cid')">
+                and cid = #{params.cid}
+            </if>
+            <if test=" params.containsKey('activityName')">
+                and activity_name = #{params.activityName}
+            </if>
+            <if test="params.containsKey('activityStatus')">
+                and activity_status = #{params.activityStatus}
+            </if>
+        </where>
+        ORDER BY start_time DESC
+        limit ${(page-1)*limit},#{limit}
+    </select>
+
+    <select id="selectTotalCount" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        count(1)
+        from t_activity_details
+        where 1=1
+        <if test="params.containsKey('cid')">
+            and cid = #{params.cid}
+        </if>
+        <if test=" params.containsKey('activityName')">
+            and activity_name = #{params.activityName}
+        </if>
+        <if test="params.containsKey('activityStatus')">
+            and activity_status = #{params.activityStatus}
+        </if>
+    </select>
+</mapper>

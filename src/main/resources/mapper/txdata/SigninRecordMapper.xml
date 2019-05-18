@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.SigninRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.SigninRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="continuous_max" property="continuousMax" jdbcType="INTEGER" />
+    <result column="checkin_days" property="checkinDays" jdbcType="INTEGER" />
+    <result column="checkin_on_date" property="checkinOnDate" jdbcType="TIMESTAMP" />
+    <result column="checkin_atlast_date" property="checkinAtlastDate" jdbcType="TIMESTAMP" />
+    <result column="whether" property="whether" jdbcType="INTEGER" />
+    <result column="checkin_integral" property="checkinIntegral" jdbcType="INTEGER" />
+    <result column="checkin_grand_total" property="checkinGrandTotal" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, username, continuous_max, checkin_days, checkin_on_date, checkin_atlast_date, 
+    whether, checkin_integral, checkin_grand_total
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_signin_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_signin_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.SigninRecord" >
+    insert into t_signin_record (id, cid, username, 
+      continuous_max, checkin_days, checkin_on_date, 
+      checkin_atlast_date, whether, checkin_integral, 
+      checkin_grand_total)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{continuousMax,jdbcType=INTEGER}, #{checkinDays,jdbcType=INTEGER}, #{checkinOnDate,jdbcType=TIMESTAMP}, 
+      #{checkinAtlastDate,jdbcType=TIMESTAMP}, #{whether,jdbcType=INTEGER}, #{checkinIntegral,jdbcType=INTEGER}, 
+      #{checkinGrandTotal,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.SigninRecord" >
+    insert into t_signin_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="continuousMax != null" >
+        continuous_max,
+      </if>
+      <if test="checkinDays != null" >
+        checkin_days,
+      </if>
+      <if test="checkinOnDate != null" >
+        checkin_on_date,
+      </if>
+      <if test="checkinAtlastDate != null" >
+        checkin_atlast_date,
+      </if>
+      <if test="whether != null" >
+        whether,
+      </if>
+      <if test="checkinIntegral != null" >
+        checkin_integral,
+      </if>
+      <if test="checkinGrandTotal != null" >
+        checkin_grand_total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="continuousMax != null" >
+        #{continuousMax,jdbcType=INTEGER},
+      </if>
+      <if test="checkinDays != null" >
+        #{checkinDays,jdbcType=INTEGER},
+      </if>
+      <if test="checkinOnDate != null" >
+        #{checkinOnDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkinAtlastDate != null" >
+        #{checkinAtlastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="whether != null" >
+        #{whether,jdbcType=INTEGER},
+      </if>
+      <if test="checkinIntegral != null" >
+        #{checkinIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="checkinGrandTotal != null" >
+        #{checkinGrandTotal,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.SigninRecord" >
+    update t_signin_record
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="continuousMax != null" >
+        continuous_max = #{continuousMax,jdbcType=INTEGER},
+      </if>
+      <if test="checkinDays != null" >
+        checkin_days = #{checkinDays,jdbcType=INTEGER},
+      </if>
+      <if test="checkinOnDate != null" >
+        checkin_on_date = #{checkinOnDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkinAtlastDate != null" >
+        checkin_atlast_date = #{checkinAtlastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="whether != null" >
+        whether = #{whether,jdbcType=INTEGER},
+      </if>
+      <if test="checkinIntegral != null" >
+        checkin_integral = #{checkinIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="checkinGrandTotal != null" >
+        checkin_grand_total = #{checkinGrandTotal,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.SigninRecord" >
+    update t_signin_record
+    set cid = #{cid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      continuous_max = #{continuousMax,jdbcType=INTEGER},
+      checkin_days = #{checkinDays,jdbcType=INTEGER},
+      checkin_on_date = #{checkinOnDate,jdbcType=TIMESTAMP},
+      checkin_atlast_date = #{checkinAtlastDate,jdbcType=TIMESTAMP},
+      whether = #{whether,jdbcType=INTEGER},
+      checkin_integral = #{checkinIntegral,jdbcType=INTEGER},
+      checkin_grand_total = #{checkinGrandTotal,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllRecordByPage" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+    select
+    <include refid="Base_Column_List" />
+    from t_signin_record
+    where 1 = 1
+    <if test="params.containsKey('username')">
+      and username = #{params.username}
+    </if>
+    <if test="params.containsKey('cagent')">
+      and cid = select id from t_cagent where cagent = #{params.cagent}
+    </if>
+    limit ${(page-1)*limit},#{limit}
+  </select>
+  <select id="selectTotalCount" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager" >
+    select
+    count(1)
+    from t_cagent
+    where 1=1
+    <if test="params.containsKey('username')">
+      and username = #{params.username}
+    </if>
+    <if test="params.containsKey('cagent')">
+      and cid = select id from t_cagent where cagent = #{params.cagent}
+    </if>
+    <if test="params.containsKey('startTime')">
+      and addtime > #{params.startTime}
+    </if>
+    <if test="params.containsKey('endTime')">
+      and addtime &lt; #{params.endTime}
+    </if>
+  </select>
+</mapper>

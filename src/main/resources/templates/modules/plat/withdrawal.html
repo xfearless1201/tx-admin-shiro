@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>存取款配置</title>
+<#include "/header.html">
+</head>
+<body>
+<div id="txapp" v-cloak>
+	<div v-show="showList">
+		<div class="grid-btn">
+			<#if shiro.hasPermission("plat:withdrawal:update")>
+			<a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+		</div>
+	    <table id="jqGrid"></table>
+	    <div id="jqGridPager"></div>
+    </div>
+
+	<div v-show="!showList" class="panel panel-default">
+		<div class="panel-heading">{{title}}</div>
+		<form class="form-horizontal">
+			<div class="form-group">
+					<div class="col-sm-2 control-label">公司入款优惠比例（%）</div>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" v-model="withdrawal.companyPayProp" placeholder="公司入款优惠比例（%）" />
+					</div>
+			</div>
+			<div class="form-group">
+					<div class="col-sm-2 control-label">赠送彩金比例（%）</div>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" v-model="withdrawal.giftBonusProp" placeholder="赠送彩金比例（%）" />
+					</div>
+			</div>
+			<div class="form-group">
+					<div class="col-sm-2 control-label">赠送彩金上限</div>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" v-model="withdrawal.giftBonusLimit" placeholder="赠送彩金上限" />
+					</div>
+			</div>
+			<div class="form-group">
+					<div class="col-sm-2 control-label">打码量</div>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" v-model="withdrawal.dama" placeholder="打码量" />
+					</div>
+			</div>
+			<div class="form-group">
+					<div class="col-sm-2 control-label">免费取款次数</div>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" v-model="withdrawal.freeWithdrawTime" placeholder="免费取款次数" />
+					</div>
+			</div>
+			<div class="form-group">
+					<div class="col-sm-2 control-label">取款手续费</div>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" v-model="withdrawal.withdrawFee" placeholder="取款手续费" />
+					</div>
+			</div>
+			<div class="form-group">
+					<div class="col-sm-2 control-label">取款行政费</div>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" v-model="withdrawal.withdrawManageFee" placeholder="取款行政费" />
+					</div>
+			</div>
+			<div class="form-group">
+					<div class="col-sm-2 control-label">强制提款手续费</div>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" v-model="withdrawal.compulsoryWithdrawalFee" placeholder="强制提款手续费" />
+					</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label"></div>
+				<input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+				&nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+			</div>
+		</form>
+	</div>
+</div>
+<script src="${request.contextPath}/statics/js/modules/plat/withdrawal.js?_${.now?long}"></script>
+</body>
+</html>

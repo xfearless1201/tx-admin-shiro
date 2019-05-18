@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.CagentGamePercentageMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.CagentGamePercentage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="game_platform" property="gamePlatform" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="percentage" property="percentage" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cagent, game_platform, status, percentage
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_game_percentage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cagent_game_percentage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.CagentGamePercentage" >
+    insert into t_cagent_game_percentage (id, cagent, game_platform, 
+      status, percentage)
+    values (#{id,jdbcType=INTEGER}, #{cagent,jdbcType=VARCHAR}, #{gamePlatform,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{percentage,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentGamePercentage" >
+    insert into t_cagent_game_percentage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="gamePlatform != null" >
+        game_platform,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="percentage != null" >
+        percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="gamePlatform != null" >
+        #{gamePlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="percentage != null" >
+        #{percentage,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentGamePercentage" >
+    update t_cagent_game_percentage
+    <set >
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="gamePlatform != null" >
+        game_platform = #{gamePlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="percentage != null" >
+        percentage = #{percentage,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.CagentGamePercentage" >
+    update t_cagent_game_percentage
+    set cagent = #{cagent,jdbcType=VARCHAR},
+      game_platform = #{gamePlatform,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      percentage = #{percentage,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findAllByPage" resultMap="BaseResultMap"  parameterType="com.cn.tianxia.admin.common.Pager" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_game_percentage
+    <where>
+	    <if test="params.containsKey('cagent')">
+	    	 cagent = #{params.cagent}
+	    </if>
+	    <if test="params.containsKey('gamePlatform')">
+	    	 game_platform = #{params.gamePlatform}
+	    </if>
+    </where>
+    ORDER BY id DESC
+    <if test="page != null and limit != null">
+	    LIMIT ${(page-1)*limit},#{limit}
+    </if>
+  </select>
+  <select id="getCagentGameTotalCounts" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager" >
+    select 
+    	count(1)
+    from t_cagent_game_percentage
+    <where>
+	    <if test="params.containsKey('cagent')">
+	    	 cagent = #{params.cagent}
+	    </if>
+	    <if test="params.containsKey('gamePlatform')">
+	    	 game_platform = #{params.gamePlatform}
+	    </if>
+    </where>
+  </select>
+</mapper>

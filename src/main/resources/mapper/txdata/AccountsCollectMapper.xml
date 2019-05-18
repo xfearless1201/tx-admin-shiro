@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.AccountsCollectMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.AccountsCollect" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="income_amount" property="incomeAmount" jdbcType="REAL" />
+    <result column="expend_amount" property="expendAmount" jdbcType="REAL" />
+    <result column="manager_amount" property="managerAmount" jdbcType="REAL" />
+    <result column="validBet_amount" property="validbetAmount" jdbcType="REAL" />
+    <result column="withhold_poundage" property="withholdPoundage" jdbcType="REAL" />
+    <result column="commission" property="commission" jdbcType="REAL" />
+    <result column="deposit_poundage" property="depositPoundage" jdbcType="REAL" />
+    <result column="largess" property="largess" jdbcType="REAL" />
+    <result column="hand_deposit" property="handDeposit" jdbcType="REAL" />
+    <result column="hand_withhold" property="handWithhold" jdbcType="REAL" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, income_amount, expend_amount, manager_amount, validBet_amount, withhold_poundage, 
+    commission, deposit_poundage, largess, hand_deposit, hand_withhold, add_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_accounts_collect
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_accounts_collect
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.AccountsCollect" >
+    insert into t_accounts_collect (id, cid, income_amount, 
+      expend_amount, manager_amount, validBet_amount, 
+      withhold_poundage, commission, deposit_poundage, 
+      largess, hand_deposit, hand_withhold, 
+      add_time)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{incomeAmount,jdbcType=REAL}, 
+      #{expendAmount,jdbcType=REAL}, #{managerAmount,jdbcType=REAL}, #{validbetAmount,jdbcType=REAL}, 
+      #{withholdPoundage,jdbcType=REAL}, #{commission,jdbcType=REAL}, #{depositPoundage,jdbcType=REAL}, 
+      #{largess,jdbcType=REAL}, #{handDeposit,jdbcType=REAL}, #{handWithhold,jdbcType=REAL}, 
+      #{addTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.AccountsCollect" >
+    insert into t_accounts_collect
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="incomeAmount != null" >
+        income_amount,
+      </if>
+      <if test="expendAmount != null" >
+        expend_amount,
+      </if>
+      <if test="managerAmount != null" >
+        manager_amount,
+      </if>
+      <if test="validbetAmount != null" >
+        validBet_amount,
+      </if>
+      <if test="withholdPoundage != null" >
+        withhold_poundage,
+      </if>
+      <if test="commission != null" >
+        commission,
+      </if>
+      <if test="depositPoundage != null" >
+        deposit_poundage,
+      </if>
+      <if test="largess != null" >
+        largess,
+      </if>
+      <if test="handDeposit != null" >
+        hand_deposit,
+      </if>
+      <if test="handWithhold != null" >
+        hand_withhold,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="incomeAmount != null" >
+        #{incomeAmount,jdbcType=REAL},
+      </if>
+      <if test="expendAmount != null" >
+        #{expendAmount,jdbcType=REAL},
+      </if>
+      <if test="managerAmount != null" >
+        #{managerAmount,jdbcType=REAL},
+      </if>
+      <if test="validbetAmount != null" >
+        #{validbetAmount,jdbcType=REAL},
+      </if>
+      <if test="withholdPoundage != null" >
+        #{withholdPoundage,jdbcType=REAL},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=REAL},
+      </if>
+      <if test="depositPoundage != null" >
+        #{depositPoundage,jdbcType=REAL},
+      </if>
+      <if test="largess != null" >
+        #{largess,jdbcType=REAL},
+      </if>
+      <if test="handDeposit != null" >
+        #{handDeposit,jdbcType=REAL},
+      </if>
+      <if test="handWithhold != null" >
+        #{handWithhold,jdbcType=REAL},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.AccountsCollect" >
+    update t_accounts_collect
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="incomeAmount != null" >
+        income_amount = #{incomeAmount,jdbcType=REAL},
+      </if>
+      <if test="expendAmount != null" >
+        expend_amount = #{expendAmount,jdbcType=REAL},
+      </if>
+      <if test="managerAmount != null" >
+        manager_amount = #{managerAmount,jdbcType=REAL},
+      </if>
+      <if test="validbetAmount != null" >
+        validBet_amount = #{validbetAmount,jdbcType=REAL},
+      </if>
+      <if test="withholdPoundage != null" >
+        withhold_poundage = #{withholdPoundage,jdbcType=REAL},
+      </if>
+      <if test="commission != null" >
+        commission = #{commission,jdbcType=REAL},
+      </if>
+      <if test="depositPoundage != null" >
+        deposit_poundage = #{depositPoundage,jdbcType=REAL},
+      </if>
+      <if test="largess != null" >
+        largess = #{largess,jdbcType=REAL},
+      </if>
+      <if test="handDeposit != null" >
+        hand_deposit = #{handDeposit,jdbcType=REAL},
+      </if>
+      <if test="handWithhold != null" >
+        hand_withhold = #{handWithhold,jdbcType=REAL},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.AccountsCollect" >
+    update t_accounts_collect
+    set cid = #{cid,jdbcType=INTEGER},
+      income_amount = #{incomeAmount,jdbcType=REAL},
+      expend_amount = #{expendAmount,jdbcType=REAL},
+      manager_amount = #{managerAmount,jdbcType=REAL},
+      validBet_amount = #{validbetAmount,jdbcType=REAL},
+      withhold_poundage = #{withholdPoundage,jdbcType=REAL},
+      commission = #{commission,jdbcType=REAL},
+      deposit_poundage = #{depositPoundage,jdbcType=REAL},
+      largess = #{largess,jdbcType=REAL},
+      hand_deposit = #{handDeposit,jdbcType=REAL},
+      hand_withhold = #{handWithhold,jdbcType=REAL},
+      add_time = #{addTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

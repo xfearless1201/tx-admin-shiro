@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.PrizeLevelMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.PrizeLevel" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="prize_type" property="prizeType" jdbcType="INTEGER" />
+    <result column="expend_integral" property="expendIntegral" jdbcType="INTEGER" />
+    <result column="rmk" property="rmk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, activity_id, prize_type, expend_integral, rmk
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_prize_level
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_prize_level
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.PrizeLevel" >
+    insert into t_prize_level (id, cid, activity_id, 
+      prize_type, expend_integral, rmk
+      )
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, 
+      #{prizeType,jdbcType=INTEGER}, #{expendIntegral,jdbcType=INTEGER}, #{rmk,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.PrizeLevel" >
+    insert into t_prize_level
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="prizeType != null" >
+        prize_type,
+      </if>
+      <if test="expendIntegral != null" >
+        expend_integral,
+      </if>
+      <if test="rmk != null" >
+        rmk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="prizeType != null" >
+        #{prizeType,jdbcType=INTEGER},
+      </if>
+      <if test="expendIntegral != null" >
+        #{expendIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.PrizeLevel" >
+    update t_prize_level
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="prizeType != null" >
+        prize_type = #{prizeType,jdbcType=INTEGER},
+      </if>
+      <if test="expendIntegral != null" >
+        expend_integral = #{expendIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="rmk != null" >
+        rmk = #{rmk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.PrizeLevel" >
+    update t_prize_level
+    set cid = #{cid,jdbcType=INTEGER},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      prize_type = #{prizeType,jdbcType=INTEGER},
+      expend_integral = #{expendIntegral,jdbcType=INTEGER},
+      rmk = #{rmk,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.WebcomOssMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.WebcomOss" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="domain" property="domain" jdbcType="VARCHAR" />
+    <result column="src" property="src" jdbcType="VARCHAR" />
+    <result column="accesskey" property="accesskey" jdbcType="VARCHAR" />
+    <result column="secretkey" property="secretkey" jdbcType="VARCHAR" />
+    <result column="bucketname" property="bucketname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, domain, src, accesskey, secretkey, bucketname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_webcom_oss
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_webcom_oss
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.WebcomOss" >
+    insert into t_webcom_oss (id, type, domain, 
+      src, accesskey, secretkey, 
+      bucketname)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR}, 
+      #{src,jdbcType=VARCHAR}, #{accesskey,jdbcType=VARCHAR}, #{secretkey,jdbcType=VARCHAR}, 
+      #{bucketname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.WebcomOss" >
+    insert into t_webcom_oss
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="domain != null" >
+        domain,
+      </if>
+      <if test="src != null" >
+        src,
+      </if>
+      <if test="accesskey != null" >
+        accesskey,
+      </if>
+      <if test="secretkey != null" >
+        secretkey,
+      </if>
+      <if test="bucketname != null" >
+        bucketname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null" >
+        #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="src != null" >
+        #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="accesskey != null" >
+        #{accesskey,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null" >
+        #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="bucketname != null" >
+        #{bucketname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.WebcomOss" >
+    update t_webcom_oss
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null" >
+        domain = #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="src != null" >
+        src = #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="accesskey != null" >
+        accesskey = #{accesskey,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null" >
+        secretkey = #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="bucketname != null" >
+        bucketname = #{bucketname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.WebcomOss" >
+    update t_webcom_oss
+    set type = #{type,jdbcType=VARCHAR},
+      domain = #{domain,jdbcType=VARCHAR},
+      src = #{src,jdbcType=VARCHAR},
+      accesskey = #{accesskey,jdbcType=VARCHAR},
+      secretkey = #{secretkey,jdbcType=VARCHAR},
+      bucketname = #{bucketname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

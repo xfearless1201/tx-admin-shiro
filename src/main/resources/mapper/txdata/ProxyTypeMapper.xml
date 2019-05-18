@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.ProxyTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.ProxyType" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="rmk" property="rmk" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="ty_cg" property="tyCg" jdbcType="REAL" />
+    <result column="ty_ag" property="tyAg" jdbcType="REAL" />
+    <result column="ty_shenbo" property="tyShenbo" jdbcType="REAL" />
+    <result column="ty_ab" property="tyAb" jdbcType="REAL" />
+    <result column="ty_ds" property="tyDs" jdbcType="REAL" />
+    <result column="ty_og" property="tyOg" jdbcType="REAL" />
+    <result column="ty_bbin" property="tyBbin" jdbcType="REAL" />
+    <result column="ty_mg" property="tyMg" jdbcType="REAL" />
+    <result column="ty_pt" property="tyPt" jdbcType="REAL" />
+    <result column="ty_haba" property="tyHaba" jdbcType="REAL" />
+    <result column="ty_ig" property="tyIg" jdbcType="REAL" />
+    <result column="ty_hg" property="tyHg" jdbcType="REAL" />
+    <result column="ty_ggby" property="tyGgby" jdbcType="REAL" />
+    <result column="ts_cg" property="tsCg" jdbcType="REAL" />
+    <result column="ts_ag" property="tsAg" jdbcType="REAL" />
+    <result column="ts_shenbo" property="tsShenbo" jdbcType="REAL" />
+    <result column="ts_ab" property="tsAb" jdbcType="REAL" />
+    <result column="ts_ds" property="tsDs" jdbcType="REAL" />
+    <result column="ts_og" property="tsOg" jdbcType="REAL" />
+    <result column="ts_bbin" property="tsBbin" jdbcType="REAL" />
+    <result column="ts_mg" property="tsMg" jdbcType="REAL" />
+    <result column="ts_pt" property="tsPt" jdbcType="REAL" />
+    <result column="ts_haba" property="tsHaba" jdbcType="REAL" />
+    <result column="ts_ig" property="tsIg" jdbcType="REAL" />
+    <result column="ts_hg" property="tsHg" jdbcType="REAL" />
+    <result column="ts_ggby" property="tsGgby" jdbcType="REAL" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="is_default" property="isDefault" jdbcType="CHAR" />
+    <result column="ts_bgvideo" property="tsBgvideo" jdbcType="REAL" />
+    <result column="ts_bglottery" property="tsBglottery" jdbcType="REAL" />
+    <result column="ty_bgvideo" property="tyBgvideo" jdbcType="REAL" />
+    <result column="ty_bglottery" property="tyBglottery" jdbcType="REAL" />
+    <result column="ty_ighk" property="tyIghk" jdbcType="REAL" />
+    <result column="ts_ighk" property="tsIghk" jdbcType="REAL" />
+    <result column="ty_vr" property="tyVr" jdbcType="REAL" />
+    <result column="ts_vr" property="tsVr" jdbcType="REAL" />
+    <result column="ty_jf" property="tyJf" jdbcType="REAL" />
+    <result column="ts_jf" property="tsJf" jdbcType="REAL" />
+    <result column="ty_jfcp" property="tyJfcp" jdbcType="REAL" />
+    <result column="ts_jfcp" property="tsJfcp" jdbcType="REAL" />
+    <result column="ty_yorplay" property="tyYorplay" jdbcType="REAL" />
+    <result column="ts_yorplay" property="tsYorplay" jdbcType="REAL" />
+    <result column="ty_kyqp" property="tyKyqp" jdbcType="REAL" />
+    <result column="ts_kyqp" property="tsKyqp" jdbcType="REAL" />
+    <result column="ty_spta" property="tySpta" jdbcType="REAL" />
+    <result column="ts_spta" property="tsSpta" jdbcType="REAL" />
+    <result column="ty_vgqp" property="tyVgqp" jdbcType="REAL" />
+    <result column="ts_vgqp" property="tsVgqp" jdbcType="REAL" />
+    <result column="ty_gycp" property="tyGycp" jdbcType="REAL" />
+    <result column="ts_gycp" property="tsGycp" jdbcType="REAL" />
+    <result column="ts_ps" property="tsPs" jdbcType="REAL" />
+    <result column="ty_ps" property="tyPs" jdbcType="REAL" />
+    <result column="ts_nb" property="tsNb" jdbcType="REAL" />
+    <result column="ty_nb" property="tyNb" jdbcType="REAL" />
+    <result column="ts_lyqp" property="tsLyqp" jdbcType="REAL" />
+    <result column="ty_lyqp" property="tyLyqp" jdbcType="REAL" />
+    <result column="ts_jdb" property="tsJdb" jdbcType="REAL" />
+    <result column="ty_jdb" property="tyJdb" jdbcType="REAL" />
+    <result column="ts_sw" property="tsSw" jdbcType="REAL" />
+    <result column="ty_sw" property="tySw" jdbcType="REAL" />
+    <result column="ts_ibc" property="tsIbc" jdbcType="REAL" />
+    <result column="ty_ibc" property="tyIbc" jdbcType="REAL" />
+    <result column="ts_esw" property="tsEsw" jdbcType="REAL" />
+    <result column="ty_esw" property="tyEsw" jdbcType="REAL" />
+    <result column="ts_cqj" property="tsCqj" jdbcType="REAL" />
+    <result column="ty_cqj" property="tyCqj" jdbcType="REAL" />
+    <result column="ts_imty" property="tsImty" jdbcType="REAL" />
+    <result column="ty_imty" property="tyImty" jdbcType="REAL" />
+    <result column="ts_imgame" property="tsImgame" jdbcType="REAL" />
+    <result column="ty_imgame" property="tyImgame" jdbcType="REAL" />
+    <result column="ts_nw" property="tsNw" jdbcType="REAL" />
+    <result column="ty_nw" property="tyNw" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, level, rmk, updatetime, status, ty_cg, ty_ag, ty_shenbo, ty_ab, ty_ds, ty_og, 
+    ty_bbin, ty_mg, ty_pt, ty_haba, ty_ig, ty_hg, ty_ggby, ts_cg, ts_ag, ts_shenbo, ts_ab, 
+    ts_ds, ts_og, ts_bbin, ts_mg, ts_pt, ts_haba, ts_ig, ts_hg, ts_ggby, cid, is_default, 
+    ts_bgvideo, ts_bglottery, ty_bgvideo, ty_bglottery, ty_ighk, ts_ighk, ty_vr, ts_vr, 
+    ty_jf, ts_jf, ty_jfcp, ts_jfcp, ty_yorplay, ts_yorplay, ty_kyqp, ts_kyqp, ty_spta, 
+    ts_spta, ty_vgqp, ts_vgqp, ty_gycp, ts_gycp, ts_ps, ty_ps, ts_nb, ty_nb, ts_lyqp, 
+    ty_lyqp, ts_jdb, ty_jdb, ts_sw, ty_sw, ts_ibc, ty_ibc, ts_esw, ty_esw, ts_cqj, ty_cqj, 
+    ts_imty, ty_imty, ts_imgame, ty_imgame, ts_nw, ty_nw
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_proxy_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_proxy_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.ProxyType" >
+    insert into t_proxy_type (id, level, rmk, 
+      updatetime, status, ty_cg, 
+      ty_ag, ty_shenbo, ty_ab, ty_ds, 
+      ty_og, ty_bbin, ty_mg, ty_pt, 
+      ty_haba, ty_ig, ty_hg, ty_ggby, 
+      ts_cg, ts_ag, ts_shenbo, ts_ab, 
+      ts_ds, ts_og, ts_bbin, ts_mg, 
+      ts_pt, ts_haba, ts_ig, ts_hg, 
+      ts_ggby, cid, is_default, ts_bgvideo, 
+      ts_bglottery, ty_bgvideo, ty_bglottery, 
+      ty_ighk, ts_ighk, ty_vr, ts_vr, 
+      ty_jf, ts_jf, ty_jfcp, ts_jfcp, 
+      ty_yorplay, ts_yorplay, ty_kyqp, 
+      ts_kyqp, ty_spta, ts_spta, ty_vgqp, 
+      ts_vgqp, ty_gycp, ts_gycp, ts_ps, 
+      ty_ps, ts_nb, ty_nb, ts_lyqp, 
+      ty_lyqp, ts_jdb, ty_jdb, ts_sw, 
+      ty_sw, ts_ibc, ty_ibc, ts_esw, 
+      ty_esw, ts_cqj, ty_cqj, ts_imty, 
+      ty_imty, ts_imgame, ty_imgame, 
+      ts_nw, ty_nw)
+    values (#{id,jdbcType=INTEGER}, #{level,jdbcType=VARCHAR}, #{rmk,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, #{tyCg,jdbcType=REAL}, 
+      #{tyAg,jdbcType=REAL}, #{tyShenbo,jdbcType=REAL}, #{tyAb,jdbcType=REAL}, #{tyDs,jdbcType=REAL}, 
+      #{tyOg,jdbcType=REAL}, #{tyBbin,jdbcType=REAL}, #{tyMg,jdbcType=REAL}, #{tyPt,jdbcType=REAL}, 
+      #{tyHaba,jdbcType=REAL}, #{tyIg,jdbcType=REAL}, #{tyHg,jdbcType=REAL}, #{tyGgby,jdbcType=REAL}, 
+      #{tsCg,jdbcType=REAL}, #{tsAg,jdbcType=REAL}, #{tsShenbo,jdbcType=REAL}, #{tsAb,jdbcType=REAL}, 
+      #{tsDs,jdbcType=REAL}, #{tsOg,jdbcType=REAL}, #{tsBbin,jdbcType=REAL}, #{tsMg,jdbcType=REAL}, 
+      #{tsPt,jdbcType=REAL}, #{tsHaba,jdbcType=REAL}, #{tsIg,jdbcType=REAL}, #{tsHg,jdbcType=REAL}, 
+      #{tsGgby,jdbcType=REAL}, #{cid,jdbcType=INTEGER}, #{isDefault,jdbcType=CHAR}, #{tsBgvideo,jdbcType=REAL}, 
+      #{tsBglottery,jdbcType=REAL}, #{tyBgvideo,jdbcType=REAL}, #{tyBglottery,jdbcType=REAL}, 
+      #{tyIghk,jdbcType=REAL}, #{tsIghk,jdbcType=REAL}, #{tyVr,jdbcType=REAL}, #{tsVr,jdbcType=REAL}, 
+      #{tyJf,jdbcType=REAL}, #{tsJf,jdbcType=REAL}, #{tyJfcp,jdbcType=REAL}, #{tsJfcp,jdbcType=REAL}, 
+      #{tyYorplay,jdbcType=REAL}, #{tsYorplay,jdbcType=REAL}, #{tyKyqp,jdbcType=REAL}, 
+      #{tsKyqp,jdbcType=REAL}, #{tySpta,jdbcType=REAL}, #{tsSpta,jdbcType=REAL}, #{tyVgqp,jdbcType=REAL}, 
+      #{tsVgqp,jdbcType=REAL}, #{tyGycp,jdbcType=REAL}, #{tsGycp,jdbcType=REAL}, #{tsPs,jdbcType=REAL}, 
+      #{tyPs,jdbcType=REAL}, #{tsNb,jdbcType=REAL}, #{tyNb,jdbcType=REAL}, #{tsLyqp,jdbcType=REAL}, 
+      #{tyLyqp,jdbcType=REAL}, #{tsJdb,jdbcType=REAL}, #{tyJdb,jdbcType=REAL}, #{tsSw,jdbcType=REAL}, 
+      #{tySw,jdbcType=REAL}, #{tsIbc,jdbcType=REAL}, #{tyIbc,jdbcType=REAL}, #{tsEsw,jdbcType=REAL}, 
+      #{tyEsw,jdbcType=REAL}, #{tsCqj,jdbcType=REAL}, #{tyCqj,jdbcType=REAL}, #{tsImty,jdbcType=REAL}, 
+      #{tyImty,jdbcType=REAL}, #{tsImgame,jdbcType=REAL}, #{tyImgame,jdbcType=REAL}, 
+      #{tsNw,jdbcType=REAL}, #{tyNw,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.ProxyType" >
+    insert into t_proxy_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="rmk != null" >
+        rmk,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="tyCg != null" >
+        ty_cg,
+      </if>
+      <if test="tyAg != null" >
+        ty_ag,
+      </if>
+      <if test="tyShenbo != null" >
+        ty_shenbo,
+      </if>
+      <if test="tyAb != null" >
+        ty_ab,
+      </if>
+      <if test="tyDs != null" >
+        ty_ds,
+      </if>
+      <if test="tyOg != null" >
+        ty_og,
+      </if>
+      <if test="tyBbin != null" >
+        ty_bbin,
+      </if>
+      <if test="tyMg != null" >
+        ty_mg,
+      </if>
+      <if test="tyPt != null" >
+        ty_pt,
+      </if>
+      <if test="tyHaba != null" >
+        ty_haba,
+      </if>
+      <if test="tyIg != null" >
+        ty_ig,
+      </if>
+      <if test="tyHg != null" >
+        ty_hg,
+      </if>
+      <if test="tyGgby != null" >
+        ty_ggby,
+      </if>
+      <if test="tsCg != null" >
+        ts_cg,
+      </if>
+      <if test="tsAg != null" >
+        ts_ag,
+      </if>
+      <if test="tsShenbo != null" >
+        ts_shenbo,
+      </if>
+      <if test="tsAb != null" >
+        ts_ab,
+      </if>
+      <if test="tsDs != null" >
+        ts_ds,
+      </if>
+      <if test="tsOg != null" >
+        ts_og,
+      </if>
+      <if test="tsBbin != null" >
+        ts_bbin,
+      </if>
+      <if test="tsMg != null" >
+        ts_mg,
+      </if>
+      <if test="tsPt != null" >
+        ts_pt,
+      </if>
+      <if test="tsHaba != null" >
+        ts_haba,
+      </if>
+      <if test="tsIg != null" >
+        ts_ig,
+      </if>
+      <if test="tsHg != null" >
+        ts_hg,
+      </if>
+      <if test="tsGgby != null" >
+        ts_ggby,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="isDefault != null" >
+        is_default,
+      </if>
+      <if test="tsBgvideo != null" >
+        ts_bgvideo,
+      </if>
+      <if test="tsBglottery != null" >
+        ts_bglottery,
+      </if>
+      <if test="tyBgvideo != null" >
+        ty_bgvideo,
+      </if>
+      <if test="tyBglottery != null" >
+        ty_bglottery,
+      </if>
+      <if test="tyIghk != null" >
+        ty_ighk,
+      </if>
+      <if test="tsIghk != null" >
+        ts_ighk,
+      </if>
+      <if test="tyVr != null" >
+        ty_vr,
+      </if>
+      <if test="tsVr != null" >
+        ts_vr,
+      </if>
+      <if test="tyJf != null" >
+        ty_jf,
+      </if>
+      <if test="tsJf != null" >
+        ts_jf,
+      </if>
+      <if test="tyJfcp != null" >
+        ty_jfcp,
+      </if>
+      <if test="tsJfcp != null" >
+        ts_jfcp,
+      </if>
+      <if test="tyYorplay != null" >
+        ty_yorplay,
+      </if>
+      <if test="tsYorplay != null" >
+        ts_yorplay,
+      </if>
+      <if test="tyKyqp != null" >
+        ty_kyqp,
+      </if>
+      <if test="tsKyqp != null" >
+        ts_kyqp,
+      </if>
+      <if test="tySpta != null" >
+        ty_spta,
+      </if>
+      <if test="tsSpta != null" >
+        ts_spta,
+      </if>
+      <if test="tyVgqp != null" >
+        ty_vgqp,
+      </if>
+      <if test="tsVgqp != null" >
+        ts_vgqp,
+      </if>
+      <if test="tyGycp != null" >
+        ty_gycp,
+      </if>
+      <if test="tsGycp != null" >
+        ts_gycp,
+      </if>
+      <if test="tsPs != null" >
+        ts_ps,
+      </if>
+      <if test="tyPs != null" >
+        ty_ps,
+      </if>
+      <if test="tsNb != null" >
+        ts_nb,
+      </if>
+      <if test="tyNb != null" >
+        ty_nb,
+      </if>
+      <if test="tsLyqp != null" >
+        ts_lyqp,
+      </if>
+      <if test="tyLyqp != null" >
+        ty_lyqp,
+      </if>
+      <if test="tsJdb != null" >
+        ts_jdb,
+      </if>
+      <if test="tyJdb != null" >
+        ty_jdb,
+      </if>
+      <if test="tsSw != null" >
+        ts_sw,
+      </if>
+      <if test="tySw != null" >
+        ty_sw,
+      </if>
+      <if test="tsIbc != null" >
+        ts_ibc,
+      </if>
+      <if test="tyIbc != null" >
+        ty_ibc,
+      </if>
+      <if test="tsEsw != null" >
+        ts_esw,
+      </if>
+      <if test="tyEsw != null" >
+        ty_esw,
+      </if>
+      <if test="tsCqj != null" >
+        ts_cqj,
+      </if>
+      <if test="tyCqj != null" >
+        ty_cqj,
+      </if>
+      <if test="tsImty != null" >
+        ts_imty,
+      </if>
+      <if test="tyImty != null" >
+        ty_imty,
+      </if>
+      <if test="tsImgame != null" >
+        ts_imgame,
+      </if>
+      <if test="tyImgame != null" >
+        ty_imgame,
+      </if>
+      <if test="tsNw != null" >
+        ts_nw,
+      </if>
+      <if test="tyNw != null" >
+        ty_nw,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="tyCg != null" >
+        #{tyCg,jdbcType=REAL},
+      </if>
+      <if test="tyAg != null" >
+        #{tyAg,jdbcType=REAL},
+      </if>
+      <if test="tyShenbo != null" >
+        #{tyShenbo,jdbcType=REAL},
+      </if>
+      <if test="tyAb != null" >
+        #{tyAb,jdbcType=REAL},
+      </if>
+      <if test="tyDs != null" >
+        #{tyDs,jdbcType=REAL},
+      </if>
+      <if test="tyOg != null" >
+        #{tyOg,jdbcType=REAL},
+      </if>
+      <if test="tyBbin != null" >
+        #{tyBbin,jdbcType=REAL},
+      </if>
+      <if test="tyMg != null" >
+        #{tyMg,jdbcType=REAL},
+      </if>
+      <if test="tyPt != null" >
+        #{tyPt,jdbcType=REAL},
+      </if>
+      <if test="tyHaba != null" >
+        #{tyHaba,jdbcType=REAL},
+      </if>
+      <if test="tyIg != null" >
+        #{tyIg,jdbcType=REAL},
+      </if>
+      <if test="tyHg != null" >
+        #{tyHg,jdbcType=REAL},
+      </if>
+      <if test="tyGgby != null" >
+        #{tyGgby,jdbcType=REAL},
+      </if>
+      <if test="tsCg != null" >
+        #{tsCg,jdbcType=REAL},
+      </if>
+      <if test="tsAg != null" >
+        #{tsAg,jdbcType=REAL},
+      </if>
+      <if test="tsShenbo != null" >
+        #{tsShenbo,jdbcType=REAL},
+      </if>
+      <if test="tsAb != null" >
+        #{tsAb,jdbcType=REAL},
+      </if>
+      <if test="tsDs != null" >
+        #{tsDs,jdbcType=REAL},
+      </if>
+      <if test="tsOg != null" >
+        #{tsOg,jdbcType=REAL},
+      </if>
+      <if test="tsBbin != null" >
+        #{tsBbin,jdbcType=REAL},
+      </if>
+      <if test="tsMg != null" >
+        #{tsMg,jdbcType=REAL},
+      </if>
+      <if test="tsPt != null" >
+        #{tsPt,jdbcType=REAL},
+      </if>
+      <if test="tsHaba != null" >
+        #{tsHaba,jdbcType=REAL},
+      </if>
+      <if test="tsIg != null" >
+        #{tsIg,jdbcType=REAL},
+      </if>
+      <if test="tsHg != null" >
+        #{tsHg,jdbcType=REAL},
+      </if>
+      <if test="tsGgby != null" >
+        #{tsGgby,jdbcType=REAL},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=CHAR},
+      </if>
+      <if test="tsBgvideo != null" >
+        #{tsBgvideo,jdbcType=REAL},
+      </if>
+      <if test="tsBglottery != null" >
+        #{tsBglottery,jdbcType=REAL},
+      </if>
+      <if test="tyBgvideo != null" >
+        #{tyBgvideo,jdbcType=REAL},
+      </if>
+      <if test="tyBglottery != null" >
+        #{tyBglottery,jdbcType=REAL},
+      </if>
+      <if test="tyIghk != null" >
+        #{tyIghk,jdbcType=REAL},
+      </if>
+      <if test="tsIghk != null" >
+        #{tsIghk,jdbcType=REAL},
+      </if>
+      <if test="tyVr != null" >
+        #{tyVr,jdbcType=REAL},
+      </if>
+      <if test="tsVr != null" >
+        #{tsVr,jdbcType=REAL},
+      </if>
+      <if test="tyJf != null" >
+        #{tyJf,jdbcType=REAL},
+      </if>
+      <if test="tsJf != null" >
+        #{tsJf,jdbcType=REAL},
+      </if>
+      <if test="tyJfcp != null" >
+        #{tyJfcp,jdbcType=REAL},
+      </if>
+      <if test="tsJfcp != null" >
+        #{tsJfcp,jdbcType=REAL},
+      </if>
+      <if test="tyYorplay != null" >
+        #{tyYorplay,jdbcType=REAL},
+      </if>
+      <if test="tsYorplay != null" >
+        #{tsYorplay,jdbcType=REAL},
+      </if>
+      <if test="tyKyqp != null" >
+        #{tyKyqp,jdbcType=REAL},
+      </if>
+      <if test="tsKyqp != null" >
+        #{tsKyqp,jdbcType=REAL},
+      </if>
+      <if test="tySpta != null" >
+        #{tySpta,jdbcType=REAL},
+      </if>
+      <if test="tsSpta != null" >
+        #{tsSpta,jdbcType=REAL},
+      </if>
+      <if test="tyVgqp != null" >
+        #{tyVgqp,jdbcType=REAL},
+      </if>
+      <if test="tsVgqp != null" >
+        #{tsVgqp,jdbcType=REAL},
+      </if>
+      <if test="tyGycp != null" >
+        #{tyGycp,jdbcType=REAL},
+      </if>
+      <if test="tsGycp != null" >
+        #{tsGycp,jdbcType=REAL},
+      </if>
+      <if test="tsPs != null" >
+        #{tsPs,jdbcType=REAL},
+      </if>
+      <if test="tyPs != null" >
+        #{tyPs,jdbcType=REAL},
+      </if>
+      <if test="tsNb != null" >
+        #{tsNb,jdbcType=REAL},
+      </if>
+      <if test="tyNb != null" >
+        #{tyNb,jdbcType=REAL},
+      </if>
+      <if test="tsLyqp != null" >
+        #{tsLyqp,jdbcType=REAL},
+      </if>
+      <if test="tyLyqp != null" >
+        #{tyLyqp,jdbcType=REAL},
+      </if>
+      <if test="tsJdb != null" >
+        #{tsJdb,jdbcType=REAL},
+      </if>
+      <if test="tyJdb != null" >
+        #{tyJdb,jdbcType=REAL},
+      </if>
+      <if test="tsSw != null" >
+        #{tsSw,jdbcType=REAL},
+      </if>
+      <if test="tySw != null" >
+        #{tySw,jdbcType=REAL},
+      </if>
+      <if test="tsIbc != null" >
+        #{tsIbc,jdbcType=REAL},
+      </if>
+      <if test="tyIbc != null" >
+        #{tyIbc,jdbcType=REAL},
+      </if>
+      <if test="tsEsw != null" >
+        #{tsEsw,jdbcType=REAL},
+      </if>
+      <if test="tyEsw != null" >
+        #{tyEsw,jdbcType=REAL},
+      </if>
+      <if test="tsCqj != null" >
+        #{tsCqj,jdbcType=REAL},
+      </if>
+      <if test="tyCqj != null" >
+        #{tyCqj,jdbcType=REAL},
+      </if>
+      <if test="tsImty != null" >
+        #{tsImty,jdbcType=REAL},
+      </if>
+      <if test="tyImty != null" >
+        #{tyImty,jdbcType=REAL},
+      </if>
+      <if test="tsImgame != null" >
+        #{tsImgame,jdbcType=REAL},
+      </if>
+      <if test="tyImgame != null" >
+        #{tyImgame,jdbcType=REAL},
+      </if>
+      <if test="tsNw != null" >
+        #{tsNw,jdbcType=REAL},
+      </if>
+      <if test="tyNw != null" >
+        #{tyNw,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.ProxyType" >
+    update t_proxy_type
+    <set >
+      <if test="level != null" >
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="rmk != null" >
+        rmk = #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="tyCg != null" >
+        ty_cg = #{tyCg,jdbcType=REAL},
+      </if>
+      <if test="tyAg != null" >
+        ty_ag = #{tyAg,jdbcType=REAL},
+      </if>
+      <if test="tyShenbo != null" >
+        ty_shenbo = #{tyShenbo,jdbcType=REAL},
+      </if>
+      <if test="tyAb != null" >
+        ty_ab = #{tyAb,jdbcType=REAL},
+      </if>
+      <if test="tyDs != null" >
+        ty_ds = #{tyDs,jdbcType=REAL},
+      </if>
+      <if test="tyOg != null" >
+        ty_og = #{tyOg,jdbcType=REAL},
+      </if>
+      <if test="tyBbin != null" >
+        ty_bbin = #{tyBbin,jdbcType=REAL},
+      </if>
+      <if test="tyMg != null" >
+        ty_mg = #{tyMg,jdbcType=REAL},
+      </if>
+      <if test="tyPt != null" >
+        ty_pt = #{tyPt,jdbcType=REAL},
+      </if>
+      <if test="tyHaba != null" >
+        ty_haba = #{tyHaba,jdbcType=REAL},
+      </if>
+      <if test="tyIg != null" >
+        ty_ig = #{tyIg,jdbcType=REAL},
+      </if>
+      <if test="tyHg != null" >
+        ty_hg = #{tyHg,jdbcType=REAL},
+      </if>
+      <if test="tyGgby != null" >
+        ty_ggby = #{tyGgby,jdbcType=REAL},
+      </if>
+      <if test="tsCg != null" >
+        ts_cg = #{tsCg,jdbcType=REAL},
+      </if>
+      <if test="tsAg != null" >
+        ts_ag = #{tsAg,jdbcType=REAL},
+      </if>
+      <if test="tsShenbo != null" >
+        ts_shenbo = #{tsShenbo,jdbcType=REAL},
+      </if>
+      <if test="tsAb != null" >
+        ts_ab = #{tsAb,jdbcType=REAL},
+      </if>
+      <if test="tsDs != null" >
+        ts_ds = #{tsDs,jdbcType=REAL},
+      </if>
+      <if test="tsOg != null" >
+        ts_og = #{tsOg,jdbcType=REAL},
+      </if>
+      <if test="tsBbin != null" >
+        ts_bbin = #{tsBbin,jdbcType=REAL},
+      </if>
+      <if test="tsMg != null" >
+        ts_mg = #{tsMg,jdbcType=REAL},
+      </if>
+      <if test="tsPt != null" >
+        ts_pt = #{tsPt,jdbcType=REAL},
+      </if>
+      <if test="tsHaba != null" >
+        ts_haba = #{tsHaba,jdbcType=REAL},
+      </if>
+      <if test="tsIg != null" >
+        ts_ig = #{tsIg,jdbcType=REAL},
+      </if>
+      <if test="tsHg != null" >
+        ts_hg = #{tsHg,jdbcType=REAL},
+      </if>
+      <if test="tsGgby != null" >
+        ts_ggby = #{tsGgby,jdbcType=REAL},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="isDefault != null" >
+        is_default = #{isDefault,jdbcType=CHAR},
+      </if>
+      <if test="tsBgvideo != null" >
+        ts_bgvideo = #{tsBgvideo,jdbcType=REAL},
+      </if>
+      <if test="tsBglottery != null" >
+        ts_bglottery = #{tsBglottery,jdbcType=REAL},
+      </if>
+      <if test="tyBgvideo != null" >
+        ty_bgvideo = #{tyBgvideo,jdbcType=REAL},
+      </if>
+      <if test="tyBglottery != null" >
+        ty_bglottery = #{tyBglottery,jdbcType=REAL},
+      </if>
+      <if test="tyIghk != null" >
+        ty_ighk = #{tyIghk,jdbcType=REAL},
+      </if>
+      <if test="tsIghk != null" >
+        ts_ighk = #{tsIghk,jdbcType=REAL},
+      </if>
+      <if test="tyVr != null" >
+        ty_vr = #{tyVr,jdbcType=REAL},
+      </if>
+      <if test="tsVr != null" >
+        ts_vr = #{tsVr,jdbcType=REAL},
+      </if>
+      <if test="tyJf != null" >
+        ty_jf = #{tyJf,jdbcType=REAL},
+      </if>
+      <if test="tsJf != null" >
+        ts_jf = #{tsJf,jdbcType=REAL},
+      </if>
+      <if test="tyJfcp != null" >
+        ty_jfcp = #{tyJfcp,jdbcType=REAL},
+      </if>
+      <if test="tsJfcp != null" >
+        ts_jfcp = #{tsJfcp,jdbcType=REAL},
+      </if>
+      <if test="tyYorplay != null" >
+        ty_yorplay = #{tyYorplay,jdbcType=REAL},
+      </if>
+      <if test="tsYorplay != null" >
+        ts_yorplay = #{tsYorplay,jdbcType=REAL},
+      </if>
+      <if test="tyKyqp != null" >
+        ty_kyqp = #{tyKyqp,jdbcType=REAL},
+      </if>
+      <if test="tsKyqp != null" >
+        ts_kyqp = #{tsKyqp,jdbcType=REAL},
+      </if>
+      <if test="tySpta != null" >
+        ty_spta = #{tySpta,jdbcType=REAL},
+      </if>
+      <if test="tsSpta != null" >
+        ts_spta = #{tsSpta,jdbcType=REAL},
+      </if>
+      <if test="tyVgqp != null" >
+        ty_vgqp = #{tyVgqp,jdbcType=REAL},
+      </if>
+      <if test="tsVgqp != null" >
+        ts_vgqp = #{tsVgqp,jdbcType=REAL},
+      </if>
+      <if test="tyGycp != null" >
+        ty_gycp = #{tyGycp,jdbcType=REAL},
+      </if>
+      <if test="tsGycp != null" >
+        ts_gycp = #{tsGycp,jdbcType=REAL},
+      </if>
+      <if test="tsPs != null" >
+        ts_ps = #{tsPs,jdbcType=REAL},
+      </if>
+      <if test="tyPs != null" >
+        ty_ps = #{tyPs,jdbcType=REAL},
+      </if>
+      <if test="tsNb != null" >
+        ts_nb = #{tsNb,jdbcType=REAL},
+      </if>
+      <if test="tyNb != null" >
+        ty_nb = #{tyNb,jdbcType=REAL},
+      </if>
+      <if test="tsLyqp != null" >
+        ts_lyqp = #{tsLyqp,jdbcType=REAL},
+      </if>
+      <if test="tyLyqp != null" >
+        ty_lyqp = #{tyLyqp,jdbcType=REAL},
+      </if>
+      <if test="tsJdb != null" >
+        ts_jdb = #{tsJdb,jdbcType=REAL},
+      </if>
+      <if test="tyJdb != null" >
+        ty_jdb = #{tyJdb,jdbcType=REAL},
+      </if>
+      <if test="tsSw != null" >
+        ts_sw = #{tsSw,jdbcType=REAL},
+      </if>
+      <if test="tySw != null" >
+        ty_sw = #{tySw,jdbcType=REAL},
+      </if>
+      <if test="tsIbc != null" >
+        ts_ibc = #{tsIbc,jdbcType=REAL},
+      </if>
+      <if test="tyIbc != null" >
+        ty_ibc = #{tyIbc,jdbcType=REAL},
+      </if>
+      <if test="tsEsw != null" >
+        ts_esw = #{tsEsw,jdbcType=REAL},
+      </if>
+      <if test="tyEsw != null" >
+        ty_esw = #{tyEsw,jdbcType=REAL},
+      </if>
+      <if test="tsCqj != null" >
+        ts_cqj = #{tsCqj,jdbcType=REAL},
+      </if>
+      <if test="tyCqj != null" >
+        ty_cqj = #{tyCqj,jdbcType=REAL},
+      </if>
+      <if test="tsImty != null" >
+        ts_imty = #{tsImty,jdbcType=REAL},
+      </if>
+      <if test="tyImty != null" >
+        ty_imty = #{tyImty,jdbcType=REAL},
+      </if>
+      <if test="tsImgame != null" >
+        ts_imgame = #{tsImgame,jdbcType=REAL},
+      </if>
+      <if test="tyImgame != null" >
+        ty_imgame = #{tyImgame,jdbcType=REAL},
+      </if>
+      <if test="tsNw != null" >
+        ts_nw = #{tsNw,jdbcType=REAL},
+      </if>
+      <if test="tyNw != null" >
+        ty_nw = #{tyNw,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.ProxyType" >
+    update t_proxy_type
+    set level = #{level,jdbcType=VARCHAR},
+      rmk = #{rmk,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=CHAR},
+      ty_cg = #{tyCg,jdbcType=REAL},
+      ty_ag = #{tyAg,jdbcType=REAL},
+      ty_shenbo = #{tyShenbo,jdbcType=REAL},
+      ty_ab = #{tyAb,jdbcType=REAL},
+      ty_ds = #{tyDs,jdbcType=REAL},
+      ty_og = #{tyOg,jdbcType=REAL},
+      ty_bbin = #{tyBbin,jdbcType=REAL},
+      ty_mg = #{tyMg,jdbcType=REAL},
+      ty_pt = #{tyPt,jdbcType=REAL},
+      ty_haba = #{tyHaba,jdbcType=REAL},
+      ty_ig = #{tyIg,jdbcType=REAL},
+      ty_hg = #{tyHg,jdbcType=REAL},
+      ty_ggby = #{tyGgby,jdbcType=REAL},
+      ts_cg = #{tsCg,jdbcType=REAL},
+      ts_ag = #{tsAg,jdbcType=REAL},
+      ts_shenbo = #{tsShenbo,jdbcType=REAL},
+      ts_ab = #{tsAb,jdbcType=REAL},
+      ts_ds = #{tsDs,jdbcType=REAL},
+      ts_og = #{tsOg,jdbcType=REAL},
+      ts_bbin = #{tsBbin,jdbcType=REAL},
+      ts_mg = #{tsMg,jdbcType=REAL},
+      ts_pt = #{tsPt,jdbcType=REAL},
+      ts_haba = #{tsHaba,jdbcType=REAL},
+      ts_ig = #{tsIg,jdbcType=REAL},
+      ts_hg = #{tsHg,jdbcType=REAL},
+      ts_ggby = #{tsGgby,jdbcType=REAL},
+      cid = #{cid,jdbcType=INTEGER},
+      is_default = #{isDefault,jdbcType=CHAR},
+      ts_bgvideo = #{tsBgvideo,jdbcType=REAL},
+      ts_bglottery = #{tsBglottery,jdbcType=REAL},
+      ty_bgvideo = #{tyBgvideo,jdbcType=REAL},
+      ty_bglottery = #{tyBglottery,jdbcType=REAL},
+      ty_ighk = #{tyIghk,jdbcType=REAL},
+      ts_ighk = #{tsIghk,jdbcType=REAL},
+      ty_vr = #{tyVr,jdbcType=REAL},
+      ts_vr = #{tsVr,jdbcType=REAL},
+      ty_jf = #{tyJf,jdbcType=REAL},
+      ts_jf = #{tsJf,jdbcType=REAL},
+      ty_jfcp = #{tyJfcp,jdbcType=REAL},
+      ts_jfcp = #{tsJfcp,jdbcType=REAL},
+      ty_yorplay = #{tyYorplay,jdbcType=REAL},
+      ts_yorplay = #{tsYorplay,jdbcType=REAL},
+      ty_kyqp = #{tyKyqp,jdbcType=REAL},
+      ts_kyqp = #{tsKyqp,jdbcType=REAL},
+      ty_spta = #{tySpta,jdbcType=REAL},
+      ts_spta = #{tsSpta,jdbcType=REAL},
+      ty_vgqp = #{tyVgqp,jdbcType=REAL},
+      ts_vgqp = #{tsVgqp,jdbcType=REAL},
+      ty_gycp = #{tyGycp,jdbcType=REAL},
+      ts_gycp = #{tsGycp,jdbcType=REAL},
+      ts_ps = #{tsPs,jdbcType=REAL},
+      ty_ps = #{tyPs,jdbcType=REAL},
+      ts_nb = #{tsNb,jdbcType=REAL},
+      ty_nb = #{tyNb,jdbcType=REAL},
+      ts_lyqp = #{tsLyqp,jdbcType=REAL},
+      ty_lyqp = #{tyLyqp,jdbcType=REAL},
+      ts_jdb = #{tsJdb,jdbcType=REAL},
+      ty_jdb = #{tyJdb,jdbcType=REAL},
+      ts_sw = #{tsSw,jdbcType=REAL},
+      ty_sw = #{tySw,jdbcType=REAL},
+      ts_ibc = #{tsIbc,jdbcType=REAL},
+      ty_ibc = #{tyIbc,jdbcType=REAL},
+      ts_esw = #{tsEsw,jdbcType=REAL},
+      ty_esw = #{tyEsw,jdbcType=REAL},
+      ts_cqj = #{tsCqj,jdbcType=REAL},
+      ty_cqj = #{tyCqj,jdbcType=REAL},
+      ts_imty = #{tsImty,jdbcType=REAL},
+      ty_imty = #{tyImty,jdbcType=REAL},
+      ts_imgame = #{tsImgame,jdbcType=REAL},
+      ty_imgame = #{tyImgame,jdbcType=REAL},
+      ts_nw = #{tsNw,jdbcType=REAL},
+      ty_nw = #{tyNw,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

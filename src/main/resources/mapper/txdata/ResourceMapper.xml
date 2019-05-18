@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.Resource" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="open_mode" property="openMode" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="BIGINT" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="seq" property="seq" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="opened" property="opened" jdbcType="TINYINT" />
+    <result column="resource_type" property="resourceType" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="nicon" property="nicon" jdbcType="VARCHAR" />
+    <result column="nurl" property="nurl" jdbcType="VARCHAR" />
+    <result column="perms" property="perms" jdbcType="VARCHAR" />
+    <result column="is_sys" property="isSys" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, url, open_mode, description, icon, pid, pname,seq, status, opened, resource_type, 
+    create_time, type, nicon, nurl, perms,is_sys
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from resource
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from resource
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.Resource" >
+    insert into resource (id, name, url, 
+      open_mode, description, icon, 
+      pid,pname, seq, status, opened, 
+      resource_type, create_time, type, 
+      nicon, nurl, perms,is_sys)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{openMode,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{pid,jdbcType=BIGINT},#{pname,jdbcType=VARCHAR}, #{seq,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{opened,jdbcType=TINYINT}, 
+      #{resourceType,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, 
+      #{nicon,jdbcType=VARCHAR}, #{nurl,jdbcType=VARCHAR}, #{perms,jdbcType=VARCHAR},#{isSys,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.Resource" >
+    insert into resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="openMode != null" >
+        open_mode,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="opened != null" >
+        opened,
+      </if>
+      <if test="resourceType != null" >
+        resource_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="nicon != null" >
+        nicon,
+      </if>
+      <if test="nurl != null" >
+        nurl,
+      </if>
+      <if test="perms != null" >
+        perms,
+      </if>
+      <if test="isSys != null" >
+        is_sys,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="openMode != null" >
+        #{openMode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="opened != null" >
+        #{opened,jdbcType=TINYINT},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="nicon != null" >
+        #{nicon,jdbcType=VARCHAR},
+      </if>
+      <if test="nurl != null" >
+        #{nurl,jdbcType=VARCHAR},
+      </if>
+      <if test="perms != null" >
+        #{perms,jdbcType=VARCHAR},
+      </if>
+      <if test="isSys != null" >
+        #{isSys,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.Resource" >
+    update resource
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="openMode != null" >
+        open_mode = #{openMode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="pname != null" >
+        pname=#{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="opened != null" >
+        opened = #{opened,jdbcType=TINYINT},
+      </if>
+      <if test="resourceType != null" >
+        resource_type = #{resourceType,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="nicon != null" >
+        nicon = #{nicon,jdbcType=VARCHAR},
+      </if>
+      <if test="nurl != null" >
+        nurl = #{nurl,jdbcType=VARCHAR},
+      </if>
+      <if test="perms != null" >
+        perms = #{perms,jdbcType=VARCHAR},
+      </if>
+      <if test="isSys != null" >
+        is_sys=#{isSys,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.Resource" >
+    update resource
+    set name = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      open_mode = #{openMode,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=BIGINT},
+      pname = #{pname,jdbcType=VARCHAR},
+      seq = #{seq,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      opened = #{opened,jdbcType=TINYINT},
+      resource_type = #{resourceType,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      nicon = #{nicon,jdbcType=VARCHAR},
+      nurl = #{nurl,jdbcType=VARCHAR},
+      perms = #{perms,jdbcType=VARCHAR},
+      is_sys=#{isSys,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+  <select id="findAllByResourceIds" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resource
+    where status = 0 and id in 
+    <foreach collection="ids" item="id" open="(" separator="," close=")">
+    	#{id}
+    </foreach>
+  </select>
+  
+  <select id="findAllByPid" resultMap="BaseResultMap">
+    select 
+    	<include refid="Base_Column_List" />
+    from resource
+    where pid=#{pid}
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+  	select 
+    	<include refid="Base_Column_List" />
+    from resource
+  </select>
+  
+  <!-- 开启或禁用菜单资源 -->
+  <update id="disableOrEnable">
+  	UPDATE resource
+    	set status = #{status}
+    WHERE id = #{id}
+  </update>
+</mapper>

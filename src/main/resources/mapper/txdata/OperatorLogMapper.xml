@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.OperatorLogMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.OperatorLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="operator_id" property="operatorId" jdbcType="INTEGER" />
+    <result column="object" property="object" jdbcType="VARCHAR" />
+    <result column="old_params" property="oldParams" jdbcType="VARCHAR" />
+    <result column="new_params" property="newParams" jdbcType="VARCHAR" />
+    <result column="model_name" property="modelName" jdbcType="VARCHAR" />
+    <result column="function_name" property="functionName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cagent, add_time, IP, operator_id, object, old_params, new_params, model_name, 
+    function_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_operator_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_operator_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.OperatorLog" >
+    insert into t_operator_log (id, cagent, add_time, 
+      IP, operator_id, object, 
+      old_params, new_params, model_name, 
+      function_name)
+    values (#{id,jdbcType=INTEGER}, #{cagent,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{ip,jdbcType=VARCHAR}, #{operatorId,jdbcType=INTEGER}, #{object,jdbcType=VARCHAR}, 
+      #{oldParams,jdbcType=VARCHAR}, #{newParams,jdbcType=VARCHAR}, #{modelName,jdbcType=VARCHAR}, 
+      #{functionName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.OperatorLog" >
+    insert into t_operator_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="ip != null" >
+        IP,
+      </if>
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+      <if test="object != null" >
+        object,
+      </if>
+      <if test="oldParams != null" >
+        old_params,
+      </if>
+      <if test="newParams != null" >
+        new_params,
+      </if>
+      <if test="modelName != null" >
+        model_name,
+      </if>
+      <if test="functionName != null" >
+        function_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="object != null" >
+        #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="oldParams != null" >
+        #{oldParams,jdbcType=VARCHAR},
+      </if>
+      <if test="newParams != null" >
+        #{newParams,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null" >
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionName != null" >
+        #{functionName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.OperatorLog" >
+    update t_operator_log
+    <set >
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="object != null" >
+        object = #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="oldParams != null" >
+        old_params = #{oldParams,jdbcType=VARCHAR},
+      </if>
+      <if test="newParams != null" >
+        new_params = #{newParams,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null" >
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionName != null" >
+        function_name = #{functionName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.OperatorLog" >
+    update t_operator_log
+    set cagent = #{cagent,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      IP = #{ip,jdbcType=VARCHAR},
+      operator_id = #{operatorId,jdbcType=INTEGER},
+      object = #{object,jdbcType=VARCHAR},
+      old_params = #{oldParams,jdbcType=VARCHAR},
+      new_params = #{newParams,jdbcType=VARCHAR},
+      model_name = #{modelName,jdbcType=VARCHAR},
+      function_name = #{functionName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

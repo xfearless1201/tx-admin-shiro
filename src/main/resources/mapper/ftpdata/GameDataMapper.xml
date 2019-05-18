@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.GameDataMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.WinDetails" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="user_name" property="username" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="note_num" property="noteNum" jdbcType="INTEGER" />
+    <result column="valid_note_num" property="validNoteNum" jdbcType="INTEGER" />
+    <result column="bet_amount" property="betAmount" jdbcType="DOUBLE" />
+    <result column="valid_bet_amount" property="validBetAmount" jdbcType="DOUBLE" />
+    <result column="net_amount" property="netAmount" jdbcType="DOUBLE" />
+    <result column="bet_time" property="betTime" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, uid, user_name, currency, note_num, valid_note_num, bet_amount, valid_bet_amount, net_amount, 
+    bet_time, cagent, type
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ag_br
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectWinDetails" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.vo.ftpdata.WinDetailsVO">
+  	
+  	select 
+  	 <include refid="Base_Column_List" />
+  	 from ${gameTable}
+  	 <where>
+  	 	<if test="type != null and type !='' ">
+  	 		and type = #{type}
+  	 	</if>
+  	 	<if test="uid != null ">
+  	 		and uid = #{uid}
+  	 	</if>
+  	 	<if test="startTime != null and startTime!='' ">
+  	 		and bet_time &gt;= #{startTime}
+  	 	</if>
+  	 	<if test="endTime != null and endTime!='' ">
+  	 		and bet_time &lt;= #{endTime}
+  	 	</if>
+  	 	<if test="betTime != null and betTime !='' ">
+  	 		and bet_time = #{betTime}
+  	 	</if>
+  	 	<if test="cagent !=null and cagnet !='' ">
+  	 		and cagent = #{cagent}
+  	 	</if>
+  	 </where> 
+  
+  </select>
+  
+</mapper>

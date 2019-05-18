@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.IntegralMallMapper.GoodsInventoryMapper">
+    <!--com.cn.tianxia.admin.project.txdata.IntegralMall.GoodsInventory-->
+    <select id="pluInv" resultType="com.cn.tianxia.admin.project.txdata.IntegralMall.GoodsInventory"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        SELECT t.id,t.pluid,t.cid,t.num,t.freeze_num as freezeNum,t.uptime,p.pluname,c.cagent,l.catename
+        FROM t_plu_inventory t
+        LEFT JOIN t_plu_info p ON t.pluid = p.id
+        LEFT JOIN t_cagent c ON t.cid = c.id
+        LEFT JOIN t_plu_cate l ON l.id = p.cateid
+        WHERE 1=1
+        <if test="params.containsKey('pluname')">
+            AND p.pluname = #{params.pluname}
+        </if>
+        <if test="params.containsKey('catename')">
+            AND l.catename in (select catename from t_plu_cate where path LIKE concat((select path from t_plu_cate where
+            id=#{params.catename}),'%'))
+        </if>
+        <if test="params.containsKey('cid')">
+            AND t.cid = #{params.cid}
+        </if>
+        ORDER BY t.uptime DESC
+        limit ${(page-1)*limit},#{limit}
+    </select>
+
+    <select id="pluInvROWS" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT count(1)
+        FROM t_plu_inventory t
+        LEFT JOIN t_plu_info p ON t.pluid = p.id
+        LEFT JOIN t_cagent c ON t.cid = c.id
+        LEFT JOIN t_plu_cate l ON l.id = p.cateid
+        WHERE 1=1
+        <if test="params.containsKey('pluname')">
+            AND p.pluname = #{params.pluname}
+        </if>
+        <if test="params.containsKey('catename')">
+            AND l.catename in (select catename from t_plu_cate where path LIKE concat((select path from t_plu_cate where
+            id=#{params.catename}),'%'))
+        </if>
+        <if test="params.containsKey('cid')">
+            AND t.cid = #{params.cid}
+        </if>
+    </select>
+
+    <select id="pluInvSum" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT sum(t.num) as num,sum(t.freeze_num) as freezeNum
+        FROM t_plu_inventory t
+        LEFT JOIN t_plu_info p ON t.pluid = p.id
+        LEFT JOIN t_cagent c ON t.cid = c.id
+        LEFT JOIN t_plu_cate l ON l.id = p.cateid
+        WHERE 1=1
+        <if test="pluname != null and pluname != ''">
+            AND p.pluname = #{pluname}
+        </if>
+        <if test="catename != null and catename != ''">
+            AND l.catename in (select catename from t_plu_cate where path LIKE concat((select path from t_plu_cate where
+            id=#{catename}),'%'))
+        </if>
+        <if test="cid != null and cid != ''">
+            AND t.cid = #{cid}
+        </if>
+
+    </select>
+
+    <update id="updatePluInv" parameterType="java.util.Map">
+        update t_plu_inventory
+        <set>
+            <if test="pluid != null">
+                pluid = #{pluid},
+            </if>
+            <if test="cid != null">
+                cid = #{cid},
+            </if>
+            <if test="allnum != null">
+                num = #{allnum},
+            </if>
+            <if test="freezeNum != null">
+                freeze_num = #{freezeNum},
+            </if>
+            <if test="uptime != null">
+                uptime = #{uptime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <insert id="updatePluInvLog" parameterType="java.util.Map">
+        insert into t_plu_inventory_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            cid,
+            pluid,
+            orderno,
+            num,
+            type,
+            t_type,
+            uptime,
+            upuid,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{cid},
+            #{pluid},
+            #{orderno},
+            #{num},
+            #{type},
+            #{tType},
+            now(),
+            #{upuid},
+        </trim>
+    </insert>
+
+    <update id="updateStore" parameterType="java.util.Map">
+        update t_plu_inventory
+        <set>
+            <if test="num != null">
+                num = num+#{num},
+            </if>
+            <if test="freezeNum != null">
+                freeze_num = freeze_num+#{freezeNum},
+            </if>
+        </set>
+        where pluid = #{pluId}
+    </update>
+
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.cn.tianxia.admin.project.txdata.IntegralMall.OrderManage">
+        update t_plu_cate
+        <set>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="pid != null">
+                pid = #{pid,jdbcType=INTEGER},
+            </if>
+            <if test="catename != null">
+                catename = #{catename,jdbcType=VARCHAR},
+            </if>
+            <if test="path != null">
+                path = #{path,jdbcType=VARCHAR},
+            </if>
+            <if test="uptime != null">
+                uptime = #{uptime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="upuid != null">
+                upuid = #{upuid,jdbcType=INTEGER},
+            </if>
+            <if test="rmk != null">
+                rmk = #{rmk,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>

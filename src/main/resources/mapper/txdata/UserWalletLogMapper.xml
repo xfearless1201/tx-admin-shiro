@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.UserWalletLogMapper">
+    <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.UserWalletLog">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="wtype" property="wtype" jdbcType="CHAR"/>
+        <result column="amount" property="amount" jdbcType="DOUBLE"/>
+        <result column="old_money" property="oldMoney" jdbcType="DOUBLE"/>
+        <result column="new_money" property="newMoney" jdbcType="DOUBLE"/>
+        <result column="uptime" property="uptime" jdbcType="TIMESTAMP"/>
+        <result column="upuid" property="upuid" jdbcType="INTEGER"/>
+        <result column="rmk" property="rmk" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="updateName" property="updateName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, uid, type, wtype, amount, old_money, new_money, uptime, upuid, rmk
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user_wallet_log
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user_wallet_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.UserWalletLog">
+    insert into t_user_wallet_log (id, uid, type, 
+      wtype, amount, old_money, 
+      new_money, uptime, upuid, 
+      rmk)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{wtype,jdbcType=CHAR}, #{amount,jdbcType=DOUBLE}, #{oldMoney,jdbcType=DOUBLE}, 
+      #{newMoney,jdbcType=DOUBLE}, #{uptime,jdbcType=TIMESTAMP}, #{upuid,jdbcType=INTEGER}, 
+      #{rmk,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.UserWalletLog">
+        insert into t_user_wallet_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="wtype != null">
+                wtype,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="oldMoney != null">
+                old_money,
+            </if>
+            <if test="newMoney != null">
+                new_money,
+            </if>
+            <if test="uptime != null">
+                uptime,
+            </if>
+            <if test="upuid != null">
+                upuid,
+            </if>
+            <if test="rmk != null">
+                rmk,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="wtype != null">
+                #{wtype,jdbcType=CHAR},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="oldMoney != null">
+                #{oldMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="newMoney != null">
+                #{newMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="uptime != null">
+                #{uptime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="upuid != null">
+                #{upuid,jdbcType=INTEGER},
+            </if>
+            <if test="rmk != null">
+                #{rmk,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.UserWalletLog">
+        update t_user_wallet_log
+        <set>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="wtype != null">
+                wtype = #{wtype,jdbcType=CHAR},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="oldMoney != null">
+                old_money = #{oldMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="newMoney != null">
+                new_money = #{newMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="uptime != null">
+                uptime = #{uptime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="upuid != null">
+                upuid = #{upuid,jdbcType=INTEGER},
+            </if>
+            <if test="rmk != null">
+                rmk = #{rmk,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.UserWalletLog">
+    update t_user_wallet_log
+    set uid = #{uid,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      wtype = #{wtype,jdbcType=CHAR},
+      amount = #{amount,jdbcType=DOUBLE},
+      old_money = #{oldMoney,jdbcType=DOUBLE},
+      new_money = #{newMoney,jdbcType=DOUBLE},
+      uptime = #{uptime,jdbcType=TIMESTAMP},
+      upuid = #{upuid,jdbcType=INTEGER},
+      rmk = #{rmk,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="selectList" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+        SELECT
+        r.id AS id,
+        r.uid AS uid,
+        r.type AS type,
+        r.wtype AS wtype,
+        r.amount AS amount,
+        r.old_money AS old_money,
+        r.new_money AS new_money,
+        r.uptime AS uptime,
+        r.upuid AS upuid,
+        r.rmk AS rmk,
+        u.username AS username,
+        t1.login_name AS updateName
+        FROM
+        t_user_wallet_log r
+        INNER join t_user u on r.uid = u.uid
+        left join `user` t1 on r.upuid = t1.id
+        where r.uid = u.uid
+        <if test=" params.containsKey('startTime') ">
+            <![CDATA[ and r.uptime >= #{params.startTime} ]]>
+        </if>
+        <if test=" params.containsKey('endTime') ">
+            <![CDATA[ and r.uptime <= #{params.endTime} ]]>
+        </if>
+        <if test="params.containsKey('type') ">
+            AND r.type=#{params.type}
+        </if>
+        <if test="params.containsKey('username') ">
+            AND u.username=#{params.username}
+        </if>
+        <if test="params.containsKey('cid') ">
+            AND u.cid=#{params.cid}
+        </if>
+        <if test="params.containsKey('top_id') ">
+            AND u.top_id=#{params.top_id}
+        </if>
+        ORDER BY
+        r.uptime DESC
+        LIMIT ${(page-1)*limit},#{limit}
+    </select>
+
+    <select id="countList" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT
+        count(1) as total,
+        IFNULL(sum(amount),0) as amount
+        FROM
+        t_user_wallet_log r,t_user u
+        where r.uid = u.uid
+        <if test=" startTime != null and startTime != '' ">
+            <![CDATA[ and r.uptime >= #{startTime} ]]>
+        </if>
+        <if test=" endTime != null and endTime != '' ">
+            <![CDATA[ and r.uptime <= #{endTime} ]]>
+        </if>
+        <if test="type != null and type != '' ">
+            AND r.type=#{type}
+        </if>
+        <if test="username != null and username != '' ">
+            AND u.username=#{username}
+        </if>
+        <if test="cid != null and cid != '' ">
+            AND u.cid=#{cid}
+        </if>
+        <if test="top_id != null and top_id != '' ">
+            AND u.top_id=#{top_id}
+        </if>
+    </select>
+
+</mapper>

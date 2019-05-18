@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.CagentOnlinememMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.CagentOnlinemem" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="key" property="key" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cagent, address, `key`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_onlinemem
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cagent_onlinemem
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.CagentOnlinemem" >
+    insert into t_cagent_onlinemem (id, cagent, address, 
+      `key`)
+    values (#{id,jdbcType=INTEGER}, #{cagent,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{key,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentOnlinemem" >
+    insert into t_cagent_onlinemem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="key != null" >
+        `key`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null" >
+        #{key,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentOnlinemem" >
+    update t_cagent_onlinemem
+    <set >
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null" >
+        `key` = #{key,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.CagentOnlinemem" >
+    update t_cagent_onlinemem
+    set cagent = #{cagent,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      `key` = #{key,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getAllOnlinemem" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+    select
+    <include refid="Base_Column_List" />
+    from t_cagent_onlinemem
+    where 1 = 1
+    <if test="params.containsKey('sidx') and params.containsKey('order')">
+      ORDER BY ${params.sidx} ${params.order}
+    </if>
+    LIMIT ${(page-1)*limit},#{limit}
+  </select>
+
+  <select id="getTotalCount" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager">
+    select
+    count(1)
+    from t_cagent_onlinemem
+  </select>
+</mapper>

@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.YoPlayGameRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.YoPlayGameRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="billNo" property="billno" jdbcType="VARCHAR" />
+    <result column="playerName" property="playername" jdbcType="VARCHAR" />
+    <result column="agentCode" property="agentcode" jdbcType="VARCHAR" />
+    <result column="gameCode" property="gamecode" jdbcType="VARCHAR" />
+    <result column="netAmount" property="netamount" jdbcType="REAL" />
+    <result column="betTime" property="bettime" jdbcType="TIMESTAMP" />
+    <result column="gameType" property="gametype" jdbcType="VARCHAR" />
+    <result column="betAmount" property="betamount" jdbcType="REAL" />
+    <result column="validBetAmount" property="validbetamount" jdbcType="REAL" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="playType" property="playtype" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="tableCode" property="tablecode" jdbcType="VARCHAR" />
+    <result column="loginIP" property="loginip" jdbcType="VARCHAR" />
+    <result column="recalcuTime" property="recalcutime" jdbcType="TIMESTAMP" />
+    <result column="platformType" property="platformtype" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="round" property="round" jdbcType="VARCHAR" />
+    <result column="slottype" property="slottype" jdbcType="VARCHAR" />
+    <result column="result" property="result" jdbcType="VARCHAR" />
+    <result column="mainbillno" property="mainbillno" jdbcType="VARCHAR" />
+    <result column="beforeCredit" property="beforecredit" jdbcType="REAL" />
+    <result column="betAmountBase" property="betamountbase" jdbcType="REAL" />
+    <result column="betAmountBonus" property="betamountbonus" jdbcType="REAL" />
+    <result column="netAmountBase" property="netamountbase" jdbcType="REAL" />
+    <result column="netAmountBonus" property="netamountbonus" jdbcType="REAL" />
+    <result column="deviceType" property="devicetype" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, billNo, playerName, agentCode, gameCode, netAmount, betTime, gameType, betAmount, 
+    validBetAmount, flag, playType, currency, tableCode, loginIP, recalcuTime, platformType, 
+    remark, round, slottype, result, mainbillno, beforeCredit, betAmountBase, betAmountBonus, 
+    netAmountBase, netAmountBonus, deviceType, cagent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ag_yoplay_game
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ag_yoplay_game
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.YoPlayGameRecord" >
+    insert into ag_yoplay_game (id, billNo, playerName, 
+      agentCode, gameCode, netAmount, 
+      betTime, gameType, betAmount, 
+      validBetAmount, flag, playType, 
+      currency, tableCode, loginIP, 
+      recalcuTime, platformType, remark, 
+      round, slottype, result, 
+      mainbillno, beforeCredit, betAmountBase, 
+      betAmountBonus, netAmountBase, netAmountBonus, 
+      deviceType, cagent)
+    values (#{id,jdbcType=INTEGER}, #{billno,jdbcType=VARCHAR}, #{playername,jdbcType=VARCHAR}, 
+      #{agentcode,jdbcType=VARCHAR}, #{gamecode,jdbcType=VARCHAR}, #{netamount,jdbcType=REAL}, 
+      #{bettime,jdbcType=TIMESTAMP}, #{gametype,jdbcType=VARCHAR}, #{betamount,jdbcType=REAL}, 
+      #{validbetamount,jdbcType=REAL}, #{flag,jdbcType=VARCHAR}, #{playtype,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=VARCHAR}, #{tablecode,jdbcType=VARCHAR}, #{loginip,jdbcType=VARCHAR}, 
+      #{recalcutime,jdbcType=TIMESTAMP}, #{platformtype,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{round,jdbcType=VARCHAR}, #{slottype,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
+      #{mainbillno,jdbcType=VARCHAR}, #{beforecredit,jdbcType=REAL}, #{betamountbase,jdbcType=REAL}, 
+      #{betamountbonus,jdbcType=REAL}, #{netamountbase,jdbcType=REAL}, #{netamountbonus,jdbcType=REAL}, 
+      #{devicetype,jdbcType=VARCHAR}, #{cagent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.YoPlayGameRecord" >
+    insert into ag_yoplay_game
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="billno != null" >
+        billNo,
+      </if>
+      <if test="playername != null" >
+        playerName,
+      </if>
+      <if test="agentcode != null" >
+        agentCode,
+      </if>
+      <if test="gamecode != null" >
+        gameCode,
+      </if>
+      <if test="netamount != null" >
+        netAmount,
+      </if>
+      <if test="bettime != null" >
+        betTime,
+      </if>
+      <if test="gametype != null" >
+        gameType,
+      </if>
+      <if test="betamount != null" >
+        betAmount,
+      </if>
+      <if test="validbetamount != null" >
+        validBetAmount,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="playtype != null" >
+        playType,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="tablecode != null" >
+        tableCode,
+      </if>
+      <if test="loginip != null" >
+        loginIP,
+      </if>
+      <if test="recalcutime != null" >
+        recalcuTime,
+      </if>
+      <if test="platformtype != null" >
+        platformType,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="round != null" >
+        round,
+      </if>
+      <if test="slottype != null" >
+        slottype,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="mainbillno != null" >
+        mainbillno,
+      </if>
+      <if test="beforecredit != null" >
+        beforeCredit,
+      </if>
+      <if test="betamountbase != null" >
+        betAmountBase,
+      </if>
+      <if test="betamountbonus != null" >
+        betAmountBonus,
+      </if>
+      <if test="netamountbase != null" >
+        netAmountBase,
+      </if>
+      <if test="netamountbonus != null" >
+        netAmountBonus,
+      </if>
+      <if test="devicetype != null" >
+        deviceType,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="billno != null" >
+        #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="playername != null" >
+        #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcode != null" >
+        #{agentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="gamecode != null" >
+        #{gamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="netamount != null" >
+        #{netamount,jdbcType=REAL},
+      </if>
+      <if test="bettime != null" >
+        #{bettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gametype != null" >
+        #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="betamount != null" >
+        #{betamount,jdbcType=REAL},
+      </if>
+      <if test="validbetamount != null" >
+        #{validbetamount,jdbcType=REAL},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="playtype != null" >
+        #{playtype,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="tablecode != null" >
+        #{tablecode,jdbcType=VARCHAR},
+      </if>
+      <if test="loginip != null" >
+        #{loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="recalcutime != null" >
+        #{recalcutime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="platformtype != null" >
+        #{platformtype,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="round != null" >
+        #{round,jdbcType=VARCHAR},
+      </if>
+      <if test="slottype != null" >
+        #{slottype,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="mainbillno != null" >
+        #{mainbillno,jdbcType=VARCHAR},
+      </if>
+      <if test="beforecredit != null" >
+        #{beforecredit,jdbcType=REAL},
+      </if>
+      <if test="betamountbase != null" >
+        #{betamountbase,jdbcType=REAL},
+      </if>
+      <if test="betamountbonus != null" >
+        #{betamountbonus,jdbcType=REAL},
+      </if>
+      <if test="netamountbase != null" >
+        #{netamountbase,jdbcType=REAL},
+      </if>
+      <if test="netamountbonus != null" >
+        #{netamountbonus,jdbcType=REAL},
+      </if>
+      <if test="devicetype != null" >
+        #{devicetype,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.YoPlayGameRecord" >
+    update ag_yoplay_game
+    <set >
+      <if test="billno != null" >
+        billNo = #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="playername != null" >
+        playerName = #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcode != null" >
+        agentCode = #{agentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="gamecode != null" >
+        gameCode = #{gamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="netamount != null" >
+        netAmount = #{netamount,jdbcType=REAL},
+      </if>
+      <if test="bettime != null" >
+        betTime = #{bettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gametype != null" >
+        gameType = #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="betamount != null" >
+        betAmount = #{betamount,jdbcType=REAL},
+      </if>
+      <if test="validbetamount != null" >
+        validBetAmount = #{validbetamount,jdbcType=REAL},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="playtype != null" >
+        playType = #{playtype,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="tablecode != null" >
+        tableCode = #{tablecode,jdbcType=VARCHAR},
+      </if>
+      <if test="loginip != null" >
+        loginIP = #{loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="recalcutime != null" >
+        recalcuTime = #{recalcutime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="platformtype != null" >
+        platformType = #{platformtype,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="round != null" >
+        round = #{round,jdbcType=VARCHAR},
+      </if>
+      <if test="slottype != null" >
+        slottype = #{slottype,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="mainbillno != null" >
+        mainbillno = #{mainbillno,jdbcType=VARCHAR},
+      </if>
+      <if test="beforecredit != null" >
+        beforeCredit = #{beforecredit,jdbcType=REAL},
+      </if>
+      <if test="betamountbase != null" >
+        betAmountBase = #{betamountbase,jdbcType=REAL},
+      </if>
+      <if test="betamountbonus != null" >
+        betAmountBonus = #{betamountbonus,jdbcType=REAL},
+      </if>
+      <if test="netamountbase != null" >
+        netAmountBase = #{netamountbase,jdbcType=REAL},
+      </if>
+      <if test="netamountbonus != null" >
+        netAmountBonus = #{netamountbonus,jdbcType=REAL},
+      </if>
+      <if test="devicetype != null" >
+        deviceType = #{devicetype,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.YoPlayGameRecord" >
+    update ag_yoplay_game
+    set billNo = #{billno,jdbcType=VARCHAR},
+      playerName = #{playername,jdbcType=VARCHAR},
+      agentCode = #{agentcode,jdbcType=VARCHAR},
+      gameCode = #{gamecode,jdbcType=VARCHAR},
+      netAmount = #{netamount,jdbcType=REAL},
+      betTime = #{bettime,jdbcType=TIMESTAMP},
+      gameType = #{gametype,jdbcType=VARCHAR},
+      betAmount = #{betamount,jdbcType=REAL},
+      validBetAmount = #{validbetamount,jdbcType=REAL},
+      flag = #{flag,jdbcType=VARCHAR},
+      playType = #{playtype,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      tableCode = #{tablecode,jdbcType=VARCHAR},
+      loginIP = #{loginip,jdbcType=VARCHAR},
+      recalcuTime = #{recalcutime,jdbcType=TIMESTAMP},
+      platformType = #{platformtype,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      round = #{round,jdbcType=VARCHAR},
+      slottype = #{slottype,jdbcType=VARCHAR},
+      result = #{result,jdbcType=VARCHAR},
+      mainbillno = #{mainbillno,jdbcType=VARCHAR},
+      beforeCredit = #{beforecredit,jdbcType=REAL},
+      betAmountBase = #{betamountbase,jdbcType=REAL},
+      betAmountBonus = #{betamountbonus,jdbcType=REAL},
+      netAmountBase = #{netamountbase,jdbcType=REAL},
+      netAmountBonus = #{netamountbonus,jdbcType=REAL},
+      deviceType = #{devicetype,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- add by gate -->
+  <select id="listGameRecord" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	<choose>
+  		<!-- 如果用户分组为0 则执行此sql -->
+  		<when test="params.userGrouping == 0">
+  			select 
+		  		<include refid="Base_Column_List" /> 
+		  	from ag_yoplay_game force index(betTime)
+			where betTime BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and playerName in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			ORDER BY betTime desc 
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</when>
+  		<otherwise>
+  			select playerName,
+	  			count(playerName) as id,  			
+	  			sum(abs(betAmount)) as betAmount,
+	  			sum(netAmount) as netAmount,
+	  			sum(abs(validBetAmount)) as validBetAmount,
+	  			SUM(if(validbetamount>0,1,0)) as round
+  			from ag_yoplay_game force index(betTime)
+  			where betTime BETWEEN #{params.startTime} and #{params.endTime}
+  			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and playerName in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			GROUP BY playerName
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</otherwise>
+  	</choose>
+  </select>
+  
+  <select id="countTotal" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	<choose>
+  		<!-- gamePlatFormName 不为空 需要走明细表 表示选择了ag国际或者ag视讯,勾选了实时分页也需要走明细-->
+  		<when test="(params.gamePlatFormName != null and params.gamePlatFormName.length() != 0)
+  						or (params.dateGrouping != 0)">
+  			select 'total' as userName,
+		  		count(id) as noteNum,
+	  			sum(abs(betAmount)) as betAmount,
+	  			sum(netAmount) as netAmount,
+	  			sum(abs(validBetAmount)) as validBetAmount,
+	  			SUM(if(validbetamount>0,1,0)) as validNoteNum
+		  	from ag_yoplay_game force index(betTime)
+			where betTime BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询 or 按会员分层查询查询-->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userNames != null and params.userNames.length() != 0">
+						and playerName in ${params.userNames}
+					</if>
+				</when>
+				<!-- 按会员账号查询 -->
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+  		</when>
+  		<otherwise>
+  			select user_name as userName,
+		  		sum(note_num) as noteNum,
+		  		sum(bet_amount) as betAmount,
+		  		sum(net_amount) as netAmount,
+		  		sum(valid_bet_amount) as validBetAmount,
+		  		sum(valid_note_num) as validNoteNum
+		  	from ag_yoplay_platform_report
+		  	where bet_time BETWEEN #{params.nextStartDay} and #{params.lastEndDay}
+		  		and type = 0
+				<if test="params.cagentName != null and params.cagentName.length() != 0">
+					and cagent = #{params.cagentName}
+				</if>
+				<choose>
+					<!-- 按真实姓名查询 or 按代理商查询  or 按会员分层查询查询-->
+					<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+						<if test="params.userNames != null and params.userNames.length() != 0">
+							and user_name in ${params.userNames}
+						</if>
+					</when>
+					<!-- 按会员账号查询 -->
+					<otherwise>
+						<!-- 如果有输入值 -->
+						<if test="params.name != null and params.name.length() != 0">
+					  		and user_name = #{params.name}
+						</if>
+					</otherwise>
+				</choose>
+				group by userName
+				<if test="params.startTime1 != null and params.startTime1.length() != 0">
+					union all
+					select playerName as userName,
+						count(id) as noteNum,
+			  			sum(abs(betAmount)) as betAmount,
+			  			sum(netAmount) as netAmount,
+			  			sum(abs(validBetAmount)) as validBetAmount,
+			  			SUM(if(validbetamount>0,1,0)) as validNoteNum
+					from ag_yoplay_game 
+					where betTime BETWEEN #{params.startTime} and #{params.startTime1}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and playerName in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and playerName = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+				<if test="params.endTime1 != null and params.endTime1.length() != 0">
+					union all
+					select playerName as userName,
+						count(id) as noteNum,
+						sum(abs(betAmount)) as betAmount,
+			  			sum(netAmount) as netAmount,
+			  			sum(abs(validBetAmount)) as validBetAmount,
+			  			SUM(if(validbetamount>0,1,0)) as validNoteNum
+					from ag_yoplay_game 
+					where betTime BETWEEN #{params.endTime1} and #{params.endTime}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and playerName in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and playerName = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+  		</otherwise>
+  	</choose>
+  </select>
+  
+</mapper>

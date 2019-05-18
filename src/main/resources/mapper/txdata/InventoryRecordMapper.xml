@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.IntegralMallMapper.InventoryRecordMapper">
+    <select id="pluInvLog" resultType="com.cn.tianxia.admin.project.txdata.IntegralMall.GoodsInventory"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        SELECT t.id,t.cid,t.pluid,t.orderno,t.num,t.type,t.t_type as
+        tType,t.uptime,t.upuid,p.pluname,c.cagent,l.catename,u.login_name as loginName
+        FROM t_plu_inventory_log t
+        LEFT JOIN t_plu_info p ON t.pluid = p.id
+        LEFT JOIN t_cagent c ON t.cid = c.id
+        LEFT JOIN t_plu_cate l ON l.id = p.cateid
+        LEFT JOIN user u ON t.upuid = u.id
+        WHERE 1=1
+        <if test="params.containsKey('pluname')">
+            AND p.pluname = #{params.pluname}
+        </if>
+        <if test="params.containsKey('catename')">
+            AND l.catename in (select catename from t_plu_cate where path LIKE concat((select path from t_plu_cate where
+            id=#{params.catename}),'%'))
+        </if>
+        <if test="params.containsKey('cid')">
+            AND t.cid = #{params.cid}
+        </if>
+        <if test=" params.containsKey('startTime') ">
+            <![CDATA[ and t.uptime >= #{params.startTime} ]]>
+        </if>
+        <if test="params.containsKey('endTime')">
+            <![CDATA[ and t.uptime <= #{params.endTime} ]]>
+        </if>
+        ORDER BY t.uptime DESC
+        LIMIT ${(page-1)*limit},#{limit}
+    </select>
+
+    <select id="pluInvLogROWS" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager">
+        SELECT count(1)
+        FROM t_plu_inventory_log t
+        LEFT JOIN t_plu_info p ON t.pluid = p.id
+        LEFT JOIN t_cagent c ON t.cid = c.id
+        LEFT JOIN t_plu_cate l ON l.id = p.cateid
+        LEFT JOIN user u ON t.upuid = u.id
+        WHERE 1=1
+        <if test="params.containsKey('pluname')">
+            AND p.pluname = #{params.pluname}
+        </if>
+        <if test="params.containsKey('catename')">
+            AND l.catename in (select catename from t_plu_cate where path LIKE concat((select path from t_plu_cate where
+            id=#{params.catename}),'%'))
+        </if>
+        <if test="params.containsKey('cid')">
+            AND t.cid = #{params.cid}
+        </if>
+        <if test=" params.containsKey('startTime') ">
+            <![CDATA[ and t.uptime >= #{params.startTime} ]]>
+        </if>
+        <if test="params.containsKey('endTime')">
+            <![CDATA[ and t.uptime <= #{params.endTime} ]]>
+        </if>
+    </select>
+</mapper>

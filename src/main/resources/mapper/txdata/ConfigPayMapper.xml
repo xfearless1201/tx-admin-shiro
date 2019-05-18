@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.ConfigPayMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.ConfigPay" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="key" property="key" jdbcType="VARCHAR" />
+    <result column="s_num" property="sNum" jdbcType="INTEGER" />
+    <result column="pay_url" property="payUrl" jdbcType="VARCHAR" />
+    <result column="back_notify_url" property="backNotifyUrl" jdbcType="VARCHAR" />
+    <result column="page_notify_url" property="pageNotifyUrl" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, key, s_num, pay_url, back_notify_url, page_notify_url, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_config_pay
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_config_pay
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.ConfigPay" >
+    insert into t_config_pay (id, key, s_num, 
+      pay_url, back_notify_url, page_notify_url, 
+      type)
+    values (#{id,jdbcType=INTEGER}, #{key,jdbcType=VARCHAR}, #{sNum,jdbcType=INTEGER}, 
+      #{payUrl,jdbcType=VARCHAR}, #{backNotifyUrl,jdbcType=VARCHAR}, #{pageNotifyUrl,jdbcType=VARCHAR}, 
+      #{type,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.ConfigPay" >
+    insert into t_config_pay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="key != null" >
+        key,
+      </if>
+      <if test="sNum != null" >
+        s_num,
+      </if>
+      <if test="payUrl != null" >
+        pay_url,
+      </if>
+      <if test="backNotifyUrl != null" >
+        back_notify_url,
+      </if>
+      <if test="pageNotifyUrl != null" >
+        page_notify_url,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="key != null" >
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="sNum != null" >
+        #{sNum,jdbcType=INTEGER},
+      </if>
+      <if test="payUrl != null" >
+        #{payUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="backNotifyUrl != null" >
+        #{backNotifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pageNotifyUrl != null" >
+        #{pageNotifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.ConfigPay" >
+    update t_config_pay
+    <set >
+      <if test="key != null" >
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="sNum != null" >
+        s_num = #{sNum,jdbcType=INTEGER},
+      </if>
+      <if test="payUrl != null" >
+        pay_url = #{payUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="backNotifyUrl != null" >
+        back_notify_url = #{backNotifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pageNotifyUrl != null" >
+        page_notify_url = #{pageNotifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.ConfigPay" >
+    update t_config_pay
+    set key = #{key,jdbcType=VARCHAR},
+      s_num = #{sNum,jdbcType=INTEGER},
+      pay_url = #{payUrl,jdbcType=VARCHAR},
+      back_notify_url = #{backNotifyUrl,jdbcType=VARCHAR},
+      page_notify_url = #{pageNotifyUrl,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

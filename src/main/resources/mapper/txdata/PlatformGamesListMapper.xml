@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.PlatformGamesListMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.PlatformGamesList" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="game_id" property="gameId" jdbcType="VARCHAR" />
+    <result column="game_name_en" property="gameNameEn" jdbcType="VARCHAR" />
+    <result column="game_name_cn" property="gameNameCn" jdbcType="VARCHAR" />
+    <result column="src" property="src" jdbcType="VARCHAR" />
+    <result column="template_type" property="templateType" jdbcType="INTEGER" />
+    <result column="game_type" property="gameType" jdbcType="VARCHAR" />
+    <result column="access_type" property="accessType" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, game_id, game_name_en, game_name_cn, src, template_type, game_type, access_type, 
+    sequence, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from platform_games_list
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from platform_games_list
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.PlatformGamesList" >
+    insert into platform_games_list (id, game_id, game_name_en, 
+      game_name_cn, src, template_type, 
+      game_type, access_type, sequence, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{gameId,jdbcType=VARCHAR}, #{gameNameEn,jdbcType=VARCHAR}, 
+      #{gameNameCn,jdbcType=VARCHAR}, #{src,jdbcType=VARCHAR}, #{templateType,jdbcType=INTEGER}, 
+      #{gameType,jdbcType=VARCHAR}, #{accessType,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.PlatformGamesList" >
+    insert into platform_games_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gameId != null" >
+        game_id,
+      </if>
+      <if test="gameNameEn != null" >
+        game_name_en,
+      </if>
+      <if test="gameNameCn != null" >
+        game_name_cn,
+      </if>
+      <if test="src != null" >
+        src,
+      </if>
+      <if test="templateType != null" >
+        template_type,
+      </if>
+      <if test="gameType != null" >
+        game_type,
+      </if>
+      <if test="accessType != null" >
+        access_type,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="gameId != null" >
+        #{gameId,jdbcType=VARCHAR},
+      </if>
+      <if test="gameNameEn != null" >
+        #{gameNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="gameNameCn != null" >
+        #{gameNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="src != null" >
+        #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="templateType != null" >
+        #{templateType,jdbcType=INTEGER},
+      </if>
+      <if test="gameType != null" >
+        #{gameType,jdbcType=VARCHAR},
+      </if>
+      <if test="accessType != null" >
+        #{accessType,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.PlatformGamesList" >
+    update platform_games_list
+    <set >
+      <if test="gameId != null" >
+        game_id = #{gameId,jdbcType=VARCHAR},
+      </if>
+      <if test="gameNameEn != null" >
+        game_name_en = #{gameNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="gameNameCn != null" >
+        game_name_cn = #{gameNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="src != null" >
+        src = #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="templateType != null" >
+        template_type = #{templateType,jdbcType=INTEGER},
+      </if>
+      <if test="gameType != null" >
+        game_type = #{gameType,jdbcType=VARCHAR},
+      </if>
+      <if test="accessType != null" >
+        access_type = #{accessType,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.PlatformGamesList" >
+    update platform_games_list
+    set game_id = #{gameId,jdbcType=VARCHAR},
+      game_name_en = #{gameNameEn,jdbcType=VARCHAR},
+      game_name_cn = #{gameNameCn,jdbcType=VARCHAR},
+      src = #{src,jdbcType=VARCHAR},
+      template_type = #{templateType,jdbcType=INTEGER},
+      game_type = #{gameType,jdbcType=VARCHAR},
+      access_type = #{accessType,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.BbinRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.BbinRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="UserName" property="username" jdbcType="VARCHAR" />
+    <result column="WagersID" property="wagersid" jdbcType="VARCHAR" />
+    <result column="WagersDate" property="wagersdate" jdbcType="TIMESTAMP" />
+    <result column="SerialID" property="serialid" jdbcType="VARCHAR" />
+    <result column="RoundNo" property="roundno" jdbcType="VARCHAR" />
+    <result column="GameType" property="gametype" jdbcType="VARCHAR" />
+    <result column="WagerDetail" property="wagerdetail" jdbcType="VARCHAR" />
+    <result column="GameCode" property="gamecode" jdbcType="VARCHAR" />
+    <result column="Result" property="result" jdbcType="VARCHAR" />
+    <result column="ResultType" property="resulttype" jdbcType="VARCHAR" />
+    <result column="Card" property="card" jdbcType="VARCHAR" />
+    <result column="BetAmount" property="betamount" jdbcType="REAL" />
+    <result column="Payoff" property="payoff" jdbcType="REAL" />
+    <result column="Currency" property="currency" jdbcType="VARCHAR" />
+    <result column="ExchangeRate" property="exchangerate" jdbcType="REAL" />
+    <result column="Commissionable" property="commissionable" jdbcType="REAL" />
+    <result column="Origin" property="origin" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="pull_time" property="pullTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="wagerValue" property="wagervalue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, UserName, WagersID, WagersDate, SerialID, RoundNo, GameType, WagerDetail, GameCode, 
+    Result, ResultType, Card, BetAmount, Payoff, Currency, ExchangeRate, Commissionable, 
+    Origin, cagent, pull_time, type, wagerValue
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bbin_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bbin_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.BbinRecord" >
+    insert into bbin_record (id, UserName, WagersID, 
+      WagersDate, SerialID, RoundNo, 
+      GameType, WagerDetail, GameCode, 
+      Result, ResultType, Card, 
+      BetAmount, Payoff, Currency, 
+      ExchangeRate, Commissionable, Origin, 
+      cagent, pull_time, type, 
+      wagerValue)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{wagersid,jdbcType=VARCHAR}, 
+      #{wagersdate,jdbcType=TIMESTAMP}, #{serialid,jdbcType=VARCHAR}, #{roundno,jdbcType=VARCHAR}, 
+      #{gametype,jdbcType=VARCHAR}, #{wagerdetail,jdbcType=VARCHAR}, #{gamecode,jdbcType=VARCHAR}, 
+      #{result,jdbcType=VARCHAR}, #{resulttype,jdbcType=VARCHAR}, #{card,jdbcType=VARCHAR}, 
+      #{betamount,jdbcType=REAL}, #{payoff,jdbcType=REAL}, #{currency,jdbcType=VARCHAR}, 
+      #{exchangerate,jdbcType=REAL}, #{commissionable,jdbcType=REAL}, #{origin,jdbcType=VARCHAR}, 
+      #{cagent,jdbcType=VARCHAR}, #{pullTime,jdbcType=TIMESTAMP}, #{type,jdbcType=BIT}, 
+      #{wagervalue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.BbinRecord" >
+    insert into bbin_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        UserName,
+      </if>
+      <if test="wagersid != null" >
+        WagersID,
+      </if>
+      <if test="wagersdate != null" >
+        WagersDate,
+      </if>
+      <if test="serialid != null" >
+        SerialID,
+      </if>
+      <if test="roundno != null" >
+        RoundNo,
+      </if>
+      <if test="gametype != null" >
+        GameType,
+      </if>
+      <if test="wagerdetail != null" >
+        WagerDetail,
+      </if>
+      <if test="gamecode != null" >
+        GameCode,
+      </if>
+      <if test="result != null" >
+        Result,
+      </if>
+      <if test="resulttype != null" >
+        ResultType,
+      </if>
+      <if test="card != null" >
+        Card,
+      </if>
+      <if test="betamount != null" >
+        BetAmount,
+      </if>
+      <if test="payoff != null" >
+        Payoff,
+      </if>
+      <if test="currency != null" >
+        Currency,
+      </if>
+      <if test="exchangerate != null" >
+        ExchangeRate,
+      </if>
+      <if test="commissionable != null" >
+        Commissionable,
+      </if>
+      <if test="origin != null" >
+        Origin,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="pullTime != null" >
+        pull_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="wagervalue != null" >
+        wagerValue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="wagersid != null" >
+        #{wagersid,jdbcType=VARCHAR},
+      </if>
+      <if test="wagersdate != null" >
+        #{wagersdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialid != null" >
+        #{serialid,jdbcType=VARCHAR},
+      </if>
+      <if test="roundno != null" >
+        #{roundno,jdbcType=VARCHAR},
+      </if>
+      <if test="gametype != null" >
+        #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="wagerdetail != null" >
+        #{wagerdetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gamecode != null" >
+        #{gamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="resulttype != null" >
+        #{resulttype,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null" >
+        #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="betamount != null" >
+        #{betamount,jdbcType=REAL},
+      </if>
+      <if test="payoff != null" >
+        #{payoff,jdbcType=REAL},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangerate != null" >
+        #{exchangerate,jdbcType=REAL},
+      </if>
+      <if test="commissionable != null" >
+        #{commissionable,jdbcType=REAL},
+      </if>
+      <if test="origin != null" >
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="pullTime != null" >
+        #{pullTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="wagervalue != null" >
+        #{wagervalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.BbinRecord" >
+    update bbin_record
+    <set >
+      <if test="username != null" >
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="wagersid != null" >
+        WagersID = #{wagersid,jdbcType=VARCHAR},
+      </if>
+      <if test="wagersdate != null" >
+        WagersDate = #{wagersdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialid != null" >
+        SerialID = #{serialid,jdbcType=VARCHAR},
+      </if>
+      <if test="roundno != null" >
+        RoundNo = #{roundno,jdbcType=VARCHAR},
+      </if>
+      <if test="gametype != null" >
+        GameType = #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="wagerdetail != null" >
+        WagerDetail = #{wagerdetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gamecode != null" >
+        GameCode = #{gamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        Result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="resulttype != null" >
+        ResultType = #{resulttype,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null" >
+        Card = #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="betamount != null" >
+        BetAmount = #{betamount,jdbcType=REAL},
+      </if>
+      <if test="payoff != null" >
+        Payoff = #{payoff,jdbcType=REAL},
+      </if>
+      <if test="currency != null" >
+        Currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangerate != null" >
+        ExchangeRate = #{exchangerate,jdbcType=REAL},
+      </if>
+      <if test="commissionable != null" >
+        Commissionable = #{commissionable,jdbcType=REAL},
+      </if>
+      <if test="origin != null" >
+        Origin = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="pullTime != null" >
+        pull_time = #{pullTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="wagervalue != null" >
+        wagerValue = #{wagervalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.BbinRecord" >
+    update bbin_record
+    set UserName = #{username,jdbcType=VARCHAR},
+      WagersID = #{wagersid,jdbcType=VARCHAR},
+      WagersDate = #{wagersdate,jdbcType=TIMESTAMP},
+      SerialID = #{serialid,jdbcType=VARCHAR},
+      RoundNo = #{roundno,jdbcType=VARCHAR},
+      GameType = #{gametype,jdbcType=VARCHAR},
+      WagerDetail = #{wagerdetail,jdbcType=VARCHAR},
+      GameCode = #{gamecode,jdbcType=VARCHAR},
+      Result = #{result,jdbcType=VARCHAR},
+      ResultType = #{resulttype,jdbcType=VARCHAR},
+      Card = #{card,jdbcType=VARCHAR},
+      BetAmount = #{betamount,jdbcType=REAL},
+      Payoff = #{payoff,jdbcType=REAL},
+      Currency = #{currency,jdbcType=VARCHAR},
+      ExchangeRate = #{exchangerate,jdbcType=REAL},
+      Commissionable = #{commissionable,jdbcType=REAL},
+      Origin = #{origin,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR},
+      pull_time = #{pullTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=BIT},
+      wagerValue = #{wagervalue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- add by gate -->  
+  <select id="listGameRecord" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	<choose>
+  		<!-- 如果用户分组为0 则执行此sql -->
+  		<when test="params.userGrouping == 0">
+  			select 
+		  		<include refid="Base_Column_List" /> 
+		  	from bbin_record force index(WagersDate)
+			where WagersDate BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and UserName in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and UserName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			ORDER BY WagersDate desc 
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</when>
+  		<otherwise>
+  			select UserName,
+	  			count(UserName) as id,
+	  			sum(abs(betAmount)) as betAmount,
+	  			sum(Payoff) as Payoff,
+	  			sum(Commissionable) as Commissionable,
+	  			cast(sum(if(Commissionable > 0, 1 ,0)) as char) as roundno
+  			from bbin_record force index(WagersDate)
+  			where WagersDate BETWEEN #{params.startTime} and #{params.endTime}
+  			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and UserName in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and UserName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			GROUP BY UserName
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</otherwise>
+  	</choose>
+  </select> 
+  
+  <select id="countTotal" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	<choose>
+  		<!-- 勾选了实时分页也需要走明细-->
+  		<when test="params.dateGrouping != 0">
+  			select 'total' as userName,
+		  		count(id) as noteNum,
+				sum(abs(betAmount)) as betAmount,
+				sum(Payoff) AS netAmount,
+				sum(Commissionable) as validBetAmount,
+				sum(if(Commissionable > 0,1,0)) as validNoteNum
+		  	from bbin_record force index(WagersDate)
+			where WagersDate BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询 or 按会员分层查询查询-->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userNames != null and params.userNames.length() != 0">
+						and UserName in ${params.userNames}
+					</if>
+				</when>
+				<!-- 按会员账号查询 -->
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and UserName = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+  		</when>
+  		<otherwise>
+  			select user_name as userName,
+		  		sum(note_num) as noteNum,
+		  		sum(bet_amount) as betAmount,
+		  		sum(net_amount) as netAmount,
+		  		sum(valid_bet_amount) as validBetAmount,
+		  		sum(valid_note_num) as validNoteNum
+		  	from bbin_platform_report
+		  	where bet_time BETWEEN #{params.nextStartDay} and #{params.lastEndDay}
+		  		and type = 0
+				<if test="params.cagentName != null and params.cagentName.length() != 0">
+					and cagent = #{params.cagentName}
+				</if>
+				<choose>
+					<!-- 按真实姓名查询 or 按代理商查询  or 按会员分层查询查询-->
+					<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+						<if test="params.userNames != null and params.userNames.length() != 0">
+							and user_name in ${params.userNames}
+						</if>
+					</when>
+					<!-- 按会员账号查询 -->
+					<otherwise>
+						<!-- 如果有输入值 -->
+						<if test="params.name != null and params.name.length() != 0">
+					  		and user_name = #{params.name}
+						</if>
+					</otherwise>
+				</choose>
+				group by userName
+				<if test="params.startTime1 != null and params.startTime1.length() != 0">
+					union all
+					select UserName as userName,
+						count(id) as noteNum,
+						sum(abs(betAmount)) as betAmount,
+						sum(Payoff) AS netAmount,
+						sum(Commissionable) as validBetAmount,
+						sum(if(Commissionable > 0,1,0)) as validNoteNum
+					from bbin_record 
+					where WagersDate BETWEEN #{params.startTime} and #{params.startTime1}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and UserName in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and UserName = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+				<if test="params.endTime1 != null and params.endTime1.length() != 0">
+					union all
+					select UserName as userName,
+						count(id) as noteNum,
+						sum(abs(betAmount)) as betAmount,
+						sum(Payoff) AS netAmount,
+						sum(Commissionable) as validBetAmount,
+						sum(if(Commissionable > 0,1,0)) as validNoteNum
+					from bbin_record 
+					where WagersDate BETWEEN #{params.endTime1} and #{params.endTime}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and UserName in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and UserName = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+  		</otherwise>
+  	</choose>
+  </select>
+</mapper>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.IntegralMallMapper.OrderManageMapper">
+
+    <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.IntegralMall.OrderManage">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="cid" property="cid" jdbcType="INTEGER"/>
+        <result column="plu_id" property="pluId" jdbcType="INTEGER"/>
+        <result column="plu_number" property="pluNumber" jdbcType="INTEGER"/>
+        <result column="order_time" property="orderTime" jdbcType="TIMESTAMP"/>
+        <result column="deliver_address" property="deliverAddress" jdbcType="VARCHAR"/>
+        <result column="deliver_phone" property="deliverPhone" jdbcType="VARCHAR"/>
+        <result column="deliver_name" property="deliverName" jdbcType="VARCHAR"/>
+        <result column="deliver_status" property="deliverStatus" jdbcType="TINYINT"/>
+        <result column="audit_id" property="auditId" jdbcType="INTEGER"/>
+        <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP"/>
+        <result column="rmk" property="rmk" jdbcType="VARCHAR"/>
+        <result column="order_state" property="orderState" jdbcType="TINYINT"/>
+        <result column="cagent" property="cagentName" jdbcType="VARCHAR"/>
+        <result column="pluname" property="pluName" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DOUBLE"/>
+        <result column="name" property="auditName" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, uid, cid, plu_id, plu_number, order_time, deliver_address, deliver_phone, deliver_name,
+    deliver_status, audit_id, audit_time, rmk, order_state,cagent,pluname,price,`name`,username
+    </sql>
+
+    <select id="selectPluOrder" resultType="com.cn.tianxia.admin.project.txdata.IntegralMall.OrderManage"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        SELECT
+        t_plu_order.id,
+        t_plu_order.`uid`,
+        t_plu_order.cid,
+        t_plu_order.plu_id AS pluId,
+        t_plu_order.plu_number AS pluNumber,
+        t_plu_order.order_time AS orderTime,
+        t_plu_order.deliver_address AS deliverAddress,
+        t_plu_order.deliver_phone AS deliverPhone,
+        t_plu_order.deliver_name AS deliverName,
+        t_plu_order.deliver_status AS deliverStatus,
+        t_plu_order.audit_id AS auditId,
+        t_plu_order.audit_time AS auditTime,
+        t_plu_order.rmk,
+        t_plu_order.order_state AS orderState,
+        t_cagent.cagent AS cagentName,
+        t_plu_info.pluname AS pluName,
+        t_plu_info.price AS price,
+        `user`.`name` AS auditName,
+        t_user.username AS username
+        FROM
+        t_plu_order
+        LEFT JOIN t_user on t_user.uid = t_plu_order.uid
+        LEFT JOIN t_cagent on t_cagent.id = t_plu_order.cid
+        LEFT JOIN t_plu_info on t_plu_info.id = t_plu_order.plu_id
+        LEFT JOIN `user` on `user`.id = t_plu_order.audit_id
+        WHERE
+        (
+        1 = 1
+        <if test="params.containsKey('cid')">
+            <![CDATA[ and t_plu_order.cid = #{params.cid} ]]>
+        </if>
+        <if test="params.containsKey('deliverStatus') ">
+            <![CDATA[ and t_plu_order.deliver_status = #{params.deliverStatus} ]]>
+        </if>
+        <if test="params.containsKey('orderState')">
+            <![CDATA[ and t_plu_order.order_state = #{params.orderState} ]]>
+        </if>
+        <if test="params.containsKey('startDate')">
+            <![CDATA[ and t_plu_order.order_time >= #{params.startDate} ]]>
+        </if>
+        <if test="params.containsKey('endTime') ">
+            <![CDATA[ and t_plu_order.order_time <= #{params.endTime} ]]>
+        </if>
+        <if test="params.containsKey('userName')">
+            <![CDATA[ and t_user.username = #{params.userName} ]]>
+        </if>
+        )
+        ORDER BY
+        order_time ASC
+        LIMIT ${(page-1)*limit},#{limit}
+    </select>
+
+
+    <select id="selectPluOrderCount" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager">
+        SELECT count(1)
+        FROM
+        t_plu_order
+        LEFT JOIN t_user on t_user.uid = t_plu_order.uid
+        LEFT JOIN t_cagent on t_cagent.id = t_plu_order.cid
+        LEFT JOIN t_plu_info on t_plu_info.id = t_plu_order.plu_id
+        LEFT JOIN `user` on `user`.id = t_plu_order.audit_id
+        WHERE
+        (
+        1 = 1
+        <if test="params.containsKey('cid')">
+            <![CDATA[ and t_plu_order.cid = #{params.cid} ]]>
+        </if>
+        <if test="params.containsKey('deliverStatus') ">
+            <![CDATA[ and t_plu_order.deliver_status = #{params.deliverStatus} ]]>
+        </if>
+        <if test="params.containsKey('orderState')">
+            <![CDATA[ and t_plu_order.order_state = #{params.orderState} ]]>
+        </if>
+        <if test="params.containsKey('startDate')">
+            <![CDATA[ and t_plu_order.order_time >= #{params.startDate} ]]>
+        </if>
+        <if test="params.containsKey('endTime') ">
+            <![CDATA[ and t_plu_order.order_time <= #{params.endTime} ]]>
+        </if>
+        <if test="params.containsKey('userName')">
+            <![CDATA[ and t_user.username = #{params.userName} ]]>
+        </if>
+        )
+    </select>
+
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.cn.tianxia.admin.project.txdata.IntegralMall.OrderManage">
+        update t_plu_order
+        <set>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="pluId != null">
+                plu_id = #{pluId,jdbcType=INTEGER},
+            </if>
+            <if test="pluNumber != null">
+                plu_number = #{pluNumber,jdbcType=INTEGER},
+            </if>
+            <if test="orderTime != null">
+                order_time = #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deliverAddress != null">
+                deliver_address = #{deliverAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="deliverPhone != null">
+                deliver_phone = #{deliverPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="deliverName != null">
+                deliver_name = #{deliverName,jdbcType=VARCHAR},
+            </if>
+            <if test="deliverStatus != null">
+                deliver_status = #{deliverStatus,jdbcType=TINYINT},
+            </if>
+            <if test="auditId != null">
+                audit_id = #{auditId,jdbcType=INTEGER},
+            </if>
+            <if test="auditTime != null">
+                audit_time = #{auditTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rmk != null">
+                rmk = #{rmk,jdbcType=VARCHAR},
+            </if>
+            <if test="orderState != null">
+                order_state = #{orderState,jdbcType=TINYINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_plu_order
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+</mapper>

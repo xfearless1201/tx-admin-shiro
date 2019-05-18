@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.AgHsrMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.AgHsr" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="dataType" property="datatype" jdbcType="VARCHAR" />
+    <result column="hid" property="hid" jdbcType="VARCHAR" />
+    <result column="tradeNo" property="tradeno" jdbcType="VARCHAR" />
+    <result column="platformType" property="platformtype" jdbcType="VARCHAR" />
+    <result column="sceneId" property="sceneid" jdbcType="INTEGER" />
+    <result column="playerName" property="playername" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="SceneStartTime" property="scenestarttime" jdbcType="TIMESTAMP" />
+    <result column="SceneEndTime" property="sceneendtime" jdbcType="TIMESTAMP" />
+    <result column="Roomid" property="roomid" jdbcType="VARCHAR" />
+    <result column="Roombet" property="roombet" jdbcType="VARCHAR" />
+    <result column="Cost" property="cost" jdbcType="VARCHAR" />
+    <result column="Earn" property="earn" jdbcType="VARCHAR" />
+    <result column="Jackpotcomm" property="jackpotcomm" jdbcType="VARCHAR" />
+    <result column="transferAmount" property="transferamount" jdbcType="VARCHAR" />
+    <result column="previousAmount" property="previousamount" jdbcType="VARCHAR" />
+    <result column="currentAmount" property="currentamount" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="exchangeRate" property="exchangerate" jdbcType="REAL" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="creationTime" property="creationtime" jdbcType="TIMESTAMP" />
+    <result column="gameCode" property="gamecode" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, dataType, hid, tradeNo, platformType, sceneId, playerName, type, SceneStartTime, 
+    SceneEndTime, Roomid, Roombet, Cost, Earn, Jackpotcomm, transferAmount, previousAmount, 
+    currentAmount, currency, exchangeRate, IP, flag, creationTime, gameCode, cagent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ag_hsr
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ag_hsr
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.AgHsr" >
+    insert into ag_hsr (id, dataType, hid, 
+      tradeNo, platformType, sceneId, 
+      playerName, type, SceneStartTime, 
+      SceneEndTime, Roomid, Roombet, 
+      Cost, Earn, Jackpotcomm, 
+      transferAmount, previousAmount, currentAmount, 
+      currency, exchangeRate, IP, 
+      flag, creationTime, gameCode, 
+      cagent)
+    values (#{id,jdbcType=INTEGER}, #{datatype,jdbcType=VARCHAR}, #{hid,jdbcType=VARCHAR}, 
+      #{tradeno,jdbcType=VARCHAR}, #{platformtype,jdbcType=VARCHAR}, #{sceneid,jdbcType=INTEGER}, 
+      #{playername,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{scenestarttime,jdbcType=TIMESTAMP}, 
+      #{sceneendtime,jdbcType=TIMESTAMP}, #{roomid,jdbcType=VARCHAR}, #{roombet,jdbcType=VARCHAR}, 
+      #{cost,jdbcType=VARCHAR}, #{earn,jdbcType=VARCHAR}, #{jackpotcomm,jdbcType=VARCHAR}, 
+      #{transferamount,jdbcType=VARCHAR}, #{previousamount,jdbcType=VARCHAR}, #{currentamount,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=VARCHAR}, #{exchangerate,jdbcType=REAL}, #{ip,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=INTEGER}, #{creationtime,jdbcType=TIMESTAMP}, #{gamecode,jdbcType=VARCHAR}, 
+      #{cagent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.AgHsr" >
+    insert into ag_hsr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="datatype != null" >
+        dataType,
+      </if>
+      <if test="hid != null" >
+        hid,
+      </if>
+      <if test="tradeno != null" >
+        tradeNo,
+      </if>
+      <if test="platformtype != null" >
+        platformType,
+      </if>
+      <if test="sceneid != null" >
+        sceneId,
+      </if>
+      <if test="playername != null" >
+        playerName,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="scenestarttime != null" >
+        SceneStartTime,
+      </if>
+      <if test="sceneendtime != null" >
+        SceneEndTime,
+      </if>
+      <if test="roomid != null" >
+        Roomid,
+      </if>
+      <if test="roombet != null" >
+        Roombet,
+      </if>
+      <if test="cost != null" >
+        Cost,
+      </if>
+      <if test="earn != null" >
+        Earn,
+      </if>
+      <if test="jackpotcomm != null" >
+        Jackpotcomm,
+      </if>
+      <if test="transferamount != null" >
+        transferAmount,
+      </if>
+      <if test="previousamount != null" >
+        previousAmount,
+      </if>
+      <if test="currentamount != null" >
+        currentAmount,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="exchangerate != null" >
+        exchangeRate,
+      </if>
+      <if test="ip != null" >
+        IP,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="creationtime != null" >
+        creationTime,
+      </if>
+      <if test="gamecode != null" >
+        gameCode,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="datatype != null" >
+        #{datatype,jdbcType=VARCHAR},
+      </if>
+      <if test="hid != null" >
+        #{hid,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeno != null" >
+        #{tradeno,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null" >
+        #{platformtype,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneid != null" >
+        #{sceneid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null" >
+        #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="scenestarttime != null" >
+        #{scenestarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sceneendtime != null" >
+        #{sceneendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomid != null" >
+        #{roomid,jdbcType=VARCHAR},
+      </if>
+      <if test="roombet != null" >
+        #{roombet,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=VARCHAR},
+      </if>
+      <if test="earn != null" >
+        #{earn,jdbcType=VARCHAR},
+      </if>
+      <if test="jackpotcomm != null" >
+        #{jackpotcomm,jdbcType=VARCHAR},
+      </if>
+      <if test="transferamount != null" >
+        #{transferamount,jdbcType=VARCHAR},
+      </if>
+      <if test="previousamount != null" >
+        #{previousamount,jdbcType=VARCHAR},
+      </if>
+      <if test="currentamount != null" >
+        #{currentamount,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangerate != null" >
+        #{exchangerate,jdbcType=REAL},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null" >
+        #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gamecode != null" >
+        #{gamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.AgHsr" >
+    update ag_hsr
+    <set >
+      <if test="datatype != null" >
+        dataType = #{datatype,jdbcType=VARCHAR},
+      </if>
+      <if test="hid != null" >
+        hid = #{hid,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeno != null" >
+        tradeNo = #{tradeno,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null" >
+        platformType = #{platformtype,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneid != null" >
+        sceneId = #{sceneid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null" >
+        playerName = #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="scenestarttime != null" >
+        SceneStartTime = #{scenestarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sceneendtime != null" >
+        SceneEndTime = #{sceneendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomid != null" >
+        Roomid = #{roomid,jdbcType=VARCHAR},
+      </if>
+      <if test="roombet != null" >
+        Roombet = #{roombet,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        Cost = #{cost,jdbcType=VARCHAR},
+      </if>
+      <if test="earn != null" >
+        Earn = #{earn,jdbcType=VARCHAR},
+      </if>
+      <if test="jackpotcomm != null" >
+        Jackpotcomm = #{jackpotcomm,jdbcType=VARCHAR},
+      </if>
+      <if test="transferamount != null" >
+        transferAmount = #{transferamount,jdbcType=VARCHAR},
+      </if>
+      <if test="previousamount != null" >
+        previousAmount = #{previousamount,jdbcType=VARCHAR},
+      </if>
+      <if test="currentamount != null" >
+        currentAmount = #{currentamount,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangerate != null" >
+        exchangeRate = #{exchangerate,jdbcType=REAL},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null" >
+        creationTime = #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gamecode != null" >
+        gameCode = #{gamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.AgHsr" >
+    update ag_hsr
+    set dataType = #{datatype,jdbcType=VARCHAR},
+      hid = #{hid,jdbcType=VARCHAR},
+      tradeNo = #{tradeno,jdbcType=VARCHAR},
+      platformType = #{platformtype,jdbcType=VARCHAR},
+      sceneId = #{sceneid,jdbcType=INTEGER},
+      playerName = #{playername,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      SceneStartTime = #{scenestarttime,jdbcType=TIMESTAMP},
+      SceneEndTime = #{sceneendtime,jdbcType=TIMESTAMP},
+      Roomid = #{roomid,jdbcType=VARCHAR},
+      Roombet = #{roombet,jdbcType=VARCHAR},
+      Cost = #{cost,jdbcType=VARCHAR},
+      Earn = #{earn,jdbcType=VARCHAR},
+      Jackpotcomm = #{jackpotcomm,jdbcType=VARCHAR},
+      transferAmount = #{transferamount,jdbcType=VARCHAR},
+      previousAmount = #{previousamount,jdbcType=VARCHAR},
+      currentAmount = #{currentamount,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      exchangeRate = #{exchangerate,jdbcType=REAL},
+      IP = #{ip,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER},
+      creationTime = #{creationtime,jdbcType=TIMESTAMP},
+      gameCode = #{gamecode,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- add by gate -->  
+  <select id="findAllByPage" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" /> from ag_hsr
+    			limit 5
+  </select> 
+</mapper>

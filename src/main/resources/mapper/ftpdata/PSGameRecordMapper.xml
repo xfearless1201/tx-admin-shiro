@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.PSGameRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.PSGameRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="sn" property="sn" jdbcType="BIGINT" />
+    <result column="gid" property="gid" jdbcType="VARCHAR" />
+    <result column="sid" property="sid" jdbcType="VARCHAR" />
+    <result column="tm" property="tm" jdbcType="TIMESTAMP" />
+    <result column="bet" property="bet" jdbcType="DOUBLE" />
+    <result column="dm" property="dm" jdbcType="DOUBLE" />
+    <result column="win" property="win" jdbcType="DOUBLE" />
+    <result column="bn" property="bn" jdbcType="DOUBLE" />
+    <result column="gb" property="gb" jdbcType="DOUBLE" />
+    <result column="jp" property="jp" jdbcType="DOUBLE" />
+    <result column="ex" property="ex" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.cn.tianxia.admin.project.ftpdata.PSGameRecord" extends="BaseResultMap" >
+    <result column="bd" property="bd" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, sn, gid, sid, tm, bet, dm, win, bn, gb, jp, ex, cagent
+  </sql>
+  <sql id="Blob_Column_List" >
+    bd
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ps_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ps_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.PSGameRecord" >
+    insert into ps_record (id, username, sn, 
+      gid, sid, tm, bet, 
+      dm, win, bn, gb, 
+      jp, ex, cagent, bd
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{sn,jdbcType=BIGINT}, 
+      #{gid,jdbcType=VARCHAR}, #{sid,jdbcType=VARCHAR}, #{tm,jdbcType=TIMESTAMP}, #{bet,jdbcType=DOUBLE}, 
+      #{dm,jdbcType=DOUBLE}, #{win,jdbcType=DOUBLE}, #{bn,jdbcType=DOUBLE}, #{gb,jdbcType=DOUBLE}, 
+      #{jp,jdbcType=DOUBLE}, #{ex,jdbcType=VARCHAR}, #{cagent,jdbcType=VARCHAR}, #{bd,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.PSGameRecord" >
+    insert into ps_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="sn != null" >
+        sn,
+      </if>
+      <if test="gid != null" >
+        gid,
+      </if>
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="tm != null" >
+        tm,
+      </if>
+      <if test="bet != null" >
+        bet,
+      </if>
+      <if test="dm != null" >
+        dm,
+      </if>
+      <if test="win != null" >
+        win,
+      </if>
+      <if test="bn != null" >
+        bn,
+      </if>
+      <if test="gb != null" >
+        gb,
+      </if>
+      <if test="jp != null" >
+        jp,
+      </if>
+      <if test="ex != null" >
+        ex,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="bd != null" >
+        bd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="sn != null" >
+        #{sn,jdbcType=BIGINT},
+      </if>
+      <if test="gid != null" >
+        #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bet != null" >
+        #{bet,jdbcType=DOUBLE},
+      </if>
+      <if test="dm != null" >
+        #{dm,jdbcType=DOUBLE},
+      </if>
+      <if test="win != null" >
+        #{win,jdbcType=DOUBLE},
+      </if>
+      <if test="bn != null" >
+        #{bn,jdbcType=DOUBLE},
+      </if>
+      <if test="gb != null" >
+        #{gb,jdbcType=DOUBLE},
+      </if>
+      <if test="jp != null" >
+        #{jp,jdbcType=DOUBLE},
+      </if>
+      <if test="ex != null" >
+        #{ex,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="bd != null" >
+        #{bd,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.PSGameRecord" >
+    update ps_record
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="sn != null" >
+        sn = #{sn,jdbcType=BIGINT},
+      </if>
+      <if test="gid != null" >
+        gid = #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        sid = #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="tm != null" >
+        tm = #{tm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bet != null" >
+        bet = #{bet,jdbcType=DOUBLE},
+      </if>
+      <if test="dm != null" >
+        dm = #{dm,jdbcType=DOUBLE},
+      </if>
+      <if test="win != null" >
+        win = #{win,jdbcType=DOUBLE},
+      </if>
+      <if test="bn != null" >
+        bn = #{bn,jdbcType=DOUBLE},
+      </if>
+      <if test="gb != null" >
+        gb = #{gb,jdbcType=DOUBLE},
+      </if>
+      <if test="jp != null" >
+        jp = #{jp,jdbcType=DOUBLE},
+      </if>
+      <if test="ex != null" >
+        ex = #{ex,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="bd != null" >
+        bd = #{bd,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cn.tianxia.admin.project.ftpdata.PSGameRecord" >
+    update ps_record
+    set username = #{username,jdbcType=VARCHAR},
+      sn = #{sn,jdbcType=BIGINT},
+      gid = #{gid,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=VARCHAR},
+      tm = #{tm,jdbcType=TIMESTAMP},
+      bet = #{bet,jdbcType=DOUBLE},
+      dm = #{dm,jdbcType=DOUBLE},
+      win = #{win,jdbcType=DOUBLE},
+      bn = #{bn,jdbcType=DOUBLE},
+      gb = #{gb,jdbcType=DOUBLE},
+      jp = #{jp,jdbcType=DOUBLE},
+      ex = #{ex,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR},
+      bd = #{bd,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.PSGameRecord" >
+    update ps_record
+    set username = #{username,jdbcType=VARCHAR},
+      sn = #{sn,jdbcType=BIGINT},
+      gid = #{gid,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=VARCHAR},
+      tm = #{tm,jdbcType=TIMESTAMP},
+      bet = #{bet,jdbcType=DOUBLE},
+      dm = #{dm,jdbcType=DOUBLE},
+      win = #{win,jdbcType=DOUBLE},
+      bn = #{bn,jdbcType=DOUBLE},
+      gb = #{gb,jdbcType=DOUBLE},
+      jp = #{jp,jdbcType=DOUBLE},
+      ex = #{ex,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- add by gate -->
+  <select id="listGameRecord" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	<choose>
+  		<!-- 如果用户分组为0 则执行此sql -->
+  		<when test="params.userGrouping == 0">
+  			select 
+		  		<include refid="Base_Column_List" /> 
+		  	from ps_record force index(idx_tm)
+			where tm BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and username in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and username = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			ORDER BY tm desc 
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</when>
+  		<otherwise>
+  			select username,
+	  			count(username) as id,  			
+	  			sum(abs(bet)) as bet,
+	  			sum(win) as win
+  			from ps_record force index(idx_tm)
+  			where tm BETWEEN #{params.startTime} and #{params.endTime}
+  			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and username in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and username = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			GROUP BY username
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</otherwise>
+  	</choose>
+  </select>
+  
+  <select id="countTotal" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	<choose>
+  		<!-- gamePlatFormName 不为空 需要走明细表 表示选择了ag国际或者ag视讯,勾选了实时分页也需要走明细-->
+  		<when test="(params.gamePlatFormName != null and params.gamePlatFormName.length() != 0)
+  						or (params.dateGrouping != 0)">
+  			select 'total' as userName,
+		  		count(id) as noteNum,
+	  			sum(abs(bet)) as betAmount,
+	  			sum(win) as netAmount,
+	  			sum(abs(bet)) as validBetAmount,
+	  			count(id) as validNoteNum
+		  	from ps_record force index(idx_tm)
+			where tm BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询 or 按会员分层查询查询-->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userNames != null and params.userNames.length() != 0">
+						and username in ${params.userNames}
+					</if>
+				</when>
+				<!-- 按会员账号查询 -->
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and username = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+  		</when>
+  		<otherwise>
+  			select user_name as userName,
+		  		sum(note_num) as noteNum,
+		  		sum(bet_amount) as betAmount,
+		  		sum(net_amount) as netAmount,
+		  		sum(valid_bet_amount) as validBetAmount,
+		  		sum(note_num) as validNoteNum
+		  	from ps_platform_report
+		  	where bet_time BETWEEN #{params.nextStartDay} and #{params.lastEndDay}
+		  		and type = 0
+				<if test="params.cagentName != null and params.cagentName.length() != 0">
+					and cagent = #{params.cagentName}
+				</if>
+				<choose>
+					<!-- 按真实姓名查询 or 按代理商查询  or 按会员分层查询查询-->
+					<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+						<if test="params.userNames != null and params.userNames.length() != 0">
+							and user_name in ${params.userNames}
+						</if>
+					</when>
+					<!-- 按会员账号查询 -->
+					<otherwise>
+						<!-- 如果有输入值 -->
+						<if test="params.name != null and params.name.length() != 0">
+					  		and user_name = #{params.name}
+						</if>
+					</otherwise>
+				</choose>
+				group by userName
+				<if test="params.startTime1 != null and params.startTime1.length() != 0">
+					union all
+					select username as userName,
+						count(id) as noteNum,
+			  			sum(abs(bet)) as betAmount,
+			  			sum(win) as netAmount,
+			  			sum(abs(bet)) as validBetAmount,
+			  			count(id) as validNoteNum
+					from ps_record 
+					where tm BETWEEN #{params.startTime} and #{params.startTime1}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and username in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and username = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+				<if test="params.endTime1 != null and params.endTime1.length() != 0">
+					union all
+					select username as userName,
+						count(id) as noteNum,
+						sum(abs(bet)) as betAmount,
+			  			sum(win) as netAmount,
+			  			sum(abs(bet)) as validBetAmount,
+			  			count(id) as validNoteNum
+					from ps_record 
+					where tm BETWEEN #{params.endTime1} and #{params.endTime}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and username in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and username = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+  		</otherwise>
+  	</choose>
+  </select>
+</mapper>

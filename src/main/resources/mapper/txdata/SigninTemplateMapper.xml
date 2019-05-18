@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.SigninTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.SigninTemplate" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="template_name" property="templateName" jdbcType="VARCHAR" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="template_day" property="templateDay" jdbcType="INTEGER" />
+    <result column="template_reward" property="templateReward" jdbcType="VARCHAR" />
+    <result column="reward_type" property="rewardType" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="prize_type" property="prizeType" jdbcType="INTEGER" />
+    <result column="expend_integral" property="expendIntegral" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="activity_types" property="activityTypes" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, template_name, activity_id, template_day, template_reward, reward_type, status, 
+    prize_type, expend_integral, is_delete, activity_types
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_signin_template
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_signin_template
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.SigninTemplate" >
+    insert into t_signin_template (id, template_name, activity_id, 
+      template_day, template_reward, reward_type, 
+      status, prize_type, expend_integral, 
+      is_delete, activity_types)
+    values (#{id,jdbcType=INTEGER}, #{templateName,jdbcType=VARCHAR}, #{activityId,jdbcType=INTEGER}, 
+      #{templateDay,jdbcType=INTEGER}, #{templateReward,jdbcType=VARCHAR}, #{rewardType,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{prizeType,jdbcType=INTEGER}, #{expendIntegral,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=INTEGER}, #{activityTypes,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.SigninTemplate" >
+    insert into t_signin_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="templateName != null" >
+        template_name,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="templateDay != null" >
+        template_day,
+      </if>
+      <if test="templateReward != null" >
+        template_reward,
+      </if>
+      <if test="rewardType != null" >
+        reward_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="prizeType != null" >
+        prize_type,
+      </if>
+      <if test="expendIntegral != null" >
+        expend_integral,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="activityTypes != null" >
+        activity_types,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="templateDay != null" >
+        #{templateDay,jdbcType=INTEGER},
+      </if>
+      <if test="templateReward != null" >
+        #{templateReward,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardType != null" >
+        #{rewardType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="prizeType != null" >
+        #{prizeType,jdbcType=INTEGER},
+      </if>
+      <if test="expendIntegral != null" >
+        #{expendIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="activityTypes != null" >
+        #{activityTypes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.SigninTemplate" >
+    update t_signin_template
+    <set >
+      <if test="templateName != null" >
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="templateDay != null" >
+        template_day = #{templateDay,jdbcType=INTEGER},
+      </if>
+      <if test="templateReward != null" >
+        template_reward = #{templateReward,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardType != null" >
+        reward_type = #{rewardType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="prizeType != null" >
+        prize_type = #{prizeType,jdbcType=INTEGER},
+      </if>
+      <if test="expendIntegral != null" >
+        expend_integral = #{expendIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="activityTypes != null" >
+        activity_types = #{activityTypes,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.SigninTemplate" >
+    update t_signin_template
+    set template_name = #{templateName,jdbcType=VARCHAR},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      template_day = #{templateDay,jdbcType=INTEGER},
+      template_reward = #{templateReward,jdbcType=VARCHAR},
+      reward_type = #{rewardType,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      prize_type = #{prizeType,jdbcType=INTEGER},
+      expend_integral = #{expendIntegral,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      activity_types = #{activityTypes,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

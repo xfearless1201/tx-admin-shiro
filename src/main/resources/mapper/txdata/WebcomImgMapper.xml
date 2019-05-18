@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.WebcomImgMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.WebcomImg" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="imgname" property="imgname" jdbcType="VARCHAR" />
+    <result column="imgkey" property="imgkey" jdbcType="VARCHAR" />
+    <result column="src" property="src" jdbcType="VARCHAR" />
+    <result column="typeid" property="typeid" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="size" property="size" jdbcType="VARCHAR" />
+    <result column="ossid" property="ossid" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, imgname, imgkey, src, typeid, addtime, size, ossid, userid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_webcom_img
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_webcom_img
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.WebcomImg" >
+    insert into t_webcom_img (id, imgname, imgkey, 
+      src, typeid, addtime, 
+      size, ossid, userid
+      )
+    values (#{id,jdbcType=INTEGER}, #{imgname,jdbcType=VARCHAR}, #{imgkey,jdbcType=VARCHAR}, 
+      #{src,jdbcType=VARCHAR}, #{typeid,jdbcType=VARCHAR}, #{addtime,jdbcType=TIMESTAMP}, 
+      #{size,jdbcType=VARCHAR}, #{ossid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.WebcomImg" >
+    insert into t_webcom_img
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="imgname != null" >
+        imgname,
+      </if>
+      <if test="imgkey != null" >
+        imgkey,
+      </if>
+      <if test="src != null" >
+        src,
+      </if>
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="ossid != null" >
+        ossid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="imgname != null" >
+        #{imgname,jdbcType=VARCHAR},
+      </if>
+      <if test="imgkey != null" >
+        #{imgkey,jdbcType=VARCHAR},
+      </if>
+      <if test="src != null" >
+        #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="ossid != null" >
+        #{ossid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.WebcomImg" >
+    update t_webcom_img
+    <set >
+      <if test="imgname != null" >
+        imgname = #{imgname,jdbcType=VARCHAR},
+      </if>
+      <if test="imgkey != null" >
+        imgkey = #{imgkey,jdbcType=VARCHAR},
+      </if>
+      <if test="src != null" >
+        src = #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null" >
+        typeid = #{typeid,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="ossid != null" >
+        ossid = #{ossid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.WebcomImg" >
+    update t_webcom_img
+    set imgname = #{imgname,jdbcType=VARCHAR},
+      imgkey = #{imgkey,jdbcType=VARCHAR},
+      src = #{src,jdbcType=VARCHAR},
+      typeid = #{typeid,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      size = #{size,jdbcType=VARCHAR},
+      ossid = #{ossid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

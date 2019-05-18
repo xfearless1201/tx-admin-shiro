@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.ProxyFeeConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.ProxyFeeConfig" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="manager_fee" property="managerFee" jdbcType="REAL" />
+    <result column="payment_fee" property="paymentFee" jdbcType="REAL" />
+    <result column="payment_limit" property="paymentLimit" jdbcType="INTEGER" />
+    <result column="withdraw_fee" property="withdrawFee" jdbcType="REAL" />
+    <result column="withdraw_limit" property="withdrawLimit" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="user_fs_apportioned" property="userFsApportioned" jdbcType="INTEGER" />
+    <result column="user_zs_apportioned" property="userZsApportioned" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, manager_fee, payment_fee, payment_limit, withdraw_fee, withdraw_limit, cid, user_fs_apportioned, 
+    user_zs_apportioned
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_proxy_fee_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_proxy_fee_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.ProxyFeeConfig" >
+    insert into t_proxy_fee_config (id, manager_fee, payment_fee, 
+      payment_limit, withdraw_fee, withdraw_limit, 
+      cid, user_fs_apportioned, user_zs_apportioned
+      )
+    values (#{id,jdbcType=INTEGER}, #{managerFee,jdbcType=REAL}, #{paymentFee,jdbcType=REAL}, 
+      #{paymentLimit,jdbcType=INTEGER}, #{withdrawFee,jdbcType=REAL}, #{withdrawLimit,jdbcType=INTEGER}, 
+      #{cid,jdbcType=INTEGER}, #{userFsApportioned,jdbcType=INTEGER}, #{userZsApportioned,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.ProxyFeeConfig" >
+    insert into t_proxy_fee_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="managerFee != null" >
+        manager_fee,
+      </if>
+      <if test="paymentFee != null" >
+        payment_fee,
+      </if>
+      <if test="paymentLimit != null" >
+        payment_limit,
+      </if>
+      <if test="withdrawFee != null" >
+        withdraw_fee,
+      </if>
+      <if test="withdrawLimit != null" >
+        withdraw_limit,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="userFsApportioned != null" >
+        user_fs_apportioned,
+      </if>
+      <if test="userZsApportioned != null" >
+        user_zs_apportioned,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="managerFee != null" >
+        #{managerFee,jdbcType=REAL},
+      </if>
+      <if test="paymentFee != null" >
+        #{paymentFee,jdbcType=REAL},
+      </if>
+      <if test="paymentLimit != null" >
+        #{paymentLimit,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawFee != null" >
+        #{withdrawFee,jdbcType=REAL},
+      </if>
+      <if test="withdrawLimit != null" >
+        #{withdrawLimit,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="userFsApportioned != null" >
+        #{userFsApportioned,jdbcType=INTEGER},
+      </if>
+      <if test="userZsApportioned != null" >
+        #{userZsApportioned,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.ProxyFeeConfig" >
+    update t_proxy_fee_config
+    <set >
+      <if test="managerFee != null" >
+        manager_fee = #{managerFee,jdbcType=REAL},
+      </if>
+      <if test="paymentFee != null" >
+        payment_fee = #{paymentFee,jdbcType=REAL},
+      </if>
+      <if test="paymentLimit != null" >
+        payment_limit = #{paymentLimit,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawFee != null" >
+        withdraw_fee = #{withdrawFee,jdbcType=REAL},
+      </if>
+      <if test="withdrawLimit != null" >
+        withdraw_limit = #{withdrawLimit,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="userFsApportioned != null" >
+        user_fs_apportioned = #{userFsApportioned,jdbcType=INTEGER},
+      </if>
+      <if test="userZsApportioned != null" >
+        user_zs_apportioned = #{userZsApportioned,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.ProxyFeeConfig" >
+    update t_proxy_fee_config
+    set manager_fee = #{managerFee,jdbcType=REAL},
+      payment_fee = #{paymentFee,jdbcType=REAL},
+      payment_limit = #{paymentLimit,jdbcType=INTEGER},
+      withdraw_fee = #{withdrawFee,jdbcType=REAL},
+      withdraw_limit = #{withdrawLimit,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=INTEGER},
+      user_fs_apportioned = #{userFsApportioned,jdbcType=INTEGER},
+      user_zs_apportioned = #{userZsApportioned,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

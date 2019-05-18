@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.SWGameRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.SWGameRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="roundId" property="roundid" jdbcType="VARCHAR" />
+    <result column="brandId" property="brandid" jdbcType="VARCHAR" />
+    <result column="playerCode" property="playercode" jdbcType="VARCHAR" />
+    <result column="gameCode" property="gamecode" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="bet" property="bet" jdbcType="REAL" />
+    <result column="win" property="win" jdbcType="REAL" />
+    <result column="revenue" property="revenue" jdbcType="REAL" />
+    <result column="firstTs" property="firstts" jdbcType="TIMESTAMP" />
+    <result column="ts" property="ts" jdbcType="TIMESTAMP" />
+    <result column="finished" property="finished" jdbcType="VARCHAR" />
+    <result column="isTest" property="istest" jdbcType="VARCHAR" />
+    <result column="balanceBefore" property="balancebefore" jdbcType="REAL" />
+    <result column="balanceAfter" property="balanceafter" jdbcType="REAL" />
+    <result column="totalEvents" property="totalevents" jdbcType="INTEGER" />
+    <result column="insertedAt" property="insertedat" jdbcType="TIMESTAMP" />
+    <result column="device" property="device" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, roundId, brandId, playerCode, gameCode, currency, bet, win, revenue, firstTs, 
+    ts, finished, isTest, balanceBefore, balanceAfter, totalEvents, insertedAt, device, 
+    cagent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sw_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sw_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.SWGameRecord" >
+    insert into sw_record (id, roundId, brandId, 
+      playerCode, gameCode, currency, 
+      bet, win, revenue, firstTs, 
+      ts, finished, isTest, 
+      balanceBefore, balanceAfter, totalEvents, 
+      insertedAt, device, cagent
+      )
+    values (#{id,jdbcType=BIGINT}, #{roundid,jdbcType=VARCHAR}, #{brandid,jdbcType=VARCHAR}, 
+      #{playercode,jdbcType=VARCHAR}, #{gamecode,jdbcType=VARCHAR}, #{currency,jdbcType=VARCHAR}, 
+      #{bet,jdbcType=REAL}, #{win,jdbcType=REAL}, #{revenue,jdbcType=REAL}, #{firstts,jdbcType=TIMESTAMP}, 
+      #{ts,jdbcType=TIMESTAMP}, #{finished,jdbcType=VARCHAR}, #{istest,jdbcType=VARCHAR}, 
+      #{balancebefore,jdbcType=REAL}, #{balanceafter,jdbcType=REAL}, #{totalevents,jdbcType=INTEGER}, 
+      #{insertedat,jdbcType=TIMESTAMP}, #{device,jdbcType=VARCHAR}, #{cagent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.SWGameRecord" >
+    insert into sw_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roundid != null" >
+        roundId,
+      </if>
+      <if test="brandid != null" >
+        brandId,
+      </if>
+      <if test="playercode != null" >
+        playerCode,
+      </if>
+      <if test="gamecode != null" >
+        gameCode,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="bet != null" >
+        bet,
+      </if>
+      <if test="win != null" >
+        win,
+      </if>
+      <if test="revenue != null" >
+        revenue,
+      </if>
+      <if test="firstts != null" >
+        firstTs,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="finished != null" >
+        finished,
+      </if>
+      <if test="istest != null" >
+        isTest,
+      </if>
+      <if test="balancebefore != null" >
+        balanceBefore,
+      </if>
+      <if test="balanceafter != null" >
+        balanceAfter,
+      </if>
+      <if test="totalevents != null" >
+        totalEvents,
+      </if>
+      <if test="insertedat != null" >
+        insertedAt,
+      </if>
+      <if test="device != null" >
+        device,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roundid != null" >
+        #{roundid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandid != null" >
+        #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="playercode != null" >
+        #{playercode,jdbcType=VARCHAR},
+      </if>
+      <if test="gamecode != null" >
+        #{gamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="bet != null" >
+        #{bet,jdbcType=REAL},
+      </if>
+      <if test="win != null" >
+        #{win,jdbcType=REAL},
+      </if>
+      <if test="revenue != null" >
+        #{revenue,jdbcType=REAL},
+      </if>
+      <if test="firstts != null" >
+        #{firstts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finished != null" >
+        #{finished,jdbcType=VARCHAR},
+      </if>
+      <if test="istest != null" >
+        #{istest,jdbcType=VARCHAR},
+      </if>
+      <if test="balancebefore != null" >
+        #{balancebefore,jdbcType=REAL},
+      </if>
+      <if test="balanceafter != null" >
+        #{balanceafter,jdbcType=REAL},
+      </if>
+      <if test="totalevents != null" >
+        #{totalevents,jdbcType=INTEGER},
+      </if>
+      <if test="insertedat != null" >
+        #{insertedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="device != null" >
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.SWGameRecord" >
+    update sw_record
+    <set >
+      <if test="roundid != null" >
+        roundId = #{roundid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandid != null" >
+        brandId = #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="playercode != null" >
+        playerCode = #{playercode,jdbcType=VARCHAR},
+      </if>
+      <if test="gamecode != null" >
+        gameCode = #{gamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="bet != null" >
+        bet = #{bet,jdbcType=REAL},
+      </if>
+      <if test="win != null" >
+        win = #{win,jdbcType=REAL},
+      </if>
+      <if test="revenue != null" >
+        revenue = #{revenue,jdbcType=REAL},
+      </if>
+      <if test="firstts != null" >
+        firstTs = #{firstts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finished != null" >
+        finished = #{finished,jdbcType=VARCHAR},
+      </if>
+      <if test="istest != null" >
+        isTest = #{istest,jdbcType=VARCHAR},
+      </if>
+      <if test="balancebefore != null" >
+        balanceBefore = #{balancebefore,jdbcType=REAL},
+      </if>
+      <if test="balanceafter != null" >
+        balanceAfter = #{balanceafter,jdbcType=REAL},
+      </if>
+      <if test="totalevents != null" >
+        totalEvents = #{totalevents,jdbcType=INTEGER},
+      </if>
+      <if test="insertedat != null" >
+        insertedAt = #{insertedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="device != null" >
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.SWGameRecord" >
+    update sw_record
+    set roundId = #{roundid,jdbcType=VARCHAR},
+      brandId = #{brandid,jdbcType=VARCHAR},
+      playerCode = #{playercode,jdbcType=VARCHAR},
+      gameCode = #{gamecode,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      bet = #{bet,jdbcType=REAL},
+      win = #{win,jdbcType=REAL},
+      revenue = #{revenue,jdbcType=REAL},
+      firstTs = #{firstts,jdbcType=TIMESTAMP},
+      ts = #{ts,jdbcType=TIMESTAMP},
+      finished = #{finished,jdbcType=VARCHAR},
+      isTest = #{istest,jdbcType=VARCHAR},
+      balanceBefore = #{balancebefore,jdbcType=REAL},
+      balanceAfter = #{balanceafter,jdbcType=REAL},
+      totalEvents = #{totalevents,jdbcType=INTEGER},
+      insertedAt = #{insertedat,jdbcType=TIMESTAMP},
+      device = #{device,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!-- add by gate -->
+  <select id="listGameRecord" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	<choose>
+  		<!-- 如果用户分组为0 则执行此sql -->
+  		<when test="params.userGrouping == 0">
+  			select 
+		  		<include refid="Base_Column_List" /> 
+		  	from sw_record force index(ts)
+			where ts BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and playerCode in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerCode = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			ORDER BY firstTs desc 
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</when>
+  		<otherwise>
+  			select playerCode,
+	  			count(playerCode) as id,  			
+	  			sum(abs(bet)) as bet,
+	  			sum(revenue) as revenue
+  			from sw_record force index(ts)
+  			where ts BETWEEN #{params.startTime} and #{params.endTime}
+  			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and playerCode in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerCode = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			GROUP BY playerCode
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</otherwise>
+  	</choose>
+  </select>
+  
+  <select id="countTotal" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	<choose>
+  		<!-- gamePlatFormName 不为空 需要走明细表 表示选择了ag国际或者ag视讯,勾选了实时分页也需要走明细-->
+  		<when test="(params.gamePlatFormName != null and params.gamePlatFormName.length() != 0)
+  						or (params.dateGrouping != 0)">
+  			select 'total' as userName,
+		  		count(id) as noteNum,
+	  			sum(abs(bet)) as betAmount,
+	  			sum(revenue) as netAmount,
+	  			sum(abs(bet)) as validBetAmount,
+	  			count(id) as validNoteNum
+		  	from sw_record force index(ts)
+			where ts BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询 or 按会员分层查询查询-->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userNames != null and params.userNames.length() != 0">
+						and playerCode in ${params.userNames}
+					</if>
+				</when>
+				<!-- 按会员账号查询 -->
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerCode = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+  		</when>
+  		<otherwise>
+  			select user_name as userName,
+		  		sum(note_num) as noteNum,
+		  		sum(bet_amount) as betAmount,
+		  		sum(net_amount) as netAmount,
+		  		sum(valid_bet_amount) as validBetAmount,
+		  		sum(note_num) as validNoteNum
+		  	from sw_platform_report
+		  	where bet_time BETWEEN #{params.nextStartDay} and #{params.lastEndDay}
+		  		and type = 0
+				<if test="params.cagentName != null and params.cagentName.length() != 0">
+					and cagent = #{params.cagentName}
+				</if>
+				<choose>
+					<!-- 按真实姓名查询 or 按代理商查询  or 按会员分层查询查询-->
+					<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+						<if test="params.userNames != null and params.userNames.length() != 0">
+							and user_name in ${params.userNames}
+						</if>
+					</when>
+					<!-- 按会员账号查询 -->
+					<otherwise>
+						<!-- 如果有输入值 -->
+						<if test="params.name != null and params.name.length() != 0">
+					  		and user_name = #{params.name}
+						</if>
+					</otherwise>
+				</choose>
+				group by userName
+				<if test="params.startTime1 != null and params.startTime1.length() != 0">
+					union all
+					select playerCode as userName,
+						count(id) as noteNum,
+			  			sum(abs(bet)) as betAmount,
+			  			sum(revenue) as netAmount,
+			  			sum(abs(bet)) as validBetAmount,
+			  			count(id) as validNoteNum
+					from sw_record 
+					where ts BETWEEN #{params.startTime} and #{params.startTime1}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and playerCode in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and playerCode = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+				<if test="params.endTime1 != null and params.endTime1.length() != 0">
+					union all
+					select playerCode as userName,
+						count(id) as noteNum,
+						sum(abs(bet)) as betAmount,
+			  			sum(revenue) as netAmount,
+			  			sum(abs(bet)) as validBetAmount,
+			  			count(id) as validNoteNum
+					from sw_record 
+					where ts BETWEEN #{params.endTime1} and #{params.endTime}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and playerCode in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and playerCode = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+  		</otherwise>
+  	</choose>
+  </select>
+</mapper>

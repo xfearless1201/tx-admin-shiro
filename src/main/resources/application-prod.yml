@@ -1,0 +1,64 @@
+spring:
+  #缓存配置
+  redis:
+    database: 0
+    timeout: 6000ms
+    password: Aa123456
+    cluster:
+      max-redirects: 3   #获取失败 最大重定向次数
+      nodes:
+        - 192.168.0.52:6379
+        - 192.168.0.52:6380
+        - 192.168.0.53:6379
+        - 192.168.0.53:6380
+        - 192.168.0.54:6379
+        - 192.168.0.54:6380
+    lettuce:
+      pool:
+        max-active: 1000  #连接池最大连接数(使用负值表示没有限制)
+        max-idle: 10      #连接池中的最大空闲连接
+        min-idle: 5       #连接池中的最小空闲连接
+        max-wait: -1      #连接池最大阻塞等待时间(使用负值表示没有限制)
+  #数据源      
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.0.2:3306/txdata_db1?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true
+      username: root
+      password: M4ksVLpjrfRvfL1dYdataATFvRSMnMHbXSoPCHTaBRh1ouSqc03w6N/QhkZJ7V8Lfg2wgimEVpExN26OnexI7A==
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      validationQuery: SELECT 'x'
+      public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKqSCvTnIcLJrQdFluFqAz3f7lAHOML+wdLjoSZPLZD43xqjhdY/SBiKzpiRVUMIEAvR/Ijokwj2D5fTkhdyvTECAwEAAQ==
+      connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKqSCvTnIcLJrQdFluFqAz3f7lAHOML+wdLjoSZPLZD43xqjhdY/SBiKzpiRVUMIEAvR/Ijokwj2D5fTkhdyvTECAwEAAQ==
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+##多数据源的配置
+dynamic:
+  datasource:
+    txdata_slave:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.0.2:3316/txdata_db1?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true
+      username: root
+      password: M4ksVLpjrfRvfL1dYdataATFvRSMnMHbXSoPCHTaBRh1ouSqc03w6N/QhkZJ7V8Lfg2wgimEVpExN26OnexI7A==
+    ftpdata_master:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.0.2:3306/ftpdata_xmldb?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true
+      username: root
+      password: M4ksVLpjrfRvfL1dYdataATFvRSMnMHbXSoPCHTaBRh1ouSqc03w6N/QhkZJ7V8Lfg2wgimEVpExN26OnexI7A==

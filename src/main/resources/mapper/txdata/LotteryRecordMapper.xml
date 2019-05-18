@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.LotteryRecordMapper">
+    <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.LotteryRecord">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="cid" property="cid" jdbcType="INTEGER"/>
+        <result column="activity_id" property="activityId" jdbcType="INTEGER"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="lottery_time" property="lotteryTime" jdbcType="TIMESTAMP"/>
+        <result column="total_count" property="totalCount" jdbcType="INTEGER"/>
+        <result column="total_integral" property="totalIntegral" jdbcType="INTEGER"/>
+        <result column="is_winning" property="isWinning" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, cid, activity_id, uid, lottery_time, total_count, total_integral, is_winning
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_lottery_record
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_lottery_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.LotteryRecord">
+    insert into t_lottery_record (id, cid, activity_id, 
+      uid, lottery_time, total_count, 
+      total_integral, is_winning)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, 
+      #{uid,jdbcType=INTEGER}, #{lotteryTime,jdbcType=TIMESTAMP}, #{totalCount,jdbcType=INTEGER}, 
+      #{totalIntegral,jdbcType=INTEGER}, #{isWinning,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.LotteryRecord">
+        insert into t_lottery_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cid != null">
+                cid,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="lotteryTime != null">
+                lottery_time,
+            </if>
+            <if test="totalCount != null">
+                total_count,
+            </if>
+            <if test="totalIntegral != null">
+                total_integral,
+            </if>
+            <if test="isWinning != null">
+                is_winning,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="cid != null">
+                #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="lotteryTime != null">
+                #{lotteryTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="totalCount != null">
+                #{totalCount,jdbcType=INTEGER},
+            </if>
+            <if test="totalIntegral != null">
+                #{totalIntegral,jdbcType=INTEGER},
+            </if>
+            <if test="isWinning != null">
+                #{isWinning,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.LotteryRecord">
+        update t_lottery_record
+        <set>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="lotteryTime != null">
+                lottery_time = #{lotteryTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="totalCount != null">
+                total_count = #{totalCount,jdbcType=INTEGER},
+            </if>
+            <if test="totalIntegral != null">
+                total_integral = #{totalIntegral,jdbcType=INTEGER},
+            </if>
+            <if test="isWinning != null">
+                is_winning = #{isWinning,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.LotteryRecord">
+    update t_lottery_record
+    set cid = #{cid,jdbcType=INTEGER},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      lottery_time = #{lotteryTime,jdbcType=TIMESTAMP},
+      total_count = #{totalCount,jdbcType=INTEGER},
+      total_integral = #{totalIntegral,jdbcType=INTEGER},
+      is_winning = #{isWinning,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectAllByPage" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        <include refid="Base_Column_List"/>
+        from t_lottery_record
+        where 1 = 1
+        <if test="params.containsKey('username')">
+            and uid = select uid from t_user where username = #{params.username}
+        </if>
+        <if test="params.containsKey('cagent')">
+            and cid = select id from t_cagent where cagent = #{params.cagent}
+        </if>
+        <if test="params.containsKey('startTime')">
+            and addtime > #{params.startTime}
+        </if>
+        <if test="params.containsKey('endTime')">
+            and addtime &lt; #{params.endTime}
+        </if>
+        order by addtime desc
+        limit ${(page-1)*limit},#{limit}
+    </select>
+    <select id="selectTotalCount" resultType="java.lang.Integer" parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        count(1)
+        from t_lottery_record
+        where 1=1
+        <if test="params.containsKey('username')">
+            and uid = select uid from t_user where username = #{params.username}
+        </if>
+        <if test="params.containsKey('cagent')">
+            and cid = select id from t_cagent where cagent = #{params.cagent}
+        </if>
+        <if test="params.containsKey('startTime')">
+            and addtime > #{params.startTime}
+        </if>
+        <if test="params.containsKey('endTime')">
+            and addtime &lt; #{params.endTime}
+        </if>
+    </select>
+    <select id="selectLuckyDrawListByPage" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+        SELECT
+        t.id,
+        t4.`name` AS cagentName,
+        t5.activity_name AS activityName,
+        t2.username,
+        t3.typename,
+        t.lottery_time AS lotteryTime,
+        t.total_count AS totalCount,
+        t.total_integral AS totalIntegral,
+        t.is_winning AS isWinning
+        FROM
+        t_lottery_record t
+        LEFT JOIN t_user t2 ON t.uid = t2.uid
+        LEFT JOIN t_user_type t3 ON t2.type_id = t3.id
+        LEFT JOIN t_cagent t4 ON t.cid = t4.id
+        LEFT JOIN t_activity_details t5 ON t.activity_id = t5.id
+        <where>
+            <if test="params.containsKey('cid')">
+                and t.cid = #{params.cid}
+            </if>
+            <if test="params.containsKey('activityId')">
+                and t.activity_id = #{params.activityId}
+            </if>
+            <if test="params.containsKey('userName')">
+                and t2.username = #{params.userName}
+            </if>
+        </where>
+        order by t.cid,t.activity_id,t.uid
+        <if test="params.containsKey('page') and params.containsKey('rows')">
+            limit ${(page-1)*limit},#{limit}
+        </if>
+    </select>
+    <select id="selectLuckyDrawListTotalCount" resultType="java.lang.Integer"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        count(1)
+        FROM
+        t_lottery_record t
+        LEFT JOIN t_user t2 ON t.uid = t2.uid
+        LEFT JOIN t_user_type t3 ON t2.type_id = t3.id
+        LEFT JOIN t_cagent t4 ON t.cid = t4.id
+        LEFT JOIN t_activity_details t5 ON t.activity_id = t5.id
+        where 1=1
+        <if test="params.containsKey('cid')">
+            and t.cid = #{params.cid}
+        </if>
+        <if test="params.containsKey('activityId')">
+            and t.activity_id = #{params.activityId}
+        </if>
+        <if test="params.containsKey('userName')">
+            and t2.username = #{params.userName}
+        </if>
+    </select>
+    <select id="selectWinningListByPage" resultMap="BaseResultMap" parameterType="com.cn.tianxia.admin.common.Pager">
+        SELECT
+        t.id,
+        t4.`name` AS cagentName,
+        t5.activity_name AS activityName,
+        t2.username,
+        t3.typename,
+        t6.prize_name AS prizeName,
+        t6.prize_type AS prizeType,
+        t.amount,
+        t.total_winnings AS totalWinnings,
+        t.winning_time AS winningTime
+        FROM
+        t_winning_record t
+        LEFT JOIN t_user t2 ON t.uid = t2.uid
+        LEFT JOIN t_user_type t3 ON t2.type_id = t3.id
+        LEFT JOIN t_cagent t4 ON t.cid = t4.id
+        LEFT JOIN t_activity_details t5 ON t.activity_id = t5.id
+        LEFT JOIN t_prize_details t6 ON t.prize_id = t6.id
+        <where>
+            <if test="params.containsKey('cid')">
+                and t.cid = #{params.cid}
+            </if>
+            <if test="params.containsKey('activityId')">
+                and t.activity_id = #{params.activityId}
+            </if>
+            <if test="params.containsKey('userName')">
+                and t2.username = #{params.userName}
+            </if>
+        </where>
+        order by t.cid,t.activity_id,t.uid
+        <if test="params.containsKey('page') and params.containsKey('rows')">
+            limit ${(page-1)*limit},#{limit}
+        </if>
+    </select>
+    <select id="selectWinningListTotalCount" resultType="java.lang.Integer"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        count(1)
+        FROM
+        t_winning_record t
+        LEFT JOIN t_user t2 ON t.uid = t2.uid
+        LEFT JOIN t_user_type t3 ON t2.type_id = t3.id
+        LEFT JOIN t_cagent t4 ON t.cid = t4.id
+        LEFT JOIN t_activity_details t5 ON t.activity_id = t5.id
+        LEFT JOIN t_prize_details t6 ON t.prize_id = t6.id
+        where 1=1
+        <if test="params.containsKey('cid')">
+            and t.cid = #{params.cid}
+        </if>
+        <if test="params.containsKey('activityId')">
+            and t.activity_id = #{params.activityId}
+        </if>
+        <if test="params.containsKey('userName')">
+            and t2.username = #{params.userName}
+        </if>
+    </select>
+</mapper>

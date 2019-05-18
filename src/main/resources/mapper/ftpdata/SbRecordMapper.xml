@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.SbRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.SbRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ugsbetid" property="ugsbetid" jdbcType="VARCHAR" />
+    <result column="txid" property="txid" jdbcType="VARCHAR" />
+    <result column="betid" property="betid" jdbcType="VARCHAR" />
+    <result column="beton" property="beton" jdbcType="VARCHAR" />
+    <result column="betclosedon" property="betclosedon" jdbcType="VARCHAR" />
+    <result column="betupdatedon" property="betupdatedon" jdbcType="VARCHAR" />
+    <result column="timestamp" property="timestamp" jdbcType="VARCHAR" />
+    <result column="roundid" property="roundid" jdbcType="VARCHAR" />
+    <result column="roundstatus" property="roundstatus" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="riskamt" property="riskamt" jdbcType="REAL" />
+    <result column="winamt" property="winamt" jdbcType="REAL" />
+    <result column="winloss" property="winloss" jdbcType="REAL" />
+    <result column="beforebal" property="beforebal" jdbcType="REAL" />
+    <result column="postbal" property="postbal" jdbcType="REAL" />
+    <result column="cur" property="cur" jdbcType="VARCHAR" />
+    <result column="gameprovider" property="gameprovider" jdbcType="VARCHAR" />
+    <result column="gameprovidercode" property="gameprovidercode" jdbcType="VARCHAR" />
+    <result column="gamename" property="gamename" jdbcType="VARCHAR" />
+    <result column="gameid" property="gameid" jdbcType="VARCHAR" />
+    <result column="platformtype" property="platformtype" jdbcType="VARCHAR" />
+    <result column="ipaddress" property="ipaddress" jdbcType="VARCHAR" />
+    <result column="bettype" property="bettype" jdbcType="VARCHAR" />
+    <result column="playtype" property="playtype" jdbcType="VARCHAR" />
+    <result column="playertype" property="playertype" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="pull_time" property="pullTime" jdbcType="TIMESTAMP" />
+    <result column="rollingturnover" property="rollingturnover" jdbcType="REAL" />
+    <result column="wagerValue" property="wagervalue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ugsbetid, txid, betid, beton, betclosedon, betupdatedon, timestamp, roundid, 
+    roundstatus, userid, username, riskamt, winamt, winloss, beforebal, postbal, cur, 
+    gameprovider, gameprovidercode, gamename, gameid, platformtype, ipaddress, bettype, 
+    playtype, playertype, cagent, pull_time, rollingturnover, wagerValue
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from shenbo_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shenbo_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.SbRecord" >
+    insert into shenbo_record (id, ugsbetid, txid, 
+      betid, beton, betclosedon, 
+      betupdatedon, timestamp, roundid, 
+      roundstatus, userid, username, 
+      riskamt, winamt, winloss, beforebal, 
+      postbal, cur, gameprovider, 
+      gameprovidercode, gamename, gameid, 
+      platformtype, ipaddress, bettype, 
+      playtype, playertype, cagent, 
+      pull_time, rollingturnover, wagerValue
+      )
+    values (#{id,jdbcType=INTEGER}, #{ugsbetid,jdbcType=VARCHAR}, #{txid,jdbcType=VARCHAR}, 
+      #{betid,jdbcType=VARCHAR}, #{beton,jdbcType=VARCHAR}, #{betclosedon,jdbcType=VARCHAR}, 
+      #{betupdatedon,jdbcType=VARCHAR}, #{timestamp,jdbcType=VARCHAR}, #{roundid,jdbcType=VARCHAR}, 
+      #{roundstatus,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{riskamt,jdbcType=REAL}, #{winamt,jdbcType=REAL}, #{winloss,jdbcType=REAL}, #{beforebal,jdbcType=REAL}, 
+      #{postbal,jdbcType=REAL}, #{cur,jdbcType=VARCHAR}, #{gameprovider,jdbcType=VARCHAR}, 
+      #{gameprovidercode,jdbcType=VARCHAR}, #{gamename,jdbcType=VARCHAR}, #{gameid,jdbcType=VARCHAR}, 
+      #{platformtype,jdbcType=VARCHAR}, #{ipaddress,jdbcType=VARCHAR}, #{bettype,jdbcType=VARCHAR}, 
+      #{playtype,jdbcType=VARCHAR}, #{playertype,jdbcType=VARCHAR}, #{cagent,jdbcType=VARCHAR}, 
+      #{pullTime,jdbcType=TIMESTAMP}, #{rollingturnover,jdbcType=REAL}, #{wagervalue,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.SbRecord" >
+    insert into shenbo_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ugsbetid != null" >
+        ugsbetid,
+      </if>
+      <if test="txid != null" >
+        txid,
+      </if>
+      <if test="betid != null" >
+        betid,
+      </if>
+      <if test="beton != null" >
+        beton,
+      </if>
+      <if test="betclosedon != null" >
+        betclosedon,
+      </if>
+      <if test="betupdatedon != null" >
+        betupdatedon,
+      </if>
+      <if test="timestamp != null" >
+        timestamp,
+      </if>
+      <if test="roundid != null" >
+        roundid,
+      </if>
+      <if test="roundstatus != null" >
+        roundstatus,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="riskamt != null" >
+        riskamt,
+      </if>
+      <if test="winamt != null" >
+        winamt,
+      </if>
+      <if test="winloss != null" >
+        winloss,
+      </if>
+      <if test="beforebal != null" >
+        beforebal,
+      </if>
+      <if test="postbal != null" >
+        postbal,
+      </if>
+      <if test="cur != null" >
+        cur,
+      </if>
+      <if test="gameprovider != null" >
+        gameprovider,
+      </if>
+      <if test="gameprovidercode != null" >
+        gameprovidercode,
+      </if>
+      <if test="gamename != null" >
+        gamename,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="platformtype != null" >
+        platformtype,
+      </if>
+      <if test="ipaddress != null" >
+        ipaddress,
+      </if>
+      <if test="bettype != null" >
+        bettype,
+      </if>
+      <if test="playtype != null" >
+        playtype,
+      </if>
+      <if test="playertype != null" >
+        playertype,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="pullTime != null" >
+        pull_time,
+      </if>
+      <if test="rollingturnover != null" >
+        rollingturnover,
+      </if>
+      <if test="wagervalue != null" >
+        wagerValue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ugsbetid != null" >
+        #{ugsbetid,jdbcType=VARCHAR},
+      </if>
+      <if test="txid != null" >
+        #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="betid != null" >
+        #{betid,jdbcType=VARCHAR},
+      </if>
+      <if test="beton != null" >
+        #{beton,jdbcType=VARCHAR},
+      </if>
+      <if test="betclosedon != null" >
+        #{betclosedon,jdbcType=VARCHAR},
+      </if>
+      <if test="betupdatedon != null" >
+        #{betupdatedon,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="roundid != null" >
+        #{roundid,jdbcType=VARCHAR},
+      </if>
+      <if test="roundstatus != null" >
+        #{roundstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="riskamt != null" >
+        #{riskamt,jdbcType=REAL},
+      </if>
+      <if test="winamt != null" >
+        #{winamt,jdbcType=REAL},
+      </if>
+      <if test="winloss != null" >
+        #{winloss,jdbcType=REAL},
+      </if>
+      <if test="beforebal != null" >
+        #{beforebal,jdbcType=REAL},
+      </if>
+      <if test="postbal != null" >
+        #{postbal,jdbcType=REAL},
+      </if>
+      <if test="cur != null" >
+        #{cur,jdbcType=VARCHAR},
+      </if>
+      <if test="gameprovider != null" >
+        #{gameprovider,jdbcType=VARCHAR},
+      </if>
+      <if test="gameprovidercode != null" >
+        #{gameprovidercode,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null" >
+        #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null" >
+        #{platformtype,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddress != null" >
+        #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bettype != null" >
+        #{bettype,jdbcType=VARCHAR},
+      </if>
+      <if test="playtype != null" >
+        #{playtype,jdbcType=VARCHAR},
+      </if>
+      <if test="playertype != null" >
+        #{playertype,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="pullTime != null" >
+        #{pullTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rollingturnover != null" >
+        #{rollingturnover,jdbcType=REAL},
+      </if>
+      <if test="wagervalue != null" >
+        #{wagervalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.SbRecord" >
+    update shenbo_record
+    <set >
+      <if test="ugsbetid != null" >
+        ugsbetid = #{ugsbetid,jdbcType=VARCHAR},
+      </if>
+      <if test="txid != null" >
+        txid = #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="betid != null" >
+        betid = #{betid,jdbcType=VARCHAR},
+      </if>
+      <if test="beton != null" >
+        beton = #{beton,jdbcType=VARCHAR},
+      </if>
+      <if test="betclosedon != null" >
+        betclosedon = #{betclosedon,jdbcType=VARCHAR},
+      </if>
+      <if test="betupdatedon != null" >
+        betupdatedon = #{betupdatedon,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        timestamp = #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="roundid != null" >
+        roundid = #{roundid,jdbcType=VARCHAR},
+      </if>
+      <if test="roundstatus != null" >
+        roundstatus = #{roundstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="riskamt != null" >
+        riskamt = #{riskamt,jdbcType=REAL},
+      </if>
+      <if test="winamt != null" >
+        winamt = #{winamt,jdbcType=REAL},
+      </if>
+      <if test="winloss != null" >
+        winloss = #{winloss,jdbcType=REAL},
+      </if>
+      <if test="beforebal != null" >
+        beforebal = #{beforebal,jdbcType=REAL},
+      </if>
+      <if test="postbal != null" >
+        postbal = #{postbal,jdbcType=REAL},
+      </if>
+      <if test="cur != null" >
+        cur = #{cur,jdbcType=VARCHAR},
+      </if>
+      <if test="gameprovider != null" >
+        gameprovider = #{gameprovider,jdbcType=VARCHAR},
+      </if>
+      <if test="gameprovidercode != null" >
+        gameprovidercode = #{gameprovidercode,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null" >
+        gamename = #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="gameid != null" >
+        gameid = #{gameid,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null" >
+        platformtype = #{platformtype,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddress != null" >
+        ipaddress = #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bettype != null" >
+        bettype = #{bettype,jdbcType=VARCHAR},
+      </if>
+      <if test="playtype != null" >
+        playtype = #{playtype,jdbcType=VARCHAR},
+      </if>
+      <if test="playertype != null" >
+        playertype = #{playertype,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="pullTime != null" >
+        pull_time = #{pullTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rollingturnover != null" >
+        rollingturnover = #{rollingturnover,jdbcType=REAL},
+      </if>
+      <if test="wagervalue != null" >
+        wagerValue = #{wagervalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.SbRecord" >
+    update shenbo_record
+    set ugsbetid = #{ugsbetid,jdbcType=VARCHAR},
+      txid = #{txid,jdbcType=VARCHAR},
+      betid = #{betid,jdbcType=VARCHAR},
+      beton = #{beton,jdbcType=VARCHAR},
+      betclosedon = #{betclosedon,jdbcType=VARCHAR},
+      betupdatedon = #{betupdatedon,jdbcType=VARCHAR},
+      timestamp = #{timestamp,jdbcType=VARCHAR},
+      roundid = #{roundid,jdbcType=VARCHAR},
+      roundstatus = #{roundstatus,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      riskamt = #{riskamt,jdbcType=REAL},
+      winamt = #{winamt,jdbcType=REAL},
+      winloss = #{winloss,jdbcType=REAL},
+      beforebal = #{beforebal,jdbcType=REAL},
+      postbal = #{postbal,jdbcType=REAL},
+      cur = #{cur,jdbcType=VARCHAR},
+      gameprovider = #{gameprovider,jdbcType=VARCHAR},
+      gameprovidercode = #{gameprovidercode,jdbcType=VARCHAR},
+      gamename = #{gamename,jdbcType=VARCHAR},
+      gameid = #{gameid,jdbcType=VARCHAR},
+      platformtype = #{platformtype,jdbcType=VARCHAR},
+      ipaddress = #{ipaddress,jdbcType=VARCHAR},
+      bettype = #{bettype,jdbcType=VARCHAR},
+      playtype = #{playtype,jdbcType=VARCHAR},
+      playertype = #{playertype,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR},
+      pull_time = #{pullTime,jdbcType=TIMESTAMP},
+      rollingturnover = #{rollingturnover,jdbcType=REAL},
+      wagerValue = #{wagervalue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- add by gate -->  
+  <select id="listGameRecord" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	<choose>
+  		<!-- 如果用户分组为0 则执行此sql -->
+  		<when test="params.userGrouping == 0">
+  			select 
+		  		<include refid="Base_Column_List" /> 
+		  	from shenbo_record force index(timestamp)
+			where timestamp BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and username in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and username = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			ORDER BY betupdatedon desc 
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</when>
+  		<otherwise>
+  			select username,
+	  			count(username) as id,
+	  			sum(abs(riskamt)) as riskamt,
+				sum(winloss) AS winloss,
+				sum(if(winloss=0,0,ABS(riskamt))) as rollingturnover,
+	  			cast(sum(if(rollingturnover > 0, 1 ,0)) as char) as ipaddress
+  			from shenbo_record force index(timestamp)
+  			where timestamp BETWEEN #{params.startTime} and #{params.endTime}
+  			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and username in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and username = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			GROUP BY username
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</otherwise>
+  	</choose>
+  </select> 
+  
+  <select id="countTotal" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	<choose>
+  		<!-- 勾选了实时分页也需要走明细-->
+  		<when test="params.dateGrouping == 1">
+  			select 'total' as userName,
+		  		count(id) as noteNum,
+	  			sum(abs(riskamt)) as betAmount,
+				sum(winloss) AS netAmount,
+				sum(if(winloss=0,0,ABS(riskamt))) as validBetAmount,
+	  			sum(if(rollingturnover > 0, 1 ,0)) as validNoteNum
+		  	from shenbo_record force index(timestamp)
+			where timestamp BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询 or 按会员分层查询查询-->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userNames != null and params.userNames.length() != 0">
+						and username in ${params.userNames}
+					</if>
+				</when>
+				<!-- 按会员账号查询 -->
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and username = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+  		</when>
+  		<otherwise>
+  			select user_name as userName,
+		  		sum(note_num) as noteNum,
+		  		sum(bet_amount) as betAmount,
+		  		sum(net_amount) as netAmount,
+		  		sum(valid_bet_amount) as validBetAmount,
+		  		sum(valid_note_num) as validNoteNum
+		  	from shenbo_platform_report
+		  	where bet_time BETWEEN #{params.nextStartDay} and #{params.lastEndDay}
+				<if test="params.cagentName != null and params.cagentName.length() != 0">
+					and cagent = #{params.cagentName}
+				</if>
+				<choose>
+					<!-- 按真实姓名查询 or 按代理商查询  or 按会员分层查询查询-->
+					<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+						<if test="params.userNames != null and params.userNames.length() != 0">
+							and user_name in ${params.userNames}
+						</if>
+					</when>
+					<!-- 按会员账号查询 -->
+					<otherwise>
+						<!-- 如果有输入值 -->
+						<if test="params.name != null and params.name.length() != 0">
+					  		and user_name = #{params.name}
+						</if>
+					</otherwise>
+				</choose>
+				group by userName
+				<if test="params.startTime1 != null and params.startTime1.length() != 0">
+					union all
+					select username as userName,
+						count(id) as noteNum,
+			  			sum(abs(riskamt)) as betAmount,
+						sum(winloss) AS netAmount,
+						sum(if(winloss=0,0,ABS(riskamt))) as validBetAmount,
+			  			sum(if(rollingturnover > 0, 1 ,0)) as validNoteNum
+					from shenbo_record 
+					where timestamp BETWEEN #{params.startTime} and #{params.startTime1}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and username in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and username = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+				<if test="params.endTime1 != null and params.endTime1.length() != 0">
+					union all
+					select username as userName,
+						count(id) as noteNum,
+			  			sum(abs(riskamt)) as betAmount,
+						sum(winloss) AS netAmount,
+						sum(if(winloss=0,0,ABS(riskamt))) as validBetAmount,
+			  			sum(if(rollingturnover > 0, 1 ,0)) as validNoteNum
+					from shenbo_record
+					where timestamp BETWEEN #{params.endTime1} and #{params.endTime}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and username in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and username = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+  		</otherwise>
+  	</choose>
+  </select>
+</mapper>

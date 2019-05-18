@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.IntegralMallMapper.GoodsTypeMapper">
+
+    <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.IntegralMall.GoodsType">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="cid" property="cid" jdbcType="INTEGER"/>
+        <result column="pid" property="pid" jdbcType="INTEGER"/>
+        <result column="catename" property="catename" jdbcType="VARCHAR"/>
+        <result column="path" property="path" jdbcType="VARCHAR"/>
+        <result column="uptime" property="uptime" jdbcType="TIMESTAMP"/>
+        <result column="upuid" property="upuid" jdbcType="INTEGER"/>
+        <result column="rmk" property="rmk" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, cid, pid, catename, path, uptime, upuid, rmk
+    </sql>
+
+    <select id="queryGoodsTypeInfo" resultMap="BaseResultMap"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        <include refid="Base_Column_List"/>
+        from t_plu_cate
+        where 1=1
+        <if test="params.containsKey('cagentId')">
+            and cid=#{params.cagentId}
+        </if>
+        <if test="page != null and limit != null">
+            LIMIT ${(page-1)*limit},#{limit}
+        </if>
+    </select>
+
+    <select id="queryGoodsTypeInfoCount" resultType="java.lang.Integer"
+            parameterType="com.cn.tianxia.admin.common.Pager">
+        select
+        count(1)
+        FROM
+        t_plu_cate
+        where 1 = 1
+        <if test="params.containsKey('cagentId')">
+            and cid=#{params.cagentId};
+        </if>
+    </select>
+
+    <select id="commodityUserId" resultType="java.lang.Integer">
+      SELECT max(id) from t_plu_cate
+  </select>
+
+    <select id="queryCateName" resultType="java.lang.Integer" parameterType="java.util.Map">
+  		SELECT count(id) as cateCount FROM t_plu_cate WHERE cid=#{cagentId} and catename=#{catename}
+  </select>
+
+    <select id="commodityPid" resultType="java.lang.Integer" parameterType="java.util.Map">
+     select pid from t_plu_cate where id=#{pid}
+  </select>
+
+    <select id="commodityPath" resultType="java.lang.String" parameterType="java.util.Map">
+      select path from t_plu_cate where id=#{pid}
+  </select>
+
+    <insert id="commodityAdd" parameterType="java.util.Map">
+    insert into t_plu_cate (id,cid, pid,
+      catename, path, uptime,
+      upuid, rmk)
+    values (#{tpluUser},#{cid},#{pid},#{catename},#{path},now(),#{upuid},#{rmk})
+  </insert>
+
+    <update id="commodityUpdate" parameterType="java.util.Map">
+	    update t_plu_cate
+	    set cid = #{cid},
+	      catename = #{catename},
+	      path = #{path},
+	      uptime = now(),
+	      upuid = #{upuid},
+	      rmk = #{rmk}
+	    where id = #{id}
+  </update>
+
+    <delete id="commodityDelete" parameterType="java.util.Map">
+    delete from t_plu_cate
+    where id = #{id}
+  </delete>
+
+</mapper>

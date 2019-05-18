@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.JDBGameRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.JDBGameRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="seqNo" property="seqno" jdbcType="BIGINT" />
+    <result column="playerId" property="playerid" jdbcType="VARCHAR" />
+    <result column="mtype" property="mtype" jdbcType="INTEGER" />
+    <result column="roomType" property="roomtype" jdbcType="INTEGER" />
+    <result column="beforeBalance" property="beforebalance" jdbcType="DOUBLE" />
+    <result column="afterBalance" property="afterbalance" jdbcType="DOUBLE" />
+    <result column="gameDate" property="gamedate" jdbcType="TIMESTAMP" />
+    <result column="bet" property="bet" jdbcType="DOUBLE" />
+    <result column="gambleBet" property="gamblebet" jdbcType="DOUBLE" />
+    <result column="win" property="win" jdbcType="DOUBLE" />
+    <result column="total" property="total" jdbcType="DOUBLE" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="jackpot" property="jackpot" jdbcType="DOUBLE" />
+    <result column="jackpotContribute" property="jackpotcontribute" jdbcType="DOUBLE" />
+    <result column="denom" property="denom" jdbcType="DOUBLE" />
+    <result column="lastModifyTime" property="lastmodifytime" jdbcType="TIMESTAMP" />
+    <result column="playerIp" property="playerip" jdbcType="VARCHAR" />
+    <result column="clientType" property="clienttype" jdbcType="VARCHAR" />
+    <result column="hasFreegame" property="hasfreegame" jdbcType="INTEGER" />
+    <result column="hasGamble" property="hasgamble" jdbcType="INTEGER" />
+    <result column="hasBonusGame" property="hasbonusgame" jdbcType="INTEGER" />
+    <result column="systemTakeWin" property="systemtakewin" jdbcType="INTEGER" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="err_text" property="errText" jdbcType="VARCHAR" />
+    <result column="validBet" property="validbet" jdbcType="DOUBLE" />
+    <result column="gType" property="gtype" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, seqNo, playerId, mtype, roomType, beforeBalance, afterBalance, gameDate, bet, 
+    gambleBet, win, total, currency, jackpot, jackpotContribute, denom, lastModifyTime, 
+    playerIp, clientType, hasFreegame, hasGamble, hasBonusGame, systemTakeWin, cagent, 
+    err_text, validBet, gType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jdb_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.ftpdata.JDBGameRecord" >
+    insert into jdb_record (id, seqNo, playerId, 
+      mtype, roomType, beforeBalance, 
+      afterBalance, gameDate, bet, 
+      gambleBet, win, total, 
+      currency, jackpot, jackpotContribute, 
+      denom, lastModifyTime, playerIp, 
+      clientType, hasFreegame, hasGamble, 
+      hasBonusGame, systemTakeWin, cagent, 
+      err_text, validBet, gType
+      )
+    values (#{id,jdbcType=INTEGER}, #{seqno,jdbcType=BIGINT}, #{playerid,jdbcType=VARCHAR}, 
+      #{mtype,jdbcType=INTEGER}, #{roomtype,jdbcType=INTEGER}, #{beforebalance,jdbcType=DOUBLE}, 
+      #{afterbalance,jdbcType=DOUBLE}, #{gamedate,jdbcType=TIMESTAMP}, #{bet,jdbcType=DOUBLE}, 
+      #{gamblebet,jdbcType=DOUBLE}, #{win,jdbcType=DOUBLE}, #{total,jdbcType=DOUBLE}, 
+      #{currency,jdbcType=VARCHAR}, #{jackpot,jdbcType=DOUBLE}, #{jackpotcontribute,jdbcType=DOUBLE}, 
+      #{denom,jdbcType=DOUBLE}, #{lastmodifytime,jdbcType=TIMESTAMP}, #{playerip,jdbcType=VARCHAR}, 
+      #{clienttype,jdbcType=VARCHAR}, #{hasfreegame,jdbcType=INTEGER}, #{hasgamble,jdbcType=INTEGER}, 
+      #{hasbonusgame,jdbcType=INTEGER}, #{systemtakewin,jdbcType=INTEGER}, #{cagent,jdbcType=VARCHAR}, 
+      #{errText,jdbcType=VARCHAR}, #{validbet,jdbcType=DOUBLE}, #{gtype,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.ftpdata.JDBGameRecord" >
+    insert into jdb_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="seqno != null" >
+        seqNo,
+      </if>
+      <if test="playerid != null" >
+        playerId,
+      </if>
+      <if test="mtype != null" >
+        mtype,
+      </if>
+      <if test="roomtype != null" >
+        roomType,
+      </if>
+      <if test="beforebalance != null" >
+        beforeBalance,
+      </if>
+      <if test="afterbalance != null" >
+        afterBalance,
+      </if>
+      <if test="gamedate != null" >
+        gameDate,
+      </if>
+      <if test="bet != null" >
+        bet,
+      </if>
+      <if test="gamblebet != null" >
+        gambleBet,
+      </if>
+      <if test="win != null" >
+        win,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="jackpot != null" >
+        jackpot,
+      </if>
+      <if test="jackpotcontribute != null" >
+        jackpotContribute,
+      </if>
+      <if test="denom != null" >
+        denom,
+      </if>
+      <if test="lastmodifytime != null" >
+        lastModifyTime,
+      </if>
+      <if test="playerip != null" >
+        playerIp,
+      </if>
+      <if test="clienttype != null" >
+        clientType,
+      </if>
+      <if test="hasfreegame != null" >
+        hasFreegame,
+      </if>
+      <if test="hasgamble != null" >
+        hasGamble,
+      </if>
+      <if test="hasbonusgame != null" >
+        hasBonusGame,
+      </if>
+      <if test="systemtakewin != null" >
+        systemTakeWin,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="errText != null" >
+        err_text,
+      </if>
+      <if test="validbet != null" >
+        validBet,
+      </if>
+      <if test="gtype != null" >
+        gType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="seqno != null" >
+        #{seqno,jdbcType=BIGINT},
+      </if>
+      <if test="playerid != null" >
+        #{playerid,jdbcType=VARCHAR},
+      </if>
+      <if test="mtype != null" >
+        #{mtype,jdbcType=INTEGER},
+      </if>
+      <if test="roomtype != null" >
+        #{roomtype,jdbcType=INTEGER},
+      </if>
+      <if test="beforebalance != null" >
+        #{beforebalance,jdbcType=DOUBLE},
+      </if>
+      <if test="afterbalance != null" >
+        #{afterbalance,jdbcType=DOUBLE},
+      </if>
+      <if test="gamedate != null" >
+        #{gamedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bet != null" >
+        #{bet,jdbcType=DOUBLE},
+      </if>
+      <if test="gamblebet != null" >
+        #{gamblebet,jdbcType=DOUBLE},
+      </if>
+      <if test="win != null" >
+        #{win,jdbcType=DOUBLE},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="jackpot != null" >
+        #{jackpot,jdbcType=DOUBLE},
+      </if>
+      <if test="jackpotcontribute != null" >
+        #{jackpotcontribute,jdbcType=DOUBLE},
+      </if>
+      <if test="denom != null" >
+        #{denom,jdbcType=DOUBLE},
+      </if>
+      <if test="lastmodifytime != null" >
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playerip != null" >
+        #{playerip,jdbcType=VARCHAR},
+      </if>
+      <if test="clienttype != null" >
+        #{clienttype,jdbcType=VARCHAR},
+      </if>
+      <if test="hasfreegame != null" >
+        #{hasfreegame,jdbcType=INTEGER},
+      </if>
+      <if test="hasgamble != null" >
+        #{hasgamble,jdbcType=INTEGER},
+      </if>
+      <if test="hasbonusgame != null" >
+        #{hasbonusgame,jdbcType=INTEGER},
+      </if>
+      <if test="systemtakewin != null" >
+        #{systemtakewin,jdbcType=INTEGER},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="errText != null" >
+        #{errText,jdbcType=VARCHAR},
+      </if>
+      <if test="validbet != null" >
+        #{validbet,jdbcType=DOUBLE},
+      </if>
+      <if test="gtype != null" >
+        #{gtype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.ftpdata.JDBGameRecord" >
+    update jdb_record
+    <set >
+      <if test="seqno != null" >
+        seqNo = #{seqno,jdbcType=BIGINT},
+      </if>
+      <if test="playerid != null" >
+        playerId = #{playerid,jdbcType=VARCHAR},
+      </if>
+      <if test="mtype != null" >
+        mtype = #{mtype,jdbcType=INTEGER},
+      </if>
+      <if test="roomtype != null" >
+        roomType = #{roomtype,jdbcType=INTEGER},
+      </if>
+      <if test="beforebalance != null" >
+        beforeBalance = #{beforebalance,jdbcType=DOUBLE},
+      </if>
+      <if test="afterbalance != null" >
+        afterBalance = #{afterbalance,jdbcType=DOUBLE},
+      </if>
+      <if test="gamedate != null" >
+        gameDate = #{gamedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bet != null" >
+        bet = #{bet,jdbcType=DOUBLE},
+      </if>
+      <if test="gamblebet != null" >
+        gambleBet = #{gamblebet,jdbcType=DOUBLE},
+      </if>
+      <if test="win != null" >
+        win = #{win,jdbcType=DOUBLE},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="jackpot != null" >
+        jackpot = #{jackpot,jdbcType=DOUBLE},
+      </if>
+      <if test="jackpotcontribute != null" >
+        jackpotContribute = #{jackpotcontribute,jdbcType=DOUBLE},
+      </if>
+      <if test="denom != null" >
+        denom = #{denom,jdbcType=DOUBLE},
+      </if>
+      <if test="lastmodifytime != null" >
+        lastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playerip != null" >
+        playerIp = #{playerip,jdbcType=VARCHAR},
+      </if>
+      <if test="clienttype != null" >
+        clientType = #{clienttype,jdbcType=VARCHAR},
+      </if>
+      <if test="hasfreegame != null" >
+        hasFreegame = #{hasfreegame,jdbcType=INTEGER},
+      </if>
+      <if test="hasgamble != null" >
+        hasGamble = #{hasgamble,jdbcType=INTEGER},
+      </if>
+      <if test="hasbonusgame != null" >
+        hasBonusGame = #{hasbonusgame,jdbcType=INTEGER},
+      </if>
+      <if test="systemtakewin != null" >
+        systemTakeWin = #{systemtakewin,jdbcType=INTEGER},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="errText != null" >
+        err_text = #{errText,jdbcType=VARCHAR},
+      </if>
+      <if test="validbet != null" >
+        validBet = #{validbet,jdbcType=DOUBLE},
+      </if>
+      <if test="gtype != null" >
+        gType = #{gtype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.ftpdata.JDBGameRecord" >
+    update jdb_record
+    set seqNo = #{seqno,jdbcType=BIGINT},
+      playerId = #{playerid,jdbcType=VARCHAR},
+      mtype = #{mtype,jdbcType=INTEGER},
+      roomType = #{roomtype,jdbcType=INTEGER},
+      beforeBalance = #{beforebalance,jdbcType=DOUBLE},
+      afterBalance = #{afterbalance,jdbcType=DOUBLE},
+      gameDate = #{gamedate,jdbcType=TIMESTAMP},
+      bet = #{bet,jdbcType=DOUBLE},
+      gambleBet = #{gamblebet,jdbcType=DOUBLE},
+      win = #{win,jdbcType=DOUBLE},
+      total = #{total,jdbcType=DOUBLE},
+      currency = #{currency,jdbcType=VARCHAR},
+      jackpot = #{jackpot,jdbcType=DOUBLE},
+      jackpotContribute = #{jackpotcontribute,jdbcType=DOUBLE},
+      denom = #{denom,jdbcType=DOUBLE},
+      lastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      playerIp = #{playerip,jdbcType=VARCHAR},
+      clientType = #{clienttype,jdbcType=VARCHAR},
+      hasFreegame = #{hasfreegame,jdbcType=INTEGER},
+      hasGamble = #{hasgamble,jdbcType=INTEGER},
+      hasBonusGame = #{hasbonusgame,jdbcType=INTEGER},
+      systemTakeWin = #{systemtakewin,jdbcType=INTEGER},
+      cagent = #{cagent,jdbcType=VARCHAR},
+      err_text = #{errText,jdbcType=VARCHAR},
+      validBet = #{validbet,jdbcType=DOUBLE},
+      gType = #{gtype,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <!-- add by gate -->
+  <select id="listGameRecord" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	<choose>
+  		<!-- 如果用户分组为0 则执行此sql -->
+  		<when test="params.userGrouping == 0">
+  			select 
+		  		<include refid="Base_Column_List" /> 
+		  	from jdb_record force index(gameDate)
+			where gameDate BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName}
+			</if>
+			<if test="params.gamePlatFormName != null and params.gamePlatFormName.length() != 0">
+				and gType = #{params.gamePlatFormName,jdbcType=INTEGER}
+			</if>
+			<if test="params.mtype != null and params.mtype.length() != 0">
+				and mtype = #{params.mtype,jdbcType=INTEGER}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and playerId in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerId = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			ORDER BY gameDate desc 
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</when>
+  		<otherwise>
+  			select playerId,
+	  			count(playerId) as id,  			
+	  			sum(abs(bet)) as bet,
+	  			sum(total) as total,
+	  			sum(abs(validBet)) as validBet
+  			from jdb_record force index(gameDate)
+  			where gameDate BETWEEN #{params.startTime} and #{params.endTime}
+  			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<if test="params.gamePlatFormName != null and params.gamePlatFormName.length() != 0">
+				and gType = #{params.gamePlatFormName,jdbcType=INTEGER}
+			</if>
+			<if test="params.mtype != null and params.mtype.length() != 0">
+				and mtype = #{params.mtype,jdbcType=INTEGER}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询  or 按会员分层查询查询  -->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userName != null and params.userName.length() != 0">
+						and playerId in ${params.userName}
+					</if>
+				</when>
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerId = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+			GROUP BY playerId
+			limit
+			${(page-1)*limit},
+			#{limit,jdbcType=INTEGER};
+  		</otherwise>
+  	</choose>
+  </select>
+  
+  <select id="countTotal" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	<choose>
+  		<!-- gamePlatFormName 不为空 需要走明细表 表示选择了游戏类型,勾选了实时分页也需要走明细-->
+  		<when test="(params.gamePlatFormName != null and params.gamePlatFormName.length() != 0)
+  						or (params.dateGrouping != 0)">
+  			select 'total' as userName,
+		  		count(id) as noteNum,
+	  			sum(abs(bet)) as betAmount,
+	  			sum(total) as netAmount,
+	  			sum(abs(validBet)) as validBetAmount,
+	  			count(id) as validNoteNum
+		  	from jdb_record force index(gameDate)
+			where gameDate BETWEEN #{params.startTime} and #{params.endTime}
+			<if test="params.cagentName != null and params.cagentName.length() != 0">
+				and cagent = #{params.cagentName,jdbcType=VARCHAR}
+			</if>
+			<if test="params.gamePlatFormName != null and params.gamePlatFormName.length() != 0">
+				and gType = #{params.gamePlatFormName,jdbcType=INTEGER}
+			</if>
+			<if test="params.mtype != null and params.mtype.length() != 0">
+				and mtype = #{params.mtype,jdbcType=INTEGER}
+			</if>
+			<choose>
+				<!-- 按真实姓名查询  or 按代理商查询 or 按会员分层查询查询-->
+				<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+					<if test="params.userNames != null and params.userNames.length() != 0">
+						and playerId in ${params.userNames}
+					</if>
+				</when>
+				<!-- 按会员账号查询 -->
+				<otherwise>
+					<!-- 如果有输入值 -->
+					<if test="params.name != null and params.name.length() != 0">
+				  		and playerId = #{params.name}
+					</if>
+				</otherwise>
+			</choose>
+  		</when>
+  		<otherwise>
+  			select user_name as userName,
+		  		sum(note_num) as noteNum,
+		  		sum(bet_amount) as betAmount,
+		  		sum(net_amount) as netAmount,
+		  		sum(valid_bet_amount) as validBetAmount,
+		  		sum(note_num) as validNoteNum
+		  	from jdb_platform_report
+		  	where bet_time BETWEEN #{params.nextStartDay} and #{params.lastEndDay}
+		  		and type = 0
+				<if test="params.cagentName != null and params.cagentName.length() != 0">
+					and cagent = #{params.cagentName}
+				</if>
+				<choose>
+					<!-- 按真实姓名查询 or 按代理商查询  or 按会员分层查询查询-->
+					<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+						<if test="params.userNames != null and params.userNames.length() != 0">
+							and user_name in ${params.userNames}
+						</if>
+					</when>
+					<!-- 按会员账号查询 -->
+					<otherwise>
+						<!-- 如果有输入值 -->
+						<if test="params.name != null and params.name.length() != 0">
+					  		and user_name = #{params.name}
+						</if>
+					</otherwise>
+				</choose>
+				group by userName
+				<if test="params.startTime1 != null and params.startTime1.length() != 0">
+					union all
+					select playerId as userName,
+						count(id) as noteNum,
+			  			sum(abs(bet)) as betAmount,
+			  			sum(total) as netAmount,
+			  			sum(abs(validBet)) as validBetAmount,
+			  			count(id) as validNoteNum
+					from jdb_record 
+					where gameDate BETWEEN #{params.startTime} and #{params.startTime1}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and playerId in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and playerId = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+				<if test="params.endTime1 != null and params.endTime1.length() != 0">
+					union all
+					select playerId as userName,
+						count(id) as noteNum,
+						sum(abs(bet)) as betAmount,
+			  			sum(total) as netAmount,
+			  			sum(abs(validBet)) as validBetAmount,
+			  			count(id) as validNoteNum
+					from jdb_record 
+					where gameDate BETWEEN #{params.endTime1} and #{params.endTime}
+					<if test="params.cagentName != null and params.cagentName.length() != 0">
+						and cagent = #{params.cagentName,jdbcType=VARCHAR}
+					</if>
+					<choose>
+						<!-- 按真实姓名查询 or 按代理商查询 or按会员分层查询查询  -->
+						<when test="params.queryType == 1 or params.queryType == 2 or params.queryType == 3">
+							<if test="params.userNames != null and params.userNames.length() != 0">
+								and playerId in ${params.userNames}
+							</if>
+						</when>
+						<!-- 按会员账号查询 -->
+						<otherwise>
+							<!-- 如果有输入值 -->
+							<if test="params.name != null and params.name.length() != 0">
+						  		and playerId = #{params.name}
+							</if>
+						</otherwise>
+					</choose>
+					group by userName
+				</if>
+  		</otherwise>
+  	</choose>
+  </select>
+</mapper>

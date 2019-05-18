@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.ftpdata.GameRecordCommonMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.ftpdata.TUser" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="reg_ip" property="regIp" jdbcType="VARCHAR" />
+    <result column="ag_username" property="agUsername" jdbcType="VARCHAR" />
+    <result column="ag_password" property="agPassword" jdbcType="VARCHAR" />
+    <result column="hg_username" property="hgUsername" jdbcType="VARCHAR" />
+    <result column="mg_username" property="mgUsername" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="vip_level" property="vipLevel" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="is_daili" property="isDaili" jdbcType="CHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="CHAR" />
+    <result column="qk_pwd" property="qkPwd" jdbcType="VARCHAR" />
+    <result column="reg_date" property="regDate" jdbcType="TIMESTAMP" />
+    <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
+    <result column="wallet" property="wallet" jdbcType="DOUBLE" />
+    <result column="top_uid" property="topUid" jdbcType="INTEGER" />
+    <result column="is_stop" property="isStop" jdbcType="CHAR" />
+    <result column="is_mobile" property="isMobile" jdbcType="CHAR" />
+    <result column="rmk" property="rmk" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="junior_uid" property="juniorUid" jdbcType="INTEGER" />
+    <result column="regurl" property="regurl" jdbcType="VARCHAR" />
+    <result column="loginmobile" property="loginmobile" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, password, username, realname, login_ip, reg_ip, ag_username, ag_password, hg_username, 
+    mg_username, email, vip_level, mobile, cagent, is_daili, is_delete, qk_pwd, reg_date, 
+    login_time, wallet, top_uid, is_stop, is_mobile, rmk, type_id, junior_uid, regurl, 
+    loginmobile
+  </sql>
+  
+  
+  <!-- add by gate -->
+  <!-- 查询用户信息 -->
+  <select id="listTuser" parameterType="com.cn.tianxia.admin.common.Pager" resultMap="BaseResultMap">
+  	select 
+  		<include refid="Base_Column_List" /> 
+  	from txdata_db1.t_user
+  	<where>
+  		<choose>
+			<!-- 按真实姓名查询 -->
+			<when test="params.queryType == 1">
+				<choose>
+					<when test="params.name != null and params.name.length() != 0">
+						and realName = #{params.name}
+					</when>
+					<when test="params.userName != null and params.userName.length() !=0">
+						and ag_username in ${params.userName}
+					</when>
+				</choose>
+			</when>
+			<!-- 按代理商查询 -->
+			<when test="params.queryType == 2">
+				<choose>
+					<when test="params.topUidName != null and params.topUidName.length() != 0">
+						and top_uid = #{params.topUidName,jdbcType=INTEGER}
+					</when>
+					<when test="params.userName != null and params.userName.length() !=0">
+						and ag_username in ${params.userName}
+					</when>
+				</choose>
+			</when>
+			<!-- 按会员分层查询查询 -->
+			<when test="params.queryType == 3">
+				<choose>
+					<when test="params.userTypeName != null and params.userTypeName.length() != 0">
+						and type_id in ${params.userTypeName}
+					</when>
+					<when test="params.userName != null and params.userName.length() !=0">
+						and ag_username in ${params.userName}
+					</when>
+				</choose>
+			</when>
+			<otherwise>
+				<choose>
+					<when test="params.name != null and params.name.length() != 0">
+						and ag_username = #{params.name}
+					</when>
+					<when test="params.userName != null and params.userName.length() != 0">
+						and ag_username in ${params.userName}
+					</when>
+				</choose>
+			</otherwise>
+		</choose>
+  	</where>
+  </select>
+  
+  <!-- 通过会员分层查询分层id信息  -->
+  <select id="findIdsByUserTypeName" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.lang.Integer"> 
+  	select 
+  		id
+    from txdata_db1.t_user_type
+    <where>
+    	<if test="params.name != null and params.name.length() != 0">
+    		and typename = #{params.name}
+    	</if>
+    </where>
+  </select>
+  
+  <!-- 数据字典查询 -->
+  <select id="listDicData" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	select data_type as dataType,
+  		data_key as dataKey,
+  		data_value as dataValue,
+  		data_bet as dataBet
+  	from platform_dic_data
+  	<where>
+  		<if test="params.dataTypeTmp != null and params.dataTypeTmp.length() != 0">
+  			and data_type in ${params.dataTypeTmp}
+  		</if>
+  		<if test="params.playTypeTmp != null and params.playTypeTmp.length() != 0">
+  			and data_key in ${params.playTypeTmp}
+  		</if>
+  	</where>
+  </select>
+  
+  <!-- 查询游戏类型和名称 -->
+  <select id="listGameType" parameterType="com.cn.tianxia.admin.common.Pager" resultType="java.util.Map">
+  	select 
+  		platform_type as platFormId,
+  		game_type as gameType,
+  		game_value as gameTypeName
+  	from platform_game
+  	<where>
+  		<if test="params.platFormId != null">
+  			and platform_type = #{params.platFormId,jdbcType=INTEGER}
+  		</if>
+  		<if test="params.gameTypeTmp != null and params.gameTypeTmp.length() != 0">
+  			and game_type in ${params.gameTypeTmp}
+  		</if>
+  	</where>
+  </select>
+</mapper>

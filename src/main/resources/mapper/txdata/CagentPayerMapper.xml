@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.admin.domain.txdata.CagentPayerMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.admin.project.txdata.CagentPayer" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="seller_name" property="sellerName" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="cagent" property="cagent" jdbcType="VARCHAR" />
+    <result column="ish5_ali" property="ish5Ali" jdbcType="TINYINT" />
+    <result column="ish5_wx" property="ish5Wx" jdbcType="TINYINT" />
+    <result column="ish5_cft" property="ish5Cft" jdbcType="TINYINT" />
+    <result column="ish5_jd" property="ish5Jd" jdbcType="TINYINT" />
+    <result column="pay_url" property="payUrl" jdbcType="VARCHAR" />
+    <result column="ish5_yl" property="ish5Yl" jdbcType="TINYINT" />
+    <result column="seller_id" property="sellerId" jdbcType="VARCHAR" />
+    <result column="pc_channel" property="pcChannel" jdbcType="VARCHAR" />
+    <result column="h5_channel" property="h5Channel" jdbcType="VARCHAR" />
+    <result column="ios_channel" property="iosChannel" jdbcType="VARCHAR" />
+    <result column="android_channel" property="androidChannel" jdbcType="VARCHAR" />
+    <result column="password_parter_pkcs12" property="passwordParterPkcs12" jdbcType="VARCHAR" />
+    <result column="payment_name" property="paymentName" jdbcType="VARCHAR" />
+    <result column="payment_config" property="paymentConfig" jdbcType="VARCHAR" />
+    <result column="is_issued" property="isIssued" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="rmk" property="rmk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, seller_name, type, cagent, ish5_ali, ish5_wx, ish5_cft, ish5_jd, pay_url, ish5_yl, 
+    seller_id, pc_channel, h5_channel, ios_channel, android_channel, password_parter_pkcs12, 
+    payment_name, payment_config, is_issued, uid, status, rmk
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cagent_payer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cagent_payer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.admin.project.txdata.CagentPayer" >
+    insert into t_cagent_payer (id, seller_name, type, 
+      cagent, ish5_ali, ish5_wx, 
+      ish5_cft, ish5_jd, pay_url, 
+      ish5_yl, seller_id, pc_channel, 
+      h5_channel, ios_channel, android_channel, 
+      password_parter_pkcs12, payment_name, payment_config, 
+      is_issued, uid, status, 
+      rmk)
+    values (#{id,jdbcType=INTEGER}, #{sellerName,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{cagent,jdbcType=VARCHAR}, #{ish5Ali,jdbcType=TINYINT}, #{ish5Wx,jdbcType=TINYINT}, 
+      #{ish5Cft,jdbcType=TINYINT}, #{ish5Jd,jdbcType=TINYINT}, #{payUrl,jdbcType=VARCHAR}, 
+      #{ish5Yl,jdbcType=TINYINT}, #{sellerId,jdbcType=VARCHAR}, #{pcChannel,jdbcType=VARCHAR}, 
+      #{h5Channel,jdbcType=VARCHAR}, #{iosChannel,jdbcType=VARCHAR}, #{androidChannel,jdbcType=VARCHAR}, 
+      #{passwordParterPkcs12,jdbcType=VARCHAR}, #{paymentName,jdbcType=VARCHAR}, #{paymentConfig,jdbcType=VARCHAR}, 
+      #{isIssued,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{rmk,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentPayer" >
+    insert into t_cagent_payer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sellerName != null" >
+        seller_name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="cagent != null" >
+        cagent,
+      </if>
+      <if test="ish5Ali != null" >
+        ish5_ali,
+      </if>
+      <if test="ish5Wx != null" >
+        ish5_wx,
+      </if>
+      <if test="ish5Cft != null" >
+        ish5_cft,
+      </if>
+      <if test="ish5Jd != null" >
+        ish5_jd,
+      </if>
+      <if test="payUrl != null" >
+        pay_url,
+      </if>
+      <if test="ish5Yl != null" >
+        ish5_yl,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="pcChannel != null" >
+        pc_channel,
+      </if>
+      <if test="h5Channel != null" >
+        h5_channel,
+      </if>
+      <if test="iosChannel != null" >
+        ios_channel,
+      </if>
+      <if test="androidChannel != null" >
+        android_channel,
+      </if>
+      <if test="passwordParterPkcs12 != null" >
+        password_parter_pkcs12,
+      </if>
+      <if test="paymentName != null" >
+        payment_name,
+      </if>
+      <if test="paymentConfig != null" >
+        payment_config,
+      </if>
+      <if test="isIssued != null" >
+        is_issued,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="rmk != null" >
+        rmk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sellerName != null" >
+        #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="ish5Ali != null" >
+        #{ish5Ali,jdbcType=TINYINT},
+      </if>
+      <if test="ish5Wx != null" >
+        #{ish5Wx,jdbcType=TINYINT},
+      </if>
+      <if test="ish5Cft != null" >
+        #{ish5Cft,jdbcType=TINYINT},
+      </if>
+      <if test="ish5Jd != null" >
+        #{ish5Jd,jdbcType=TINYINT},
+      </if>
+      <if test="payUrl != null" >
+        #{payUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="ish5Yl != null" >
+        #{ish5Yl,jdbcType=TINYINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcChannel != null" >
+        #{pcChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="h5Channel != null" >
+        #{h5Channel,jdbcType=VARCHAR},
+      </if>
+      <if test="iosChannel != null" >
+        #{iosChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="androidChannel != null" >
+        #{androidChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordParterPkcs12 != null" >
+        #{passwordParterPkcs12,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentName != null" >
+        #{paymentName,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentConfig != null" >
+        #{paymentConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="isIssued != null" >
+        #{isIssued,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.admin.project.txdata.CagentPayer" >
+    update t_cagent_payer
+    <set >
+      <if test="sellerName != null" >
+        seller_name = #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="cagent != null" >
+        cagent = #{cagent,jdbcType=VARCHAR},
+      </if>
+      <if test="ish5Ali != null" >
+        ish5_ali = #{ish5Ali,jdbcType=TINYINT},
+      </if>
+      <if test="ish5Wx != null" >
+        ish5_wx = #{ish5Wx,jdbcType=TINYINT},
+      </if>
+      <if test="ish5Cft != null" >
+        ish5_cft = #{ish5Cft,jdbcType=TINYINT},
+      </if>
+      <if test="ish5Jd != null" >
+        ish5_jd = #{ish5Jd,jdbcType=TINYINT},
+      </if>
+      <if test="payUrl != null" >
+        pay_url = #{payUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="ish5Yl != null" >
+        ish5_yl = #{ish5Yl,jdbcType=TINYINT},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcChannel != null" >
+        pc_channel = #{pcChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="h5Channel != null" >
+        h5_channel = #{h5Channel,jdbcType=VARCHAR},
+      </if>
+      <if test="iosChannel != null" >
+        ios_channel = #{iosChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="androidChannel != null" >
+        android_channel = #{androidChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordParterPkcs12 != null" >
+        password_parter_pkcs12 = #{passwordParterPkcs12,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentName != null" >
+        payment_name = #{paymentName,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentConfig != null" >
+        payment_config = #{paymentConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="isIssued != null" >
+        is_issued = #{isIssued,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="rmk != null" >
+        rmk = #{rmk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.admin.project.txdata.CagentPayer" >
+    update t_cagent_payer
+    set seller_name = #{sellerName,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      cagent = #{cagent,jdbcType=VARCHAR},
+      ish5_ali = #{ish5Ali,jdbcType=TINYINT},
+      ish5_wx = #{ish5Wx,jdbcType=TINYINT},
+      ish5_cft = #{ish5Cft,jdbcType=TINYINT},
+      ish5_jd = #{ish5Jd,jdbcType=TINYINT},
+      pay_url = #{payUrl,jdbcType=VARCHAR},
+      ish5_yl = #{ish5Yl,jdbcType=TINYINT},
+      seller_id = #{sellerId,jdbcType=VARCHAR},
+      pc_channel = #{pcChannel,jdbcType=VARCHAR},
+      h5_channel = #{h5Channel,jdbcType=VARCHAR},
+      ios_channel = #{iosChannel,jdbcType=VARCHAR},
+      android_channel = #{androidChannel,jdbcType=VARCHAR},
+      password_parter_pkcs12 = #{passwordParterPkcs12,jdbcType=VARCHAR},
+      payment_name = #{paymentName,jdbcType=VARCHAR},
+      payment_config = #{paymentConfig,jdbcType=VARCHAR},
+      is_issued = #{isIssued,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      rmk = #{rmk,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
